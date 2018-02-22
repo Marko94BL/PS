@@ -109,7 +109,7 @@ namespace PS.dao.mysql
 
         public PosiljkaDTO vratiPosiljku(int posiljkaId)
         {
-            throw new NotImplementedException();
+            
             
             MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
             conn.Open();
@@ -139,4 +139,3 @@ namespace PS.dao.mysql
 
     }
 }
-,
