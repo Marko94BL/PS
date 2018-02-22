@@ -18,9 +18,9 @@ namespace PS
             InitializeComponent();
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void check_PostanskiCentar_CheckedChanged(object sender, EventArgs e)
         {
-            combo_PostanskiCentar.Enabled = true;
+            combo_PostanskiCentar.Enabled = !check_PostanskiCentar.Checked;
         }
 
         private void DodavanjePoslovnice_Load(object sender, EventArgs e)

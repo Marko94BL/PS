@@ -127,7 +127,7 @@
             this.check_PostanskiCentar.TabIndex = 9;
             this.check_PostanskiCentar.Text = "Dodaje se poštanski centar";
             this.check_PostanskiCentar.UseVisualStyleBackColor = true;
-            this.check_PostanskiCentar.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.check_PostanskiCentar.CheckedChanged += new System.EventHandler(this.check_PostanskiCentar_CheckedChanged);
             // 
             // btn_Potvrda
             // 
