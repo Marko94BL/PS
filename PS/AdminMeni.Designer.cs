@@ -29,64 +29,65 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminMeni));
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnOdjava = new System.Windows.Forms.Button();
+            this.btnDodavanjeZaposlenog = new System.Windows.Forms.Button();
+            this.btnDodavanjePoslovnice = new System.Windows.Forms.Button();
+            this.btnDodavanjeLinije = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button4
+            // btnOdjava
             // 
-            this.button4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button4.BackgroundImage")));
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button4.Location = new System.Drawing.Point(191, 157);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(108, 88);
-            this.button4.TabIndex = 3;
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.btnOdjava.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnOdjava.BackgroundImage")));
+            this.btnOdjava.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnOdjava.Location = new System.Drawing.Point(191, 157);
+            this.btnOdjava.Name = "btnOdjava";
+            this.btnOdjava.Size = new System.Drawing.Size(108, 88);
+            this.btnOdjava.TabIndex = 3;
+            this.btnOdjava.UseVisualStyleBackColor = true;
+            this.btnOdjava.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button3
+            // btnDodavanjeZaposlenog
             // 
-            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button3.Location = new System.Drawing.Point(22, 157);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(108, 88);
-            this.button3.TabIndex = 2;
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnDodavanjeZaposlenog.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDodavanjeZaposlenog.BackgroundImage")));
+            this.btnDodavanjeZaposlenog.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnDodavanjeZaposlenog.Location = new System.Drawing.Point(22, 157);
+            this.btnDodavanjeZaposlenog.Name = "btnDodavanjeZaposlenog";
+            this.btnDodavanjeZaposlenog.Size = new System.Drawing.Size(108, 88);
+            this.btnDodavanjeZaposlenog.TabIndex = 2;
+            this.btnDodavanjeZaposlenog.UseVisualStyleBackColor = true;
+            this.btnDodavanjeZaposlenog.Click += new System.EventHandler(this.btnDodavanjeZaposlenog_Click);
             // 
-            // button2
+            // btnDodavanjePoslovnice
             // 
-            this.button2.BackgroundImage = global::PS.Properties.Resources.poslovnica;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.Location = new System.Drawing.Point(191, 12);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(108, 88);
-            this.button2.TabIndex = 1;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnDodavanjePoslovnice.BackgroundImage = global::PS.Properties.Resources.poslovnica;
+            this.btnDodavanjePoslovnice.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnDodavanjePoslovnice.Location = new System.Drawing.Point(191, 12);
+            this.btnDodavanjePoslovnice.Name = "btnDodavanjePoslovnice";
+            this.btnDodavanjePoslovnice.Size = new System.Drawing.Size(108, 88);
+            this.btnDodavanjePoslovnice.TabIndex = 1;
+            this.btnDodavanjePoslovnice.UseVisualStyleBackColor = true;
+            this.btnDodavanjePoslovnice.Click += new System.EventHandler(this.btnDodavanjePoslovnice_Click);
             // 
-            // button1
+            // btnDodavanjeLinije
             // 
-            this.button1.BackgroundImage = global::PS.Properties.Resources.linija1;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Location = new System.Drawing.Point(22, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(108, 88);
-            this.button1.TabIndex = 0;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnDodavanjeLinije.BackgroundImage = global::PS.Properties.Resources.linija1;
+            this.btnDodavanjeLinije.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnDodavanjeLinije.Location = new System.Drawing.Point(22, 12);
+            this.btnDodavanjeLinije.Name = "btnDodavanjeLinije";
+            this.btnDodavanjeLinije.Size = new System.Drawing.Size(108, 88);
+            this.btnDodavanjeLinije.TabIndex = 0;
+            this.btnDodavanjeLinije.UseVisualStyleBackColor = true;
+            this.btnDodavanjeLinije.Click += new System.EventHandler(this.btnDodavanjeLinije_Click);
             // 
             // AdminMeni
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(337, 298);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnOdjava);
+            this.Controls.Add(this.btnDodavanjeZaposlenog);
+            this.Controls.Add(this.btnDodavanjePoslovnice);
+            this.Controls.Add(this.btnDodavanjeLinije);
             this.Name = "AdminMeni";
             this.Text = "AdminMeni";
             this.Load += new System.EventHandler(this.AdminMeni_Load);
@@ -96,9 +97,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnDodavanjeLinije;
+        private System.Windows.Forms.Button btnDodavanjePoslovnice;
+        private System.Windows.Forms.Button btnDodavanjeZaposlenog;
+        private System.Windows.Forms.Button btnOdjava;
     }
 }

@@ -19,22 +19,36 @@ namespace PS
 
         private void button4_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
+            this.Close();
         }
 
         private void AdminMeni_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnDodavanjeLinije_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            DodavanjeLinija form = new DodavanjeLinija();
+            form.ShowDialog();
+            this.Show();
+        }
+
+        private void btnDodavanjePoslovnice_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            DodavanjePoslovnice form = new DodavanjePoslovnice();
+            form.ShowDialog();
+            this.Show();
+        }
+
+        private void btnDodavanjeZaposlenog_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            DodavanjeZaposlenog form = new DodavanjeZaposlenog();
+            form.ShowDialog();
+            this.Show();
         }
     }
 }
