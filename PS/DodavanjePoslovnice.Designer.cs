@@ -33,12 +33,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.cb_Mjesto = new System.Windows.Forms.ComboBox();
+            this.combo_PostanskiCentar = new System.Windows.Forms.ComboBox();
+            this.tb_Naziv = new System.Windows.Forms.TextBox();
+            this.tb_Adresa = new System.Windows.Forms.TextBox();
+            this.check_PostanskiCentar = new System.Windows.Forms.CheckBox();
+            this.btn_Potvrda = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -88,66 +88,67 @@
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
-            // comboBox1
+            // cb_Mjesto
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(142, 59);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 5;
+            this.cb_Mjesto.FormattingEnabled = true;
+            this.cb_Mjesto.Location = new System.Drawing.Point(142, 59);
+            this.cb_Mjesto.Name = "cb_Mjesto";
+            this.cb_Mjesto.Size = new System.Drawing.Size(121, 21);
+            this.cb_Mjesto.TabIndex = 5;
             // 
-            // comboBox2
+            // combo_PostanskiCentar
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(101, 106);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(162, 21);
-            this.comboBox2.TabIndex = 6;
+            this.combo_PostanskiCentar.FormattingEnabled = true;
+            this.combo_PostanskiCentar.Location = new System.Drawing.Point(101, 106);
+            this.combo_PostanskiCentar.Name = "combo_PostanskiCentar";
+            this.combo_PostanskiCentar.Size = new System.Drawing.Size(162, 21);
+            this.combo_PostanskiCentar.TabIndex = 6;
             // 
-            // textBox1
+            // tb_Naziv
             // 
-            this.textBox1.Location = new System.Drawing.Point(142, 9);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(121, 20);
-            this.textBox1.TabIndex = 7;
+            this.tb_Naziv.Location = new System.Drawing.Point(142, 9);
+            this.tb_Naziv.Name = "tb_Naziv";
+            this.tb_Naziv.Size = new System.Drawing.Size(121, 20);
+            this.tb_Naziv.TabIndex = 7;
             // 
-            // textBox2
+            // tb_Adresa
             // 
-            this.textBox2.Location = new System.Drawing.Point(142, 33);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(121, 20);
-            this.textBox2.TabIndex = 8;
+            this.tb_Adresa.Location = new System.Drawing.Point(142, 33);
+            this.tb_Adresa.Name = "tb_Adresa";
+            this.tb_Adresa.Size = new System.Drawing.Size(121, 20);
+            this.tb_Adresa.TabIndex = 8;
             // 
-            // checkBox1
+            // check_PostanskiCentar
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(12, 83);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(155, 17);
-            this.checkBox1.TabIndex = 9;
-            this.checkBox1.Text = "Dodaje se poštanski centar";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.check_PostanskiCentar.AutoSize = true;
+            this.check_PostanskiCentar.Location = new System.Drawing.Point(12, 83);
+            this.check_PostanskiCentar.Name = "check_PostanskiCentar";
+            this.check_PostanskiCentar.Size = new System.Drawing.Size(155, 17);
+            this.check_PostanskiCentar.TabIndex = 9;
+            this.check_PostanskiCentar.Text = "Dodaje se poštanski centar";
+            this.check_PostanskiCentar.UseVisualStyleBackColor = true;
+            this.check_PostanskiCentar.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // button1
+            // btn_Potvrda
             // 
-            this.button1.Location = new System.Drawing.Point(269, 93);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(87, 34);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Potvrdi unos";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_Potvrda.Location = new System.Drawing.Point(269, 93);
+            this.btn_Potvrda.Name = "btn_Potvrda";
+            this.btn_Potvrda.Size = new System.Drawing.Size(87, 34);
+            this.btn_Potvrda.TabIndex = 10;
+            this.btn_Potvrda.Text = "Potvrdi unos";
+            this.btn_Potvrda.UseVisualStyleBackColor = true;
             // 
             // DodavanjePoslovnice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(364, 135);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.btn_Potvrda);
+            this.Controls.Add(this.check_PostanskiCentar);
+            this.Controls.Add(this.tb_Adresa);
+            this.Controls.Add(this.tb_Naziv);
+            this.Controls.Add(this.combo_PostanskiCentar);
+            this.Controls.Add(this.cb_Mjesto);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -168,11 +169,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox cb_Mjesto;
+        private System.Windows.Forms.ComboBox combo_PostanskiCentar;
+        private System.Windows.Forms.TextBox tb_Naziv;
+        private System.Windows.Forms.TextBox tb_Adresa;
+        private System.Windows.Forms.CheckBox check_PostanskiCentar;
+        private System.Windows.Forms.Button btn_Potvrda;
     }
 }
