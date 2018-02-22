@@ -9,6 +9,9 @@ namespace PS.dao
 {
     interface KorisnickiNalogDAO
     {
-        //KorisnickiNalogDTO pronadjiKorisnika(string korisnickoIme, string lozinka);
+        KorisnickiNalogDTO pronadjiKorisnika(string korisnickoIme);
+        bool daLiPostojiKorisnik(string korisnickoIme);
+        bool insert(KorisnickiNalogDTO kn);
+        KorisnickiNalogDTO pretragaPoId(int id);
     }
 }

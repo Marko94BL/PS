@@ -32,7 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tbKorisnickoIme = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbLozinka = new System.Windows.Forms.TextBox();
             this.btnDodajZaposlenog = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -74,12 +74,12 @@
             this.tbKorisnickoIme.Size = new System.Drawing.Size(163, 20);
             this.tbKorisnickoIme.TabIndex = 3;
             // 
-            // textBox1
+            // tbLozinka
             // 
-            this.textBox1.Location = new System.Drawing.Point(269, 59);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(166, 20);
-            this.textBox1.TabIndex = 4;
+            this.tbLozinka.Location = new System.Drawing.Point(269, 59);
+            this.tbLozinka.Name = "tbLozinka";
+            this.tbLozinka.Size = new System.Drawing.Size(166, 20);
+            this.tbLozinka.TabIndex = 4;
             // 
             // btnDodajZaposlenog
             // 
@@ -89,6 +89,7 @@
             this.btnDodajZaposlenog.TabIndex = 5;
             this.btnDodajZaposlenog.Text = "Potvrdi unos";
             this.btnDodajZaposlenog.UseVisualStyleBackColor = true;
+            this.btnDodajZaposlenog.Click += new System.EventHandler(this.btnDodajZaposlenog_Click);
             // 
             // DodavanjeZaposlenog
             // 
@@ -96,13 +97,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(441, 151);
             this.Controls.Add(this.btnDodajZaposlenog);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbLozinka);
             this.Controls.Add(this.tbKorisnickoIme);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Name = "DodavanjeZaposlenog";
             this.Text = "Pošte Srpske - Unos novog  korisničkog naloga";
+            this.Load += new System.EventHandler(this.DodavanjeZaposlenog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -115,7 +117,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbKorisnickoIme;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbLozinka;
         private System.Windows.Forms.Button btnDodajZaposlenog;
     }
 }

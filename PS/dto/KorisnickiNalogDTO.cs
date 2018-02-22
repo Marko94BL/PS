@@ -12,31 +12,40 @@ namespace PS.dto
         private int nalogId;
         private string salt;
         private byte akrivan;
-        private ZaposleniDTO zaposleni;
+        private int hashCount;
+        //private ZaposleniDTO zaposleni;
         //private string jmb;
         //private string lozinka;
         private string hashValue;
+        private byte privilegije;
         
 
         public KorisnickiNalogDTO() { }
 
-        public KorisnickiNalogDTO(string korisnickoIme, byte akrivan, ZaposleniDTO zaposleni, string hash)
+        public KorisnickiNalogDTO(string korisnickoIme, int nalogId, string salt, byte akrivan, int hashCount, string hashValue, byte privilegije)
         {
-            this.korisnickoIme = korisnickoIme;
-            this.akrivan = akrivan;
-            this.zaposleni = zaposleni;
-            //this.Lozinka = lozinka;
-            //this.jmb = jmb;
-            this.hashValue = hash;
+            this.KorisnickoIme = korisnickoIme;
+            this.NalogId = nalogId;
+            this.Salt = salt;
+            this.Akrivan = akrivan;
+            this.HashCount = hashCount;
+            this.HashValue = hashValue;
+            this.Privilegije = privilegije;
         }
 
         public string KorisnickoIme { get => korisnickoIme; set => korisnickoIme = value; }
-        public byte Akrivan { get => akrivan; set => akrivan = value; }
         public int NalogId { get => nalogId; set => nalogId = value; }
         public string Salt { get => salt; set => salt = value; }
+        public byte Akrivan { get => akrivan; set => akrivan = value; }
+        public int HashCount { get => hashCount; set => hashCount = value; }
         public string HashValue { get => hashValue; set => hashValue = value; }
+        public byte Privilegije { get => privilegije; set => privilegije = value; }
+
+
+
+
         //public string Jmb { get => jmb; set => jmb = value; }
         //public string Lozinka { get => lozinka; set => lozinka = value; }
-        internal ZaposleniDTO Zaposleni { get => zaposleni; set => zaposleni = value; }
+        //internal ZaposleniDTO Zaposleni { get => zaposleni; set => zaposleni = value; }
     }
 }
