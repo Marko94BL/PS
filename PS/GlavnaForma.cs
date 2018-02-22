@@ -24,22 +24,22 @@ namespace PS
 
         private void btnPrijava_Click(object sender, EventArgs e)
         {
-            String ime = tbKorisnickoIme.Text.Trim();
-            String loz = tbLozinka.Text.Trim();
-            if (!(String.IsNullOrEmpty(ime) || String.IsNullOrEmpty(loz)))
-            {
-                KorisnickiNalogDAO kDAO = DAOFactory.getDAOFactory().getKorisnickiNalogDAO();
-                Prijavljeni = kDAO.pronadjiKorisnika(ime, loz);
-                if (Prijavljeni != null)
-                {
-                    this.Hide();
-                    GlavniMeni form = new GlavniMeni();
-                    form.ShowDialog();
-                    this.Show();
-                }
-            }
-            tbKorisnickoIme.Clear();
-            tbLozinka.Clear();
+             String ime = tbKorisnickoIme.Text.Trim();
+             String loz = tbLozinka.Text.Trim();
+             if (!(String.IsNullOrEmpty(ime) || String.IsNullOrEmpty(loz)))
+             {
+                 KorisnickiNalogDAO kDAO = DAOFactory.getDAOFactory().getKorisnickiNalogDAO();
+                 Prijavljeni = kDAO.pronadjiKorisnika(ime, loz);
+                 if (Prijavljeni != null)
+                 {
+                     this.Hide();
+                     GlavniMeni form = new GlavniMeni();
+                     form.ShowDialog();
+                     this.Show();
+                 }
+             }
+             tbKorisnickoIme.Clear();
+             tbLozinka.Clear();
         }
     }
 

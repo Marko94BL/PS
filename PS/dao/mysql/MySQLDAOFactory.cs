@@ -33,11 +33,6 @@ namespace PS.dao.mysql
             return new MySQLPosiljkaDAO();
         }
 
-        public override PosiljkaTipDAO getPosiljkaTipDAO()
-        {
-            return new MySQLPosiljkaTipDAO();
-        }
-
         public override PoslovnicaDAO getPoslovnicaDAO()
         {
             return new MySQLPoslovnicaDAO();
@@ -53,9 +48,9 @@ namespace PS.dao.mysql
             return new MySQLMjestoDAO();
         }
 
-        public override ZaposleniDAO getZapsleniDAO()
+        public override LinijaDAO getLinijaDAO()
         {
-            return new MySQLZaposleniDAO();
+            return new MySQLLinijaDAO();
         }
     }
 }

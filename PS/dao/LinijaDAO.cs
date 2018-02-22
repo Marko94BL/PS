@@ -1,14 +1,14 @@
-﻿using System;
+﻿using PS.dto;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PS.dto;
 
 namespace PS.dao
 {
-    interface ZaposleniDAO
+    interface LinijaDAO
     {
-        //ZaposleniDTO vratiZaposlenog(string jmb);
+         bool insert(LinijaDTO linija);
     }
 }

@@ -36,12 +36,12 @@ namespace PS
             }
 
             PosiljkaTipDAO ptDAO = DAOFactory.getDAOFactory().getPosiljkaTipDAO();
-            List<PosiljkaTipDTO> tipovi = ptDAO.posiljkaTipovi();
+           // List<PosiljkaTipDTO> tipovi = ptDAO.posiljkaTipovi();
 
-            foreach (PosiljkaTipDTO tip in tipovi)
+           /* foreach (PosiljkaTipDTO tip in tipovi)
             {
                 cbVrstaPosiljke.Items.Add(tip);
-            }
+            }*/
 
             string datumString = DateTime.Today.ToString("yyyy-MM-dd");
             tbDatum.Text = datumString;
@@ -51,7 +51,7 @@ namespace PS
 
         private void btnPotvrdiUnos_Click(object sender, EventArgs e)
         {
-            String jmb = GlavnaForma.Prijavljeni.Jmb;
+          //  String jmb = GlavnaForma.Prijavljeni.Jmb;
             PoslovnicaDTO prijemnaPosta = (cbPrijemnaPosta.SelectedItem as PoslovnicaDTO);
             DateTime vrijeme = DateTime.Now;
             string identifikator = tbIdentifikator.Text.Trim();
@@ -65,14 +65,19 @@ namespace PS
             {
                 PosiljkaDAO pDAO = DAOFactory.getDAOFactory().getPosiljkaDAO();
                 ZaposleniDAO zdao = DAOFactory.getDAOFactory().getZapsleniDAO();
-                ZaposleniDTO zaposleni = zdao.vratiZaposlenog(GlavnaForma.Prijavljeni.Jmb);
-                PosiljkaDTO posiljka = new PosiljkaDTO(id, prijemnaPosta, odredisnaPosta, zaposleni, vrstaPosiljke, vrijeme, vanVrece);
-                bool rez = pDAO.insert(posiljka);
-                if (rez)
-                {
-                    this.Close();
-                }
+               // ZaposleniDTO zaposleni = zdao.vratiZaposlenog(GlavnaForma.Prijavljeni.Jmb);
+               // PosiljkaDTO posiljka = new PosiljkaDTO(id, prijemnaPosta, odredisnaPosta, zaposleni, vrstaPosiljke, vrijeme, vanVrece);
+               // bool rez = pDAO.insert(posiljka);
+               // if (rez)
+               // {
+                //    this.Close();
+               // }
             }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

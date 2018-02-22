@@ -11,7 +11,7 @@ namespace PS.dao.mysql
 {
     class MySQLKorisnickiNalogDAO : KorisnickiNalogDAO
     {
-        public KorisnickiNalogDTO pronadjiKorisnika(string korisnickoIme, string lozinka)
+        public KorisnickiNalogDTO pretragaPoId(int id)
         {
             throw new NotImplementedException();
             /*

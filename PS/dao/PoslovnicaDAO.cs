@@ -8,11 +8,11 @@ using PS.dto;
 namespace PS.dao
 {
     interface PoslovnicaDAO
-    {/*
+    {
         List<PoslovnicaDTO> poslovnice();
         PoslovnicaDTO vratiPostanskiCentar(int poslovnicaId);
         PoslovnicaDTO vratiPoslovnicu(int poslovnicaId);
-        bool insert(PoslovnicaDTO poslovnica);
+       /* bool insert(PoslovnicaDTO poslovnica);
         bool delete(String nazivFakulteta);
         */
     }
