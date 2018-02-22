@@ -1,4 +1,5 @@
 ﻿using PS.dao;
+using PS.dto;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,6 +31,15 @@ namespace PS
             PoslovnicaDAO poslovnicaDAO = DAOFactory.getDAOFactory().getPoslovnicaDAO();
             combo_PostanskiCentar.Items.Add(poslovnicaDAO.poslovnice());
             combo_PostanskiCentar.Enabled = false;
+        }
+
+        private void Btn_Potvrda_Click(object sender, EventArgs e)
+        {
+            if (!("").Equals(tb_Naziv.Text.Trim()) && !("").Equals(tb_Adresa.Text.Trim()) && (cb_Mjesto.SelectedIndex != 0) && (check_PostanskiCentar.Checked || (!check_PostanskiCentar.Checked && combo_PostanskiCentar.SelectedIndex != 0)))
+            {
+                PoslovnicaDAO poslovnicaDAO = DAOFactory.getDAOFactory().getPoslovnicaDAO();
+                poslovnicaDAO.insert(new PoslovnicaDTO(0, tb_Naziv.Text.Trim(), cb_Mjesto.SelectedItem as MjestoDTO, tb_Adresa.Text.Trim(), check_PostanskiCentar.Checked?null:combo_PostanskiCentar.SelectedItem as PoslovnicaDTO);
+            }
         }
     }
 }

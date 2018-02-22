@@ -91,7 +91,42 @@ namespace PS.dao.mysql
         }
         List<PoslovnicaDTO> postanskiCentri()
         {
-            return new List<PoslovnicaDTO>();
+            MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
+            conn.Open();
+
+            List<PoslovnicaDTO> lista = new List<PoslovnicaDTO>();
+
+            MySqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "SELECT * FROM poslovnica WHERE IDPoslovnicaPC IS NULL";
+
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                int id = 0;
+                string naziv = String.Empty;
+                int idMjesto = 0;
+                string adresa = String.Empty;
+                PoslovnicaDTO pCentar = null;
+                try
+                {
+                    id = reader.GetInt32(0);
+                    naziv = reader.GetString(1);
+                    idMjesto = reader.GetInt32(2);
+                    adresa = reader.GetString(3);
+                    pCentar = null;
+                }
+                catch (Exception e)
+                {
+                    e.ToString();
+                }
+                MjestoDAO mdao = DAOFactory.getDAOFactory().getMjestoDAO();
+                MjestoDTO m = mdao.vratiMjesto(idMjesto);
+                PoslovnicaDTO p = new PoslovnicaDTO(id, naziv, m, adresa, pCentar);
+                lista.Add(p);
+            }
+            reader.Close();
+            conn.Close();
+            return lista;
         }
 
         public PoslovnicaDTO vratiPostanskiCentar(int poslovnicaId)

@@ -137,6 +137,7 @@
             this.btn_Potvrda.TabIndex = 10;
             this.btn_Potvrda.Text = "Potvrdi unos";
             this.btn_Potvrda.UseVisualStyleBackColor = true;
+            this.btn_Potvrda.Click += new System.EventHandler(this.btn_Potvrda_Click);
             // 
             // DodavanjePoslovnice
             // 
