@@ -19,17 +19,16 @@ namespace PS.dto
         {
             this.mjestoId = mjestoId;
             this.naziv = naziv;
-            this.postanskiBroj = pb;
+            this.PostanskiBroj = pb;
         }
 
         public int MjestoId { get => mjestoId; set => mjestoId = value; }
         public string Naziv { get => naziv; set => naziv = value; }
-        //public string Drzava { get => drzava; set => drzava = value; }
         public int PostanskiBroj { get => postanskiBroj; set => postanskiBroj = value; }
 
         public override string ToString()
         {
-            return mjestoId + " " + naziv+ " " +postanskiBroj;
+            return PostanskiBroj + " " + naziv;
         }
     }
 }

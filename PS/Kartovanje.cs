@@ -38,7 +38,7 @@ namespace PS
         private void btnDodajNaPopis_Click(object sender, EventArgs e)
         {
             PosiljkaDAO pdao = DAOFactory.getDAOFactory().getPosiljkaDAO();
-            PosiljkaDTO posiljka = pdao.vratiPosiljku(int.Parse(tbIdentifikator.Text.Trim()));
+            PosiljkaDTO posiljka = pdao.vratiPosiljku(int.Parse(tbIdentifikator.Text.Trim()));//sadrzaj text field-a
             if(posiljka!=null)
             {
                 posiljkeIdLista.Add(posiljka);
@@ -57,10 +57,10 @@ namespace PS
             datum = dtpDatum.Value.ToString();
 
             KartaZakljuckaDAO kzdao = DAOFactory.getDAOFactory().getKartaZakljuckaDAO();
-            ZaposleniDTO zaposleni = new ZaposleniDTO();
-            zaposleni.Jmb = GlavnaForma.Prijavljeni.Jmb;
+            KorisnickiNalogDTO nalog = new KorisnickiNalogDTO();
+            nalog = GlavnaForma.Prijavljeni;
             kartaZakljucka = new KartaZakljuckaDTO(0, "S", dtpDatum.Value, int.Parse(tbOtprema.Text.Trim()), tbNapomena.Text.Trim(),
-               zaposleni, cbPrijemnaPosta.SelectedItem as PoslovnicaDTO, cbOdredisnaPosta.SelectedItem as PoslovnicaDTO);
+               nalog, cbPrijemnaPosta.SelectedItem as PoslovnicaDTO, cbOdredisnaPosta.SelectedItem as PoslovnicaDTO);
 
             PosiljkaStatusDAO psdao = DAOFactory.getDAOFactory().getPosiljkaStatusDAO();
 

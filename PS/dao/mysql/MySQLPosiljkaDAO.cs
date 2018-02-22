@@ -110,7 +110,7 @@ namespace PS.dao.mysql
         public PosiljkaDTO vratiPosiljku(int posiljkaId)
         {
             throw new NotImplementedException();
-            /*
+            
             MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
             conn.Open();
 
@@ -123,24 +123,20 @@ namespace PS.dao.mysql
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                PoslovnicaDAO pdao = new MySQLPoslovnicaDAO();
-                PoslovnicaDTO pSalje = pdao.vratiPoslovnicu(reader.GetInt32(1));
-                PoslovnicaDTO pPrima = pdao.vratiPoslovnicu(reader.GetInt32(2));
-
-                ZaposleniDAO zdao = new MySQLZaposleniDAO();
-                ZaposleniDTO zaposleni = zdao.vratiZaposlenog(reader.GetString(3));
-
-                PosiljkaTipDAO ptdao = new MySQLPosiljkaTipDAO();
-                PosiljkaTipDTO posiljkaTip = ptdao.vratiPosiljku(reader.GetString(4));
-
-                posiljka = new PosiljkaDTO(reader.GetInt32(0), pSalje, pPrima, zaposleni, posiljkaTip,
-                    reader.GetDateTime(5), reader.GetByte(6));
+                PoslovnicaDAO pdao = new MySQLDAOFactory().getPoslovnicaDAO();
+                PoslovnicaDTO pSalje = pdao.vratiPoslovnicu(reader.GetInt32(4));//vrati poslovnicu sa id koji mu je vracen kroz rezultat
+                PoslovnicaDTO pPrima = pdao.vratiPoslovnicu(reader.GetInt32(5));
+                KorisnickiNalogDAO knDAO = new MySQLKorisnickiNalogDAO();
+                KorisnickiNalogDTO nalog=knDAO.pretragaPoId(reader.GetInt32(3));
+                
+                posiljka = new PosiljkaDTO(reader.GetInt32(0), pSalje, pPrima, nalog, reader.GetDateTime(2), reader.GetByte(6), reader.GetString(1));
             }
             reader.Close();
             conn.Close();
             return posiljka;
-            */
+            
         }
 
     }
 }
+,

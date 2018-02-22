@@ -17,7 +17,7 @@ namespace PS.dto
 
         public PoslovnicaDTO() { }
 
-        public PoslovnicaDTO(int poslovnicaId, PoslovnicaDTO postanskiCentar, string naziv, string adresa, MjestoDTO mjesto)
+        public PoslovnicaDTO(int poslovnicaId, string naziv, MjestoDTO mjesto, string adresa, PoslovnicaDTO postanskiCentar)
         {
             this.poslovnicaId = poslovnicaId;
             this.postanskiCentar = postanskiCentar;

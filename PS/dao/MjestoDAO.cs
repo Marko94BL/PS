@@ -8,9 +8,8 @@ using PS.dto;
 namespace PS.dao
 {
     interface MjestoDAO
-    {/*
+    {
         List<MjestoDTO> mjesta();
         MjestoDTO vratiMjesto(int mjestoId);
-        */
     }
 }

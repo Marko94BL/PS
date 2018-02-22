@@ -16,12 +16,12 @@ namespace PS.dao.mysql
         public bool insert(PosiljkaStatusDTO posiljkaStatus)
         {
             throw new NotImplementedException();
-            /*
+            
             MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
             try
             {
                 conn.Open();
-             //   MessageBox.Show(posiljkaStatus.Posiljka.PosiljkaID + "  " + posiljkaStatus.Karta.KartaID + "  " + posiljkaStatus.Status.StatusID);
+                MessageBox.Show(posiljkaStatus.Posiljka.PosiljkaID + "  " + posiljkaStatus.Karta.KartaID + "  " + posiljkaStatus.Status.StatusID);
                 MySqlCommand cmd = conn.CreateCommand();
                 cmd.CommandText = "INSERT INTO posiljka_status VALUES(@posiljkaId, @kartaZakljuckaId, @statusId)";
 
@@ -43,7 +43,7 @@ namespace PS.dao.mysql
                 conn.Close();
             }
             return true;
-            */
+            
         }
 
         public List<PosiljkaStatusDTO> posiljkeStatus()

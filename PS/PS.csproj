@@ -68,26 +68,24 @@
     <Compile Include="dao\DAOFactory.cs" />
     <Compile Include="dao\KartaZakljuckaDAO.cs" />
     <Compile Include="dao\KorisnickiNalogDAO.cs" />
+    <Compile Include="dao\LinijaDAO.cs" />
     <Compile Include="dao\ListPredajeDAO.cs" />
     <Compile Include="dao\MjestoDAO.cs" />
     <Compile Include="dao\mysql\MySQLDAOFactory.cs" />
     <Compile Include="dao\mysql\MySQLKartaZakljuckaDAO.cs" />
     <Compile Include="dao\mysql\MySQLKorisnickiNalogDAO.cs" />
+    <Compile Include="dao\mysql\MySQLLinijaDAO.cs" />
     <Compile Include="dao\mysql\MySQLMjestoDAO.cs" />
     <Compile Include="dao\mysql\MySQLOdjavaONeispravnostiDAO.cs" />
     <Compile Include="dao\mysql\MySQLPosiljkaDAO.cs" />
     <Compile Include="dao\mysql\MySQLPosiljkaStatusDAO.cs" />
-    <Compile Include="dao\mysql\MySQLPosiljkaTipDAO.cs" />
     <Compile Include="dao\mysql\MySQLPoslovnicaDAO.cs" />
     <Compile Include="dao\mysql\MySQLVrecaDAO.cs" />
-    <Compile Include="dao\mysql\MySQLZaposleniDAO.cs" />
     <Compile Include="dao\OdjavaONeispravnostiDAO.cs" />
     <Compile Include="dao\PosiljkaDAO.cs" />
     <Compile Include="dao\PosiljkaStatusDAO.cs" />
-    <Compile Include="dao\PosiljkaTipDAO.cs" />
     <Compile Include="dao\PoslovnicaDAO.cs" />
     <Compile Include="dao\VrecaDAO.cs" />
-    <Compile Include="dao\ZaposleniDAO.cs" />
     <Compile Include="DodavanjeLinija.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,11 +112,9 @@
     <Compile Include="dto\OdjavaONeispravnostiDTO.cs" />
     <Compile Include="dto\PosiljkaDTO.cs" />
     <Compile Include="dto\PosiljkaStatusDTO.cs" />
-    <Compile Include="dto\PosiljkaTipDTO.cs" />
     <Compile Include="dto\PoslovnicaDTO.cs" />
     <Compile Include="dto\StatusDTO.cs" />
     <Compile Include="dto\VrecaDTO.cs" />
-    <Compile Include="dto\ZaposleniDTO.cs" />
     <Compile Include="GlavnaForma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,6 +169,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DodavanjeZaposlenog.resx">
       <DependentUpon>DodavanjeZaposlenog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DodavanjeLinija.resx">
+      <DependentUpon>DodavanjeLinija.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DodavanjePoslovnice.resx">
+      <DependentUpon>DodavanjePoslovnice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GlavnaForma.resx">
       <DependentUpon>GlavnaForma.cs</DependentUpon>

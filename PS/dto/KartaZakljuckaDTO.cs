@@ -13,34 +13,34 @@ namespace PS.dto
         private DateTime vrijeme;
         private int redniBrojOtpreme;
         private string napomena;
-        private ZaposleniDTO zaposleni;
+        private KorisnickiNalogDTO nalog;
         private PoslovnicaDTO poslovnicaSalje;
         private PoslovnicaDTO poslovnicaPrima;
         private DateTime vrijemeStigla;
 
         public KartaZakljuckaDTO() { }
 
-        public KartaZakljuckaDTO(int kartaID, string vrstaZakljucka, DateTime vrijeme, int redniBrojOtpreme, string napomena, ZaposleniDTO zaposleni, PoslovnicaDTO poslovnicaSalje, PoslovnicaDTO poslovnicaPrima, DateTime vrijemeStigla)
+        public KartaZakljuckaDTO(int kartaID, string vrstaZakljucka, DateTime vrijeme, int redniBrojOtpreme, string napomena, KorisnickiNalogDTO nalog, PoslovnicaDTO poslovnicaSalje, PoslovnicaDTO poslovnicaPrima, DateTime vrijemeStigla)
         {
             this.kartaID = kartaID;
             this.vrstaZakljucka = vrstaZakljucka;
             this.vrijeme = vrijeme;
             this.redniBrojOtpreme = redniBrojOtpreme;
             this.napomena = napomena;
-            this.zaposleni = zaposleni;
+            this.nalog = nalog;
             this.poslovnicaSalje = poslovnicaSalje;
             this.poslovnicaPrima = poslovnicaPrima;
             this.vrijemeStigla = vrijemeStigla;
         }
 
-        public KartaZakljuckaDTO(int kartaID, string vrstaZakljucka, DateTime vrijeme, int redniBrojOtpreme, string napomena, ZaposleniDTO zaposleni, PoslovnicaDTO poslovnicaSalje, PoslovnicaDTO poslovnicaPrima )
+        public KartaZakljuckaDTO(int kartaID, string vrstaZakljucka, DateTime vrijeme, int redniBrojOtpreme, string napomena, KorisnickiNalogDTO nalog, PoslovnicaDTO poslovnicaSalje, PoslovnicaDTO poslovnicaPrima )
         {
             this.kartaID = kartaID;
             this.vrstaZakljucka = vrstaZakljucka;
             this.vrijeme = vrijeme;
             this.redniBrojOtpreme = redniBrojOtpreme;
             this.napomena = napomena;
-            this.zaposleni = zaposleni;
+            this.nalog = nalog;
             this.poslovnicaSalje = poslovnicaSalje;
             this.poslovnicaPrima = poslovnicaPrima;
         }
@@ -51,7 +51,7 @@ namespace PS.dto
         public int RedniBrojOtpreme { get => redniBrojOtpreme; set => redniBrojOtpreme = value; }
         public string Napomena { get => napomena; set => napomena = value; }
         public DateTime VrijemeStigla { get => vrijemeStigla; set => vrijemeStigla = value; }
-        internal ZaposleniDTO Zaposleni { get => zaposleni; set => zaposleni = value; }
+        internal KorisnickiNalogDTO Nalog { get => nalog; set => nalog = value; }
         internal PoslovnicaDTO PoslovnicaSalje { get => poslovnicaSalje; set => poslovnicaSalje = value; }
         internal PoslovnicaDTO PoslovnicaPrima { get => poslovnicaPrima; set => poslovnicaPrima = value; }
     }
