@@ -33,10 +33,17 @@ namespace PS
                 {
                     KorisnickiNalogDTO knDTO = new KorisnickiNalogDTO();
                     knDTO.KorisnickoIme = korisnickoIme;
+                    if (cbIsAdmin.Checked)
+                    {
+                        knDTO.Privilegije = 1;
+                    }
+                    else {
+                        knDTO.Privilegije = 0;
+                    }
                     knDTO.Akrivan = 1;
 
                     Random rand = new Random();
-                    knDTO.HashCount = rand.Next(10); //vrsi hesiranje max 10puta
+                    knDTO.HashCount = rand.Next(10) + 1; //vrsi hesiranje max 10puta
 
                     knDTO.Salt = rand.Next().ToString();
 

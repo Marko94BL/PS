@@ -34,6 +34,7 @@
             this.tbKorisnickoIme = new System.Windows.Forms.TextBox();
             this.tbLozinka = new System.Windows.Forms.TextBox();
             this.btnDodajZaposlenog = new System.Windows.Forms.Button();
+            this.cbIsAdmin = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -91,11 +92,23 @@
             this.btnDodajZaposlenog.UseVisualStyleBackColor = true;
             this.btnDodajZaposlenog.Click += new System.EventHandler(this.btnDodajZaposlenog_Click);
             // 
+            // cbIsAdmin
+            // 
+            this.cbIsAdmin.AutoSize = true;
+            this.cbIsAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbIsAdmin.Location = new System.Drawing.Point(118, 103);
+            this.cbIsAdmin.Name = "cbIsAdmin";
+            this.cbIsAdmin.Size = new System.Drawing.Size(61, 19);
+            this.cbIsAdmin.TabIndex = 6;
+            this.cbIsAdmin.Text = "Admin";
+            this.cbIsAdmin.UseVisualStyleBackColor = true;
+            // 
             // DodavanjeZaposlenog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(441, 151);
+            this.Controls.Add(this.cbIsAdmin);
             this.Controls.Add(this.btnDodajZaposlenog);
             this.Controls.Add(this.tbLozinka);
             this.Controls.Add(this.tbKorisnickoIme);
@@ -119,5 +132,6 @@
         private System.Windows.Forms.TextBox tbKorisnickoIme;
         private System.Windows.Forms.TextBox tbLozinka;
         private System.Windows.Forms.Button btnDodajZaposlenog;
+        private System.Windows.Forms.CheckBox cbIsAdmin;
     }
 }
