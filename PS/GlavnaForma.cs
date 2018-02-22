@@ -26,16 +26,47 @@ namespace PS
         {
             String ime = tbKorisnickoIme.Text.Trim();
             String loz = tbLozinka.Text.Trim();
+
             if (!(String.IsNullOrEmpty(ime) || String.IsNullOrEmpty(loz)))
             {
                 KorisnickiNalogDAO kDAO = DAOFactory.getDAOFactory().getKorisnickiNalogDAO();
-                Prijavljeni = kDAO.pronadjiKorisnika(ime, loz);
+                Prijavljeni = kDAO.pronadjiKorisnika(ime);
                 if (Prijavljeni != null)
                 {
-                    this.Hide();
-                    GlavniMeni form = new GlavniMeni();
-                    form.ShowDialog();
-                    this.Show();
+         
+                    string saltILozinka = Prijavljeni.Salt + loz + "POSTESRPSKE"; //aplikativni salt
+
+                    var crypt = new System.Security.Cryptography.SHA256Managed();
+                    string hash = string.Empty;
+                    byte[] crypto = crypt.ComputeHash(Encoding.UTF8.GetBytes(saltILozinka));
+                    for (int i = 0; i <Prijavljeni.HashCount; i++)
+                    {
+                        crypto = crypt.ComputeHash(crypto);
+                    }
+                    hash = Convert.ToBase64String(crypto);
+                    if (hash.Equals(Prijavljeni.HashValue))
+                    {
+                        if (Prijavljeni.Privilegije == 1) //admin ima privilegije 1, ostali korisnici 0
+                        {
+                            this.Hide();
+                            AdminMeni form = new AdminMeni();
+                            form.ShowDialog();
+                            this.Show();
+                        }
+                        else
+                        {
+                            this.Hide();
+                            GlavniMeni form = new GlavniMeni();
+                            form.ShowDialog();
+                            this.Show();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ne postoji korisnički nalog", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        tbKorisnickoIme.Text = "";
+                        tbLozinka.Text = "";
+                    }
                 }
             }
             tbKorisnickoIme.Clear();

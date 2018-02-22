@@ -11,25 +11,25 @@ namespace PS.dao.mysql
 {
     class MySQLKorisnickiNalogDAO : KorisnickiNalogDAO
     {
-        public KorisnickiNalogDTO pronadjiKorisnika(string korisnickoIme, string lozinka)
+        public KorisnickiNalogDTO pronadjiKorisnika(string korisnickoIme)
         {
-            throw new NotImplementedException();
-            /*
+            //throw new NotImplementedException();
+            
             MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
             conn.Open();
 
             MySqlCommand cmd = conn.CreateCommand();
 
             cmd.CommandText = "SELECT * FROM korisnicki_nalog WHERE korisnickoIme = @korisnickoIme AND " +
-             "lozinka = @lozinka AND aktivan = 1";
+             "aktivan = 1";
 
             cmd.Parameters.AddWithValue("@korisnickoIme", korisnickoIme);
-            cmd.Parameters.AddWithValue("@lozinka", lozinka);
+            //cmd.Parameters.AddWithValue("@hashVrijednost", hashVrijednost);
 
             MySqlDataReader reader = cmd.ExecuteReader();
             if(reader.Read())
             {
-                KorisnickiNalogDTO k = new KorisnickiNalogDTO(reader.GetString(0), reader.GetByte(1), null, reader.GetString(2), reader.GetString(3));
+                KorisnickiNalogDTO k = new KorisnickiNalogDTO(reader.GetString(1),reader.GetInt32(0),reader.GetString(2),reader.GetByte(5),reader.GetInt32(3),reader.GetString(4),reader.GetByte(6));
                 reader.Close();
                 conn.Close();
                 return k;
@@ -38,7 +38,91 @@ namespace PS.dao.mysql
             reader.Close();
             conn.Close();
             return null;
-            */
+            
+        }
+
+        public bool daLiPostojiKorisnik(string korisnickoIme)
+        {
+            MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
+            conn.Open();
+
+            MySqlCommand cmd = conn.CreateCommand();
+
+            cmd.CommandText = "SELECT * FROM korisnicki_nalog WHERE korisnickoIme = @korisnickoIme AND " +
+             "aktivan = 1";
+
+            cmd.Parameters.AddWithValue("@korisnickoIme", korisnickoIme);
+
+            MySqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                //KorisnickiNalogDTO k = new KorisnickiNalogDTO(reader.GetInt32(0), reader.GetString(1), reader.GetByte(5), reader.GetString(2), reader.GetString(4));
+                reader.Close();
+                conn.Close();
+                return true;
+            }
+
+            reader.Close();
+            conn.Close();
+            return false;
+
+        }       
+
+        public bool insert(KorisnickiNalogDTO kn)
+        {          
+            MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
+                try
+                {
+                    conn.Open();
+
+                    MySqlCommand cmd = conn.CreateCommand();
+                    cmd.CommandText = "INSERT INTO linija VALUES(@IdKorisnik, @KorisnickoIme, @HashSalt, @HashCount, @HashVrijednost, @Aktivan, @Privilegije)";
+
+                    cmd.Parameters.AddWithValue("@IdKorisnik", 0);
+                    cmd.Parameters.AddWithValue("@KorisnickoIme", kn.KorisnickoIme);
+                    cmd.Parameters.AddWithValue("@HashSalt", kn.Salt);
+                    cmd.Parameters.AddWithValue("@HashCount", kn.HashCount);
+                    cmd.Parameters.AddWithValue("@HashVrijednost", kn.HashValue);
+                    cmd.Parameters.AddWithValue("@Aktivan", kn.Akrivan);
+                    cmd.Parameters.AddWithValue("@Privilegije", kn.Privilegije);
+                    int brojRedova = cmd.ExecuteNonQuery();
+                }
+                catch (MySqlException e)
+                {
+                    e.ErrorCode.ToString();
+                    return false;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+                return true;
+            
+        }
+
+        public KorisnickiNalogDTO pretragaPoId(int id)
+        {
+            MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
+            conn.Open();
+
+            MySqlCommand cmd = conn.CreateCommand();
+
+            cmd.CommandText = "SELECT * FROM korisnicki_nalog WHERE @IdKorisnik=?";
+
+            cmd.Parameters.AddWithValue("@IdKorisnik", id);
+
+            MySqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                KorisnickiNalogDTO k = new KorisnickiNalogDTO(reader.GetString(1), reader.GetInt32(0), reader.GetString(2), reader.GetByte(5), reader.GetInt32(3), reader.GetString(4), reader.GetByte(6));
+                reader.Close();
+                conn.Close();
+                return k;
+            }
+
+            reader.Close();
+            conn.Close();
+            return null;
         }
     }
 }
