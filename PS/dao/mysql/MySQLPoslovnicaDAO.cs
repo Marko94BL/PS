@@ -89,7 +89,7 @@ namespace PS.dao.mysql
             return lista;
             */
         }
-        List<PoslovnicaDTO> postanskiCentri()
+        public List<PoslovnicaDTO> postanskiCentri()
         {
             MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
             conn.Open();

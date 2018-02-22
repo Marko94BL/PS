@@ -35,7 +35,7 @@ namespace PS.dto
         public int PosiljkaID { get => posiljkaID; set => posiljkaID = value; }
         public DateTime Vrijeme { get => vrijeme; set => vrijeme = value; }
         public byte VanVerce { get => vanVerce; set => vanVerce = value; }
-        public string Barkod { get => barkod; ste => barkod = value; }
+        public string Barkod { get => barkod; set=> barkod = value; }
         internal PoslovnicaDTO PoslovnicaSalje { get => poslovnicaSalje; set => poslovnicaSalje = value; }
         internal PoslovnicaDTO PoslovnicaPrima { get => poslovnicaPrima; set => poslovnicaPrima = value; }
         internal ZaposleniDTO Zaposleni { get => zaposleni; set => zaposleni = value; }
