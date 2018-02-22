@@ -13,7 +13,7 @@ namespace PS.dao
         List<PoslovnicaDTO> postanskiCentri();
         PoslovnicaDTO vratiPostanskiCentar(int poslovnicaId);
         PoslovnicaDTO vratiPoslovnicu(int poslovnicaId);
-        bool insert(PoslovnicaDTO poslovnica);
+       /* bool insert(PoslovnicaDTO poslovnica);
         bool delete(String nazivFakulteta);
     }
 }

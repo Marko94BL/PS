@@ -8,13 +8,13 @@ using PS.dto;
 namespace PS.dao
 {
     interface PosiljkaDAO
-    {/*
-        List<PosiljkaDTO> posiljke();
-        List<PosiljkaDTO> posiljke(DateTime datum);
+    {
+       // List<PosiljkaDTO> posiljke();
+       // List<PosiljkaDTO> posiljke(DateTime datum);
         PosiljkaDTO vratiPosiljku(int posiljkaId);
-        bool insert(PosiljkaDTO posiljka);
-        bool update(PosiljkaDTO posiljka);
-        bool delete(String id);
-        */
+      //  bool insert(PosiljkaDTO posiljka);
+       // bool update(PosiljkaDTO posiljka);
+      //  bool delete(String id);
+        
     }
 }

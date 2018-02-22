@@ -13,33 +13,30 @@ namespace PS.dto
         private PoslovnicaDTO poslovnicaSalje;
         private PoslovnicaDTO poslovnicaPrima;
         private byte vanVerce;
-        private ZaposleniDTO zaposleni;
-        private PosiljkaTipDTO oznaka;
+        private KorisnickiNalogDTO nalog;
         private string barkod;
 
         public PosiljkaDTO() { }
 
-        public PosiljkaDTO(int posiljkaID, PoslovnicaDTO poslovnicaSalje, PoslovnicaDTO poslovnicaPrima, ZaposleniDTO zaposleni, PosiljkaTipDTO oznaka, DateTime vrijeme, byte vanVerce, string barkod)
+        public PosiljkaDTO(int posiljkaID, PoslovnicaDTO poslovnicaSalje, PoslovnicaDTO poslovnicaPrima, KorisnickiNalogDTO nalog, DateTime vrijeme, byte vanVerce, string barkod)
         {
             this.PosiljkaID = posiljkaID;
             this.Vrijeme = vrijeme;
             this.PoslovnicaSalje = poslovnicaSalje;
             this.PoslovnicaPrima = poslovnicaPrima;
             this.VanVerce = vanVerce;
-            this.Zaposleni = zaposleni;
-            this.Oznaka = oznaka;
-            this.barkod = barkod;
+            this.Nalog = nalog;
+            
+            this.Barkod = barkod;
 
         }
 
         public int PosiljkaID { get => posiljkaID; set => posiljkaID = value; }
         public DateTime Vrijeme { get => vrijeme; set => vrijeme = value; }
         public byte VanVerce { get => vanVerce; set => vanVerce = value; }
-        public string Barkod { get => barkod; set=> barkod = value; }
+        public string Barkod { get => barkod; set => barkod = value; }
         internal PoslovnicaDTO PoslovnicaSalje { get => poslovnicaSalje; set => poslovnicaSalje = value; }
         internal PoslovnicaDTO PoslovnicaPrima { get => poslovnicaPrima; set => poslovnicaPrima = value; }
-        internal ZaposleniDTO Zaposleni { get => zaposleni; set => zaposleni = value; }
-        internal PosiljkaTipDTO Oznaka { get => oznaka; set => oznaka = value; }
-
+        internal KorisnickiNalogDTO Nalog { get => nalog; set => nalog = value; }
     }
 }

@@ -12,13 +12,12 @@ namespace PS.dao
         public abstract PoslovnicaDAO getPoslovnicaDAO();
         public abstract PosiljkaDAO getPosiljkaDAO();
         public abstract MjestoDAO getMjestoDAO();
-        public abstract ZaposleniDAO getZapsleniDAO();
-        public abstract PosiljkaTipDAO getPosiljkaTipDAO();
         public abstract PosiljkaStatusDAO getPosiljkaStatusDAO();
         public abstract KorisnickiNalogDAO getKorisnickiNalogDAO();
         public abstract KartaZakljuckaDAO getKartaZakljuckaDAO();
         public abstract VrecaDAO getVrecaDAO();
         public abstract OdjavaONeispravnostiDAO getOdjavaONeispravnostiDAO();
+        public abstract LinijaDAO getLinijaDAO();
 
         public static DAOFactory getDAOFactory()
         {

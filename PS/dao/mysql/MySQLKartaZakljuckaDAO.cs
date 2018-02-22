@@ -47,8 +47,6 @@ namespace PS.dao.mysql
 
         public int insert(KartaZakljuckaDTO kartaZakljucka)
         {
-            throw new NotImplementedException();
-            /*
             MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
             long id;
             try
@@ -59,15 +57,17 @@ namespace PS.dao.mysql
                 cmd.CommandText = "INSERT INTO karta_zakljucka VALUES(@kartaID, @vrstaZakljucka, @napomena, @poslovnicaSalje, " +
                     "@poslovnicaPrima, @jmb, @vrijeme, @redniBrojOtpreme, @vrijemeStigla)";
 
-                cmd.Parameters.AddWithValue("@kartaID", kartaZakljucka.KartaID);
-                cmd.Parameters.AddWithValue("@vrstaZakljucka", kartaZakljucka.VrstaZakljucka);
-                cmd.Parameters.AddWithValue("@napomena", kartaZakljucka.Napomena);
-                cmd.Parameters.AddWithValue("@poslovnicaSalje", kartaZakljucka.PoslovnicaSalje.PoslovnicaId);
-                cmd.Parameters.AddWithValue("@poslovnicaPrima", kartaZakljucka.PoslovnicaPrima.PoslovnicaId);
-                cmd.Parameters.AddWithValue("@jmb", kartaZakljucka.Zaposleni.Jmb);
-                cmd.Parameters.AddWithValue("@vrijeme", kartaZakljucka.Vrijeme);
-                cmd.Parameters.AddWithValue("@redniBrojOtpreme", kartaZakljucka.RedniBrojOtpreme);
-                cmd.Parameters.AddWithValue("@vrijemeStigla", null);
+                cmd.Parameters.AddWithValue("@IdKartaZakljucka", kartaZakljucka.KartaID);
+                cmd.Parameters.AddWithValue("@IdPoslovnicaSalje", kartaZakljucka.PoslovnicaSalje.PoslovnicaId);
+                cmd.Parameters.AddWithValue("@IdPoslovnicaPrima", kartaZakljucka.PoslovnicaPrima.PoslovnicaId);
+                cmd.Parameters.AddWithValue("@VrijemeKreiranja", kartaZakljucka.Vrijeme);
+                cmd.Parameters.AddWithValue("@VrstaZakljucka", kartaZakljucka.VrstaZakljucka);
+                cmd.Parameters.AddWithValue("@RedniBrojOtpreme", kartaZakljucka.RedniBrojOtpreme);
+                cmd.Parameters.AddWithValue("@VrijemeStigla", kartaZakljucka.VrijemeStigla);
+                cmd.Parameters.AddWithValue("@Napomena", kartaZakljucka.Napomena);
+
+               // cmd.Parameters.AddWithValue("@jmb", kartaZakljucka.Zaposleni.Jmb);
+              
                 
                 cmd.ExecuteNonQuery();
                 id = cmd.LastInsertedId;
@@ -82,7 +82,7 @@ namespace PS.dao.mysql
             {
                 conn.Close();
             }
-            return (int)id;*/
+            return (int)id;
         }
 
         public List<KartaZakljuckaDTO> karteZakljucka()
