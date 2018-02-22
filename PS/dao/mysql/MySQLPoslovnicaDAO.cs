@@ -89,6 +89,10 @@ namespace PS.dao.mysql
             return lista;
             */
         }
+        List<PoslovnicaDTO> postanskiCentri()
+        {
+            return new List<PoslovnicaDTO>();
+        }
 
         public PoslovnicaDTO vratiPostanskiCentar(int poslovnicaId)
         {

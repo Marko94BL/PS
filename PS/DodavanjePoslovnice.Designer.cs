@@ -156,6 +156,7 @@
             this.Controls.Add(this.label1);
             this.Name = "DodavanjePoslovnice";
             this.Text = "Pošte Srpske - Dodavanje Poslovnice";
+            this.Load += new System.EventHandler(this.DodavanjePoslovnice_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
