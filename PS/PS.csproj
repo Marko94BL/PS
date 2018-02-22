@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6F9B4135-50FE-4FA6-8A98-827D4BDAD1F4}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>PS</RootNamespace>
+    <AssemblyName>PS</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.10.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.10.6\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdminMeni.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminMeni.Designer.cs">
+      <DependentUpon>AdminMeni.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dao\DAOFactory.cs" />
+    <Compile Include="dao\KartaZakljuckaDAO.cs" />
+    <Compile Include="dao\KorisnickiNalogDAO.cs" />
+    <Compile Include="dao\ListPredajeDAO.cs" />
+    <Compile Include="dao\MjestoDAO.cs" />
+    <Compile Include="dao\mysql\MySQLDAOFactory.cs" />
+    <Compile Include="dao\mysql\MySQLKartaZakljuckaDAO.cs" />
+    <Compile Include="dao\mysql\MySQLKorisnickiNalogDAO.cs" />
+    <Compile Include="dao\mysql\MySQLMjestoDAO.cs" />
+    <Compile Include="dao\mysql\MySQLOdjavaONeispravnostiDAO.cs" />
+    <Compile Include="dao\mysql\MySQLPosiljkaDAO.cs" />
+    <Compile Include="dao\mysql\MySQLPosiljkaStatusDAO.cs" />
+    <Compile Include="dao\mysql\MySQLPosiljkaTipDAO.cs" />
+    <Compile Include="dao\mysql\MySQLPoslovnicaDAO.cs" />
+    <Compile Include="dao\mysql\MySQLVrecaDAO.cs" />
+    <Compile Include="dao\mysql\MySQLZaposleniDAO.cs" />
+    <Compile Include="dao\OdjavaONeispravnostiDAO.cs" />
+    <Compile Include="dao\PosiljkaDAO.cs" />
+    <Compile Include="dao\PosiljkaStatusDAO.cs" />
+    <Compile Include="dao\PosiljkaTipDAO.cs" />
+    <Compile Include="dao\PoslovnicaDAO.cs" />
+    <Compile Include="dao\VrecaDAO.cs" />
+    <Compile Include="dao\ZaposleniDAO.cs" />
+    <Compile Include="DodavanjeLinija.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DodavanjeLinija.Designer.cs">
+      <DependentUpon>DodavanjeLinija.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DodavanjePoslovnice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DodavanjePoslovnice.Designer.cs">
+      <DependentUpon>DodavanjePoslovnice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DodavanjeZaposlenog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DodavanjeZaposlenog.Designer.cs">
+      <DependentUpon>DodavanjeZaposlenog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dto\KartaZakljuckaDTO.cs" />
+    <Compile Include="dto\KorisnickiNalogDTO.cs" />
+    <Compile Include="dto\LinijaDTO.cs" />
+    <Compile Include="dto\LinijaStavkaDTO.cs" />
+    <Compile Include="dto\MjestoDTO.cs" />
+    <Compile Include="dto\OdjavaONeispravnostiDTO.cs" />
+    <Compile Include="dto\PosiljkaDTO.cs" />
+    <Compile Include="dto\PosiljkaStatusDTO.cs" />
+    <Compile Include="dto\PosiljkaTipDTO.cs" />
+    <Compile Include="dto\PoslovnicaDTO.cs" />
+    <Compile Include="dto\StatusDTO.cs" />
+    <Compile Include="dto\VrecaDTO.cs" />
+    <Compile Include="dto\ZaposleniDTO.cs" />
+    <Compile Include="GlavnaForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GlavnaForma.Designer.cs">
+      <DependentUpon>GlavnaForma.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GlavniMeni.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GlavniMeni.Designer.cs">
+      <DependentUpon>GlavniMeni.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Kartovanje.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Kartovanje.Designer.cs">
+      <DependentUpon>Kartovanje.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PojedinacniSpisak.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PojedinacniSpisak.Designer.cs">
+      <DependentUpon>PojedinacniSpisak.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PretragaPosiljke.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PretragaPosiljke.Designer.cs">
+      <DependentUpon>PretragaPosiljke.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Prijem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Prijem.Designer.cs">
+      <DependentUpon>Prijem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UnosPosiljke.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnosPosiljke.Designer.cs">
+      <DependentUpon>UnosPosiljke.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AdminMeni.resx">
+      <DependentUpon>AdminMeni.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GlavnaForma.resx">
+      <DependentUpon>GlavnaForma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GlavniMeni.resx">
+      <DependentUpon>GlavniMeni.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Kartovanje.resx">
+      <DependentUpon>Kartovanje.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PojedinacniSpisak.resx">
+      <DependentUpon>PojedinacniSpisak.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PretragaPosiljke.resx">
+      <DependentUpon>PretragaPosiljke.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Prijem.resx">
+      <DependentUpon>Prijem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnosPosiljke.resx">
+      <DependentUpon>UnosPosiljke.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="docs\MySqlCommand.xml" />
+    <Content Include="docs\MySqlCommandBuilder.xml" />
+    <Content Include="docs\MySqlConnection.xml" />
+    <Content Include="docs\MySqlConnectionStringBuilder.xml" />
+    <Content Include="docs\MySqlDataAdapter.xml" />
+    <Content Include="docs\MySqlDataReader.xml" />
+    <Content Include="docs\MySqlException.xml" />
+    <Content Include="docs\MySqlHelper.xml" />
+    <Content Include="docs\MySqlParameter.xml" />
+    <Content Include="docs\MySqlParameterCollection.xml" />
+    <Content Include="docs\MySqlTransaction.xml" />
+    <None Include="Resources\linija1.png" />
+    <None Include="Resources\poslovnica.png" />
+    <None Include="Resources\linija.png" />
+    <None Include="Resources\Icon.png" />
+    <None Include="Resources\user.png" />
+    <None Include="Resources\Prijem.png" />
+    <None Include="Resources\Pretraga.png" />
+    <None Include="Resources\Odjava.png" />
+    <None Include="Resources\NovaPosiljka.png" />
+    <None Include="Resources\Kartovanje.png" />
+    <None Include="Resources\Kartovanje.bmp" />
+    <None Include="Resources\add.png" />
+    <None Include="Resources\addPlus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
