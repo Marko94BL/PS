@@ -171,6 +171,12 @@
     <EmbeddedResource Include="AdminMeni.resx">
       <DependentUpon>AdminMeni.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DodavanjeLinija.resx">
+      <DependentUpon>DodavanjeLinija.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DodavanjePoslovnice.resx">
+      <DependentUpon>DodavanjePoslovnice.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GlavnaForma.resx">
       <DependentUpon>GlavnaForma.cs</DependentUpon>
     </EmbeddedResource>
