@@ -22,15 +22,15 @@ namespace PS
 
         private void UnosPosiljke_Load(object sender, EventArgs e)
         {
-            cbPrijemnaPosta.Text = "                Odaberite";
-            cbOdredisnaPosta.Text = "                           Odaberite";
-            cbVrstaPosiljke.Text = "    Odabetite";
+            cbPrijemnaPosta.Text = "                Odaberite                ";
+            cbOdredisnaPosta.Text = "                           Odaberite                           ";
 
             PoslovnicaDAO pDAO = DAOFactory.getDAOFactory().getPoslovnicaDAO();
             List<PoslovnicaDTO> lista = pDAO.poslovnice();
-
+            
             foreach (PoslovnicaDTO poslovnica in lista)
             {
+                System.Console.Write(poslovnica);
                 cbPrijemnaPosta.Items.Add(poslovnica);
                 cbOdredisnaPosta.Items.Add(poslovnica);
             }
