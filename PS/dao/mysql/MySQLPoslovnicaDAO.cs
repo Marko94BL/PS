@@ -20,22 +20,28 @@ namespace PS.dao.mysql
 
         public bool insert(PoslovnicaDTO poslovnica)
         {
-            throw new NotImplementedException();
-            /*MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
+            //throw new NotImplementedException();
+            MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
             try
             {
                 conn.Open();
 
                 MySqlCommand cmd = conn.CreateCommand();
-                cmd.CommandText = "INSERT INTO poslovnica VALUES(@poslovnicaID, @postanskiCentar, @naziv, " +
-                    "@adresa, @telefon, @mjestoId)";
+                cmd.CommandText = "INSERT INTO poslovnica VALUES(@IdPoslovnica, @Naziv, @IdMjesto, " +
+                    "@Adresa, @IdPoslovnicaPC)";
 
-                cmd.Parameters.AddWithValue("@poslovnicaID", poslovnica.PoslovnicaId);
-                cmd.Parameters.AddWithValue("@postanskiCentar", poslovnica.PostanskiCentar.PoslovnicaId);
-                cmd.Parameters.AddWithValue("@naziv", poslovnica.Naziv);
-                cmd.Parameters.AddWithValue("@adresa", poslovnica.Adresa);
-                cmd.Parameters.AddWithValue("@telefon", poslovnica.Telefon);
-                cmd.Parameters.AddWithValue("@mjesto", poslovnica.Mjesto.MjestoId);
+                cmd.Parameters.AddWithValue("@IdPoslovnica", 0);
+                cmd.Parameters.AddWithValue("@Naziv", poslovnica.Naziv);
+                cmd.Parameters.AddWithValue("@IdMjesto", poslovnica.Mjesto.MjestoId);
+                cmd.Parameters.AddWithValue("@Adresa", poslovnica.Adresa);
+                if (poslovnica.PostanskiCentar != null)
+                {
+                    cmd.Parameters.AddWithValue("@IdPoslovnicaPC", poslovnica.PostanskiCentar.PoslovnicaId);
+                }
+                else {
+                    cmd.Parameters.AddWithValue("@IdPoslovnicaPC", null);
+                }
+               // cmd.Parameters.AddWithValue("@mjesto", poslovnica.Mjesto.MjestoId);
 
                 int brojRedova = cmd.ExecuteNonQuery();
             }
@@ -49,7 +55,7 @@ namespace PS.dao.mysql
             }
 
             return true;
-            */
+            
         }
 
         public List<PoslovnicaDTO> poslovnice()

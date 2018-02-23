@@ -36,7 +36,7 @@ namespace PS.dto
 
         public override string ToString()
         {
-            return PoslovnicaId + " " + Naziv;
+            return Naziv;
         }
     }
 }
