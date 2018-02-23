@@ -13,7 +13,6 @@ namespace PS.dao.mysql
     {
         public List<MjestoDTO> mjesta()
         {
-           
             
             MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
             conn.Open();
