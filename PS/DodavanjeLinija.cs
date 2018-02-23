@@ -43,7 +43,7 @@ namespace PS
             TimeSpan vrijemeP = TimeSpan.Parse(mtbPolazak.Text);
             TimeSpan vrijemeD = TimeSpan.Parse(mtbDolazak.Text);
 
-            if (!(pocetnaPosta.Equals(null) || krajnjaPosta.Equals(null)))
+            if (!(pocetnaPosta.Equals(null) || krajnjaPosta.Equals(null) || vrijemeP == null || vrijemeD == null))
             {
                 LinijaDAO lDAO = DAOFactory.getDAOFactory().getLinijaDAO();
                 
@@ -51,6 +51,7 @@ namespace PS
                 bool rez = lDAO.insert(linija);
                 if (rez)
                 {
+                    MessageBox.Show("Uspješno dodavanje nove linije", "Uspješno dodavanje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
             }

@@ -42,7 +42,7 @@ namespace PS.dao.mysql
             MjestoDTO mjesto = null;
 
             MySqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT * FROM mjesto WHERE mjestoId = @mjestoId";
+            cmd.CommandText = "SELECT * FROM mjesto WHERE IdMjesto = @mjestoId";
 
             cmd.Parameters.AddWithValue("@mjestoId", mjestoId);
 

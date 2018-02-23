@@ -69,7 +69,7 @@ namespace PS
                     }
                     else
                     {
-                        MessageBox.Show("Došlo je greške prilikom dodavanja", "Grška", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Došlo je greške prilikom dodavanja", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         tbKorisnickoIme.Text = "";
                         tbLozinka.Text = "";
                         cbIsAdmin.Checked = false;
