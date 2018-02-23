@@ -13,7 +13,7 @@ namespace PS.dto
         private MjestoDTO mjesto;
         private string naziv;
         private string adresa;
-       // private string telefon;
+        // private string telefon;
 
         public PoslovnicaDTO() { }
 
@@ -24,19 +24,19 @@ namespace PS.dto
             this.mjesto = mjesto;
             this.naziv = naziv;
             this.adresa = adresa;
-           // this.telefon = telefon;
+            // this.telefon = telefon;
         }
 
         public int PoslovnicaId { get => poslovnicaId; set => poslovnicaId = value; }
         public string Naziv { get => naziv; set => naziv = value; }
         public string Adresa { get => adresa; set => adresa = value; }
-       // public string Telefon { get => telefon; set => telefon = value; }
+        // public string Telefon { get => telefon; set => telefon = value; }
         internal PoslovnicaDTO PostanskiCentar { get => postanskiCentar; set => postanskiCentar = value; }
         internal MjestoDTO Mjesto { get => mjesto; set => mjesto = value; }
 
         public override string ToString()
         {
-            return PoslovnicaId + " " + Naziv;
+            return Naziv;
         }
     }
 }

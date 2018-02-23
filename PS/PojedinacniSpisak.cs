@@ -44,7 +44,7 @@ namespace PS
             {
                 KartaZakljuckaDTO karta = new KartaZakljuckaDTO();
                 karta.KartaID = kartaZakljuckaId;
-                vdao.insert(new VrecaDTO(karta, vreca));
+                //vdao.insert(new VrecaDTO(karta, vreca));
             }
             this.Close();
         }

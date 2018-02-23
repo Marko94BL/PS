@@ -14,31 +14,31 @@ namespace PS.dao.mysql
         public bool insert(LinijaDTO linija)
         {
 
-             MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
-           try
-           {
-               conn.Open();
+            MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
+            try
+            {
+                conn.Open();
 
-               MySqlCommand cmd = conn.CreateCommand();
-               cmd.CommandText = "INSERT INTO linija VALUES(@IdLinija, @IdPoslovnicaSalje, @IdPoslovnicaPrima, @VrijemePolaska, @VrijemeDolaska)";
+                MySqlCommand cmd = conn.CreateCommand();
+                cmd.CommandText = "INSERT INTO linija VALUES(@IdLinija, @IdPoslovnicaSalje, @IdPoslovnicaPrima, @VrijemePolaska, @VrijemeDolaska)";
 
-               cmd.Parameters.AddWithValue("@IdLinija", linija.LinijaId);
-               cmd.Parameters.AddWithValue("@IdPoslovnicaSalje", linija.PoslovnicaSalje);
-               cmd.Parameters.AddWithValue("@IdPoslovnicaPrima", linija.PoslovnicaPrima);
-               cmd.Parameters.AddWithValue("@VrijemePolaska", linija.VrijemePolaska);
-               cmd.Parameters.AddWithValue("@VrijemeDolaska", linija.VrijemeDolaska);
-               int brojRedova = cmd.ExecuteNonQuery();
-           }
-           catch (MySqlException e)
-           {
-               e.ErrorCode.ToString();
-               return false;
-           }
-           finally
-           {
-               conn.Close();
-           }
-           return true;
+                cmd.Parameters.AddWithValue("@IdLinija", linija.LinijaId);
+                cmd.Parameters.AddWithValue("@IdPoslovnicaSalje", linija.PoslovnicaSalje.PoslovnicaId);
+                cmd.Parameters.AddWithValue("@IdPoslovnicaPrima", linija.PoslovnicaPrima.PoslovnicaId);
+                cmd.Parameters.AddWithValue("@VrijemePolaska", linija.VrijemePolaska);
+                cmd.Parameters.AddWithValue("@VrijemeDolaska", linija.VrijemeDolaska);
+                int brojRedova = cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException e)
+            {
+                e.ErrorCode.ToString();
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return true;
         }
     }
 }

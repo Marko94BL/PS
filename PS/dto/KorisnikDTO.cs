@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PS.dto
 {
-    class KorisnickiNalogDTO
+    class KorisnikDTO
     {
         private string korisnickoIme;
         private int nalogId;
@@ -20,9 +20,9 @@ namespace PS.dto
         private byte privilegije;
         
 
-        public KorisnickiNalogDTO() { }
+        public KorisnikDTO() { }
 
-        public KorisnickiNalogDTO(string korisnickoIme, int nalogId, string salt, byte akrivan, int hashCount, string hashValue, byte privilegije)
+        public KorisnikDTO(string korisnickoIme, int nalogId, string salt, byte akrivan, int hashCount, string hashValue, byte privilegije)
         {
             this.KorisnickoIme = korisnickoIme;
             this.NalogId = nalogId;

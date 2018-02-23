@@ -9,6 +9,6 @@ namespace PS.dao
 {
     interface LinijaDAO
     {
-         bool insert(LinijaDTO linija);
+        bool insert(LinijaDTO linija);
     }
 }

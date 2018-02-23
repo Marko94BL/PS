@@ -21,23 +21,21 @@ namespace PS.dao.mysql
 
         public bool insert(PosiljkaDTO posiljka)
         {
-            throw new NotImplementedException();
-           /* MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
+            MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
             try
             {
                 conn.Open();
 
                 MySqlCommand cmd = conn.CreateCommand();
-                cmd.CommandText = "INSERT INTO posiljka VALUES(@posiljkaID, @poslovnicaSalje, @poslovnicaPrima, @jmb, " +
-                    "@oznaka, @vrijeme, @vanVrece)";
+                cmd.CommandText = "INSERT INTO posiljka VALUES(@IdPosiljka, @Barkod, @Vrijeme,@IdKorisnik, @IdPoslovnicaSalje, @IdPoslovnicaPrima, @VanVrece)";
 
-                cmd.Parameters.AddWithValue("@posiljkaID", posiljka.PosiljkaID);
-                cmd.Parameters.AddWithValue("@poslovnicaSalje", posiljka.PoslovnicaSalje.PoslovnicaId);
-                cmd.Parameters.AddWithValue("@poslovnicaPrima", posiljka.PoslovnicaPrima.PoslovnicaId);
-                cmd.Parameters.AddWithValue("@jmb", posiljka.Zaposleni.Jmb);
-                cmd.Parameters.AddWithValue("@oznaka", posiljka.Oznaka.Oznaka);
-                cmd.Parameters.AddWithValue("@vrijeme", posiljka.Vrijeme);
-                cmd.Parameters.AddWithValue("@vanVrece", posiljka.VanVerce);
+                cmd.Parameters.AddWithValue("@IdPosiljka", posiljka.PosiljkaID);
+                cmd.Parameters.AddWithValue("@Barkod", posiljka.Barkod);
+                cmd.Parameters.AddWithValue("@Vrijeme", posiljka.Vrijeme);
+                cmd.Parameters.AddWithValue("@IdKorisnik", posiljka.Nalog);
+                cmd.Parameters.AddWithValue("@IdPoslovnicaSalje", posiljka.PoslovnicaSalje.PoslovnicaId);
+                cmd.Parameters.AddWithValue("@IdPoslovnicaPrima", posiljka.PoslovnicaPrima.PoslovnicaId);
+                cmd.Parameters.AddWithValue("@VanVrece", posiljka.VanVerce);
                 int brojRedova = cmd.ExecuteNonQuery();
             }
             catch (MySqlException e)
@@ -49,7 +47,7 @@ namespace PS.dao.mysql
             {
                 conn.Close();
             }
-            return true;*/
+            return true;
         }
 
         public List<PosiljkaDTO> posiljke()
@@ -109,8 +107,8 @@ namespace PS.dao.mysql
 
         public PosiljkaDTO vratiPosiljku(int posiljkaId)
         {
-            
-            
+
+
             MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
             conn.Open();
 
@@ -127,14 +125,14 @@ namespace PS.dao.mysql
                 PoslovnicaDTO pSalje = pdao.vratiPoslovnicu(reader.GetInt32(4));//vrati poslovnicu sa id koji mu je vracen kroz rezultat
                 PoslovnicaDTO pPrima = pdao.vratiPoslovnicu(reader.GetInt32(5));
                 KorisnickiNalogDAO knDAO = new MySQLKorisnickiNalogDAO();
-                KorisnickiNalogDTO nalog=knDAO.pretragaPoId(reader.GetInt32(3));
-                
+                KorisnikDTO nalog = knDAO.pretragaPoId(reader.GetInt32(3));
+
                 posiljka = new PosiljkaDTO(reader.GetInt32(0), pSalje, pPrima, nalog, reader.GetDateTime(2), reader.GetByte(6), reader.GetString(1));
             }
             reader.Close();
             conn.Close();
             return posiljka;
-            
+
         }
 
     }

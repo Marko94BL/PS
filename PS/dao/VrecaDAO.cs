@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 namespace PS.dao
 {
     interface VrecaDAO
-    {/*
+    {
         List<VrecaDTO> vrece(KartaZakljuckaDTO karta);
         bool insert(VrecaDTO vreca);
-        */
     }
 }

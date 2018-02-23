@@ -27,18 +27,37 @@ namespace PS
         private void DodavanjePoslovnice_Load(object sender, EventArgs e)
         {
             MjestoDAO mjestoDAO = DAOFactory.getDAOFactory().getMjestoDAO();
-            cb_Mjesto.Items.Add(mjestoDAO.mjesta());
+
+            List<MjestoDTO> lista = mjestoDAO.mjesta();
+            foreach (MjestoDTO mjesto in lista)
+            {
+                cb_Mjesto.Items.Add(mjesto);
+            }
+
+            //cb_Mjesto.Items.Add(mjestoDAO.mjesta());
             PoslovnicaDAO poslovnicaDAO = DAOFactory.getDAOFactory().getPoslovnicaDAO();
-            combo_PostanskiCentar.Items.Add(poslovnicaDAO.poslovnice());
-            combo_PostanskiCentar.Enabled = false;
+            List<PoslovnicaDTO> listaPoslovnica = poslovnicaDAO.poslovnice();
+            foreach (PoslovnicaDTO poslovnica in listaPoslovnica)
+            {
+                combo_PostanskiCentar.Items.Add(poslovnica);
+            }
+            combo_PostanskiCentar.Enabled = true;
         }
 
         private void btn_Potvrda_Click(object sender, EventArgs e)
         {
-            if (!("").Equals(tb_Naziv.Text.Trim()) && !("").Equals(tb_Adresa.Text.Trim()) && (cb_Mjesto.SelectedIndex != 0) && (check_PostanskiCentar.Checked || (!check_PostanskiCentar.Checked && combo_PostanskiCentar.SelectedIndex != 0)))
+            if (!("").Equals(tb_Naziv.Text.Trim()) && !("").Equals(tb_Adresa.Text.Trim()) && (cb_Mjesto.SelectedIndex != 0) && (check_PostanskiCentar.Checked || (!check_PostanskiCentar.Checked && combo_PostanskiCentar.SelectedIndex != -1)))
             {
                 PoslovnicaDAO poslovnicaDAO = DAOFactory.getDAOFactory().getPoslovnicaDAO();
-                poslovnicaDAO.insert(new PoslovnicaDTO(0, tb_Naziv.Text.Trim(), cb_Mjesto.SelectedItem as MjestoDTO, tb_Adresa.Text.Trim(), check_PostanskiCentar.Checked?null:combo_PostanskiCentar.SelectedItem as PoslovnicaDTO));
+                bool flag = poslovnicaDAO.insert(new PoslovnicaDTO(0, tb_Naziv.Text.Trim(), cb_Mjesto.SelectedItem as MjestoDTO, tb_Adresa.Text.Trim(), check_PostanskiCentar.Checked?null:combo_PostanskiCentar.SelectedItem as PoslovnicaDTO));
+                if (flag == true)
+                {
+                    MessageBox.Show("Uspješno ste dodali novu poslovnicu ", "Uspješno dodavanje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else {
+                    MessageBox.Show("Greška prilikom dodavanja", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }               
             }
         }
     }
