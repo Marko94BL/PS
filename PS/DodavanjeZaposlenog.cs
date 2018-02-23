@@ -29,7 +29,7 @@ namespace PS
                 KorisnickiNalogDAO knDAO = DAOFactory.getDAOFactory().getKorisnickiNalogDAO();
 
                 bool postoji = knDAO.daLiPostojiKorisnik(korisnickoIme);
-                if (postoji == true)
+                if (postoji == false)
                 {
                     KorisnikDTO knDTO = new KorisnikDTO();
                     knDTO.KorisnickoIme = korisnickoIme;
@@ -65,12 +65,14 @@ namespace PS
                         MessageBox.Show("Uspješno ste dodali novi korisnički nalog", "Uspješno dodavanje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         tbKorisnickoIme.Text = "";
                         tbLozinka.Text = "";
+                        cbIsAdmin.Checked = false;
                     }
                     else
                     {
                         MessageBox.Show("Došlo je greške prilikom dodavanja", "Grška", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         tbKorisnickoIme.Text = "";
                         tbLozinka.Text = "";
+                        cbIsAdmin.Checked = false;
                     }
                 }
                 else
@@ -78,6 +80,7 @@ namespace PS
                     MessageBox.Show("Korisnik sa navedenim korisničkim imenom postoji. Unesite drugo korisničko ime", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     tbKorisnickoIme.Text = "";
                     tbLozinka.Text = "";
+                    cbIsAdmin.Checked = false;
 
                 }
             }

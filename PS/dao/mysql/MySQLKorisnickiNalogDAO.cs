@@ -56,7 +56,6 @@ namespace PS.dao.mysql
             MySqlDataReader reader = cmd.ExecuteReader();
             if (reader.Read())
             {
-                //KorisnickiNalogDTO k = new KorisnickiNalogDTO(reader.GetInt32(0), reader.GetString(1), reader.GetByte(5), reader.GetString(2), reader.GetString(4));
                 reader.Close();
                 conn.Close();
                 return true;
