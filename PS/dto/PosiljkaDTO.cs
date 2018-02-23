@@ -13,12 +13,12 @@ namespace PS.dto
         private PoslovnicaDTO poslovnicaSalje;
         private PoslovnicaDTO poslovnicaPrima;
         private byte vanVerce;
-        private KorisnickiNalogDTO nalog;
+        private KorisnikDTO nalog;
         private string barkod;
 
         public PosiljkaDTO() { }
 
-        public PosiljkaDTO(int posiljkaID, PoslovnicaDTO poslovnicaSalje, PoslovnicaDTO poslovnicaPrima, KorisnickiNalogDTO nalog, DateTime vrijeme, byte vanVerce, string barkod)
+        public PosiljkaDTO(int posiljkaID, PoslovnicaDTO poslovnicaSalje, PoslovnicaDTO poslovnicaPrima, KorisnikDTO nalog, DateTime vrijeme, byte vanVerce, string barkod)
         {
             this.PosiljkaID = posiljkaID;
             this.Vrijeme = vrijeme;
@@ -26,7 +26,7 @@ namespace PS.dto
             this.PoslovnicaPrima = poslovnicaPrima;
             this.VanVerce = vanVerce;
             this.Nalog = nalog;
-            
+
             this.Barkod = barkod;
 
         }
@@ -37,6 +37,6 @@ namespace PS.dto
         public string Barkod { get => barkod; set => barkod = value; }
         internal PoslovnicaDTO PoslovnicaSalje { get => poslovnicaSalje; set => poslovnicaSalje = value; }
         internal PoslovnicaDTO PoslovnicaPrima { get => poslovnicaPrima; set => poslovnicaPrima = value; }
-        internal KorisnickiNalogDTO Nalog { get => nalog; set => nalog = value; }
+        internal KorisnikDTO Nalog { get => nalog; set => nalog = value; }
     }
 }

@@ -9,10 +9,10 @@ namespace PS.dao
 {
     interface PosiljkaStatusDAO
     {
-       // List<PosiljkaStatusDTO> posiljkeStatus();
-       // List<PosiljkaStatusDTO> posiljkeStatus(KartaZakljuckaDTO karta);
+        List<PosiljkaStatusDTO> posiljkeStatus();
+        List<PosiljkaStatusDTO> posiljkeStatus(KartaZakljuckaDTO karta);
         bool insert(PosiljkaStatusDTO posiljkaStatus);
-       // bool update(PosiljkaStatusDTO posiljkaStatus);
-        
+        // bool update(PosiljkaStatusDTO posiljkaStatus);
+
     }
 }

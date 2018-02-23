@@ -10,16 +10,16 @@ namespace PS.dto
     {
         private LinijaDTO linija;//int???
         private PoslovnicaDTO poslovnica;//int???
-        private DateTime vrijeme;//Time
+        private TimeSpan vrijeme;//Time
 
-        public LinijaStavkaDTO(LinijaDTO linija, PoslovnicaDTO poslovnica, DateTime vrijeme)
+        public LinijaStavkaDTO(LinijaDTO linija, PoslovnicaDTO poslovnica, TimeSpan vrijeme)
         {
             this.linija = linija;
             this.poslovnica = poslovnica;
             this.vrijeme = vrijeme;
         }
 
-        public DateTime Vrijeme { get => vrijeme; set => vrijeme = value; }
+        public TimeSpan Vrijeme { get => vrijeme; set => vrijeme = value; }
         internal LinijaDTO Linija { get => linija; set => linija = value; }
         internal PoslovnicaDTO Poslovnica { get => poslovnica; set => poslovnica = value; }
     }

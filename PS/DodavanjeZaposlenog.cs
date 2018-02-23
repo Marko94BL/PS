@@ -29,14 +29,21 @@ namespace PS
                 KorisnickiNalogDAO knDAO = DAOFactory.getDAOFactory().getKorisnickiNalogDAO();
 
                 bool postoji = knDAO.daLiPostojiKorisnik(korisnickoIme);
-                if (postoji == true)
+                if (postoji == false)
                 {
-                    KorisnickiNalogDTO knDTO = new KorisnickiNalogDTO();
+                    KorisnikDTO knDTO = new KorisnikDTO();
                     knDTO.KorisnickoIme = korisnickoIme;
+                    if (cbIsAdmin.Checked)
+                    {
+                        knDTO.Privilegije = 1;
+                    }
+                    else {
+                        knDTO.Privilegije = 0;
+                    }
                     knDTO.Akrivan = 1;
 
                     Random rand = new Random();
-                    knDTO.HashCount = rand.Next(10); //vrsi hesiranje max 10puta
+                    knDTO.HashCount = rand.Next(10) + 1; //vrsi hesiranje max 10puta
 
                     knDTO.Salt = rand.Next().ToString();
 
@@ -58,12 +65,14 @@ namespace PS
                         MessageBox.Show("Uspješno ste dodali novi korisnički nalog", "Uspješno dodavanje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         tbKorisnickoIme.Text = "";
                         tbLozinka.Text = "";
+                        cbIsAdmin.Checked = false;
                     }
                     else
                     {
                         MessageBox.Show("Došlo je greške prilikom dodavanja", "Grška", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         tbKorisnickoIme.Text = "";
                         tbLozinka.Text = "";
+                        cbIsAdmin.Checked = false;
                     }
                 }
                 else
@@ -71,6 +80,7 @@ namespace PS
                     MessageBox.Show("Korisnik sa navedenim korisničkim imenom postoji. Unesite drugo korisničko ime", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     tbKorisnickoIme.Text = "";
                     tbLozinka.Text = "";
+                    cbIsAdmin.Checked = false;
 
                 }
             }

@@ -9,13 +9,14 @@ namespace PS.dao
 {
     interface KartaZakljuckaDAO
     {
-        
+
+
         //List<KartaZakljuckaDTO> karteZakljucka();
-       // KartaZakljuckaDTO vratiKartaZakljucka(int kartaId);
-       // bool azurirajDatum(KartaZakljuckaDTO kartaZakljucka);
+        KartaZakljuckaDTO vratiKartaZakljucka(int kartaId);
+        bool azurirajDatum(KartaZakljuckaDTO kartaZakljucka);
         int insert(KartaZakljuckaDTO kartaZakljucka);
-       // bool update(KartaZakljuckaDTO kartaZakljucka);
-       // bool delete(int id);
-        
+        // bool update(KartaZakljuckaDTO kartaZakljucka);
+        // bool delete(int id);
+
     }
 }

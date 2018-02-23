@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace PS.dto
-{ //OVA KLASA NAM NE TREBA
+{
     class OdjavaONeispravnostiDTO
     {
         private string napomena;

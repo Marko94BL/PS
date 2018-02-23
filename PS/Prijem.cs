@@ -129,7 +129,7 @@ namespace PS
             OdjavaONeispravnostiDTO odjava = new OdjavaONeispravnostiDTO(napomena,
                 posiljka, DateTime.Now, odredisnaPosta);
 
-            odao.insert(odjava);
+          //  odao.insert(odjava);
             btnOdjava.Enabled = false;
         }
 
@@ -152,7 +152,7 @@ namespace PS
                     {
                         PosiljkaDTO p = new PosiljkaDTO();
                         p.PosiljkaID = int.Parse(red.Cells[0].Value.ToString());
-                        pdao.insert(new PosiljkaStatusDTO(new StatusDTO(1, ""), p, kartaZakljucka));
+                      //  pdao.insert(new PosiljkaStatusDTO(new StatusDTO(1, ""), p, kartaZakljucka));
                     }
                     else
                     {

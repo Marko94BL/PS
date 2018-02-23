@@ -54,8 +54,8 @@ namespace PS.dao.mysql
 
         public List<PoslovnicaDTO> poslovnice()
         {
-           
-            
+
+
             MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
             conn.Open();
 
@@ -63,7 +63,7 @@ namespace PS.dao.mysql
 
             MySqlCommand cmd = conn.CreateCommand();
             cmd.CommandText = "SELECT * FROM poslovnica";
-           
+
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -80,13 +80,13 @@ namespace PS.dao.mysql
                 }
                 MjestoDAO mdao = new MySQLMjestoDAO();
                 MjestoDTO m = mdao.vratiMjesto(reader.GetInt32(2));
-                PoslovnicaDTO p = new PoslovnicaDTO(reader.GetInt32(0), pc, reader.GetString(1), reader.GetString(3), m);
+                PoslovnicaDTO p = new PoslovnicaDTO(reader.GetInt32(0),reader.GetString(1),m,reader.GetString(3),pc);
                 lista.Add(p);
             }
             reader.Close();
             conn.Close();
             return lista;
-            
+
         }
         public List<PoslovnicaDTO> postanskiCentri()
         {
