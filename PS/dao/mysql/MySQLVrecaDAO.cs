@@ -14,8 +14,8 @@ namespace PS.dao.mysql
     {
         public bool insert(VrecaDTO vreca)
         {
-            throw new NotImplementedException();
-            /*
+
+
             MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
             long id;
             try
@@ -23,11 +23,12 @@ namespace PS.dao.mysql
                 conn.Open();
 
                 MySqlCommand cmd = conn.CreateCommand();
-                cmd.CommandText = "INSERT INTO vreca VALUES(@kartaId, @vrecaId)";
+                cmd.CommandText = "INSERT INTO vreca VALUES(@IdVreca, @Broj, @IdKartaZakljucka)";
 
-                cmd.Parameters.AddWithValue("@kartaId", vreca.KartaId.KartaID);
-                cmd.Parameters.AddWithValue("@vrecaId", vreca.VrecaId);
-               
+                cmd.Parameters.AddWithValue("@IdVreca", vreca.VrecaId);
+                cmd.Parameters.AddWithValue("@Broj", vreca.Broj);
+                cmd.Parameters.AddWithValue("@IdKartaZakljucka", vreca.KartaZakljucka.KartaID);
+
                 int brojRedova = cmd.ExecuteNonQuery();
             }
             catch (MySqlException e)
@@ -41,31 +42,30 @@ namespace PS.dao.mysql
                 conn.Close();
             }
             return true;
-            */
+
         }
 
         public List<VrecaDTO> vrece(KartaZakljuckaDTO karta)
         {
-            throw new NotImplementedException();
-            /*
+
             MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
             conn.Open();
 
             List<VrecaDTO> vrece = new List<VrecaDTO>();
 
             MySqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT * FROM vreca WHERE KartaZakljuckaId = @kartaId";
-            cmd.Parameters.AddWithValue("@kartaId", karta.KartaID);
+            cmd.CommandText = "SELECT * FROM vreca WHERE IdKartaZakljucka = @IdKartaZakljucka";
+            cmd.Parameters.AddWithValue("@IdKartaZakljucka", karta.KartaID);
 
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                vrece.Add(new VrecaDTO(karta, reader.GetString(1)));
+                vrece.Add(new VrecaDTO(karta, reader.GetInt32(0), int.Parse(reader.GetString(1))));
             }
             reader.Close();
             conn.Close();
             return vrece;
-            */
+
         }
     }
 }

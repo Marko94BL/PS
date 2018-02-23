@@ -13,21 +13,20 @@ namespace PS.dao.mysql
 {
     class MySQLKartaZakljuckaDAO : KartaZakljuckaDAO
     {
-        public bool azurirajDatum(KartaZakljuckaDTO kartaZakljucka)
+        public bool azurirajDatum(KartaZakljuckaDTO kartaZakljucka)//napisati obicni upit a ne preko procedure
         {
-            throw new NotImplementedException();
-            /*
+
             MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
             try
             {
                 conn.Open();
                 MySqlCommand cmd = conn.CreateCommand();
-                cmd.CommandType = CommandType.StoredProcedure;
+                /*cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "vrijeme_prijema_karte_zakljucka"; // Naziv procedure
                 cmd.Parameters.AddWithValue("@id", kartaZakljucka.KartaID);
                 cmd.Parameters["@id"].Direction = ParameterDirection.Input;
                 cmd.Parameters.AddWithValue("@vrijeme", kartaZakljucka.VrijemeStigla);
-                cmd.Parameters["@vrijeme"].Direction = ParameterDirection.Input;
+                cmd.Parameters["@vrijeme"].Direction = ParameterDirection.Input;*/
                 cmd.ExecuteNonQuery();
             }
             catch (MySqlException e)
@@ -37,7 +36,7 @@ namespace PS.dao.mysql
                 return false;
             }
             finally { conn.Close(); }
-            return true;*/
+            return true;
         }
 
         public bool delete(int id)
@@ -54,8 +53,8 @@ namespace PS.dao.mysql
                 conn.Open();
 
                 MySqlCommand cmd = conn.CreateCommand();
-                cmd.CommandText = "INSERT INTO karta_zakljucka VALUES(@kartaID, @vrstaZakljucka, @napomena, @poslovnicaSalje, " +
-                    "@poslovnicaPrima, @jmb, @vrijeme, @redniBrojOtpreme, @vrijemeStigla)";
+                cmd.CommandText = "INSERT INTO karta_zakljucka VALUES(@IdKartaZakljucka, @IdPoslovnicaSalje, @IdPoslovnicaPrima, @VrijemeKreiranja, " +
+                    "@VrstaZakljucka,  @RedniBrojOtpreme, @VrijemeStigla, @Napomena)";
 
                 cmd.Parameters.AddWithValue("@IdKartaZakljucka", kartaZakljucka.KartaID);
                 cmd.Parameters.AddWithValue("@IdPoslovnicaSalje", kartaZakljucka.PoslovnicaSalje.PoslovnicaId);
@@ -66,9 +65,7 @@ namespace PS.dao.mysql
                 cmd.Parameters.AddWithValue("@VrijemeStigla", kartaZakljucka.VrijemeStigla);
                 cmd.Parameters.AddWithValue("@Napomena", kartaZakljucka.Napomena);
 
-               // cmd.Parameters.AddWithValue("@jmb", kartaZakljucka.Zaposleni.Jmb);
-              
-                
+
                 cmd.ExecuteNonQuery();
                 id = cmd.LastInsertedId;
             }
@@ -95,39 +92,37 @@ namespace PS.dao.mysql
             throw new NotImplementedException();
         }
 
-        
+
         public KartaZakljuckaDTO vratiKartaZakljucka(int kartaId)
         {
-            throw new NotImplementedException();
-            /*
+
             MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
             conn.Open();
 
             KartaZakljuckaDTO kz = null;
 
             MySqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT * FROM karta_zakljucka WHERE KartaZakljuckaID = @kartaId";
+            cmd.CommandText = "SELECT * FROM karta_zakljucka WHERE IdKartaZakljucka = @IdKartaZakljucka";
 
-            cmd.Parameters.AddWithValue("@kartaId", kartaId);
+            cmd.Parameters.AddWithValue("@IdKArtaZakljucka", kartaId);
 
             MySqlDataReader reader = cmd.ExecuteReader();
             if (reader.Read())
             {
                 PoslovnicaDAO pdao = DAOFactory.getDAOFactory().getPoslovnicaDAO();
-                PoslovnicaDTO poslovnicaSalje = pdao.vratiPoslovnicu(reader.GetInt32(3));
-                PoslovnicaDTO poslovnicaPrima = pdao.vratiPoslovnicu(reader.GetInt32(4));
+                PoslovnicaDTO poslovnicaSalje = pdao.vratiPoslovnicu(reader.GetInt32(1));
+                PoslovnicaDTO poslovnicaPrima = pdao.vratiPoslovnicu(reader.GetInt32(2));
 
-                ZaposleniDAO zdao = DAOFactory.getDAOFactory().getZapsleniDAO();
-                ZaposleniDTO zaposleni = zdao.vratiZaposlenog(reader.GetString(5));
+                KorisnickiNalogDAO kndao = DAOFactory.getDAOFactory().getKorisnickiNalogDAO();
+                KorisnikDTO nalog = kndao.pretragaPoId(reader.GetInt32(8));
 
-                kz = new KartaZakljuckaDTO(reader.GetInt32(0), reader.GetString(1), reader.GetDateTime(6), reader.GetInt32(7), 
-                    reader.GetString(2), zaposleni, poslovnicaSalje, poslovnicaPrima);
+                kz = new KartaZakljuckaDTO(reader.GetInt32(0),reader.GetString(4),reader.GetDateTime(3),reader.GetInt32(5),reader.GetString(7),nalog,poslovnicaSalje,poslovnicaPrima);
             }
             reader.Close();
             conn.Close();
             return kz;
-            */
-            
+
+
         }
     }
 }

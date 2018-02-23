@@ -57,7 +57,7 @@ namespace PS
             datum = dtpDatum.Value.ToString();
 
             KartaZakljuckaDAO kzdao = DAOFactory.getDAOFactory().getKartaZakljuckaDAO();
-            KorisnickiNalogDTO nalog = new KorisnickiNalogDTO();
+            KorisnikDTO nalog = new KorisnikDTO();
             nalog = GlavnaForma.Prijavljeni;
             kartaZakljucka = new KartaZakljuckaDTO(0, "S", dtpDatum.Value, int.Parse(tbOtprema.Text.Trim()), tbNapomena.Text.Trim(),
                nalog, cbPrijemnaPosta.SelectedItem as PoslovnicaDTO, cbOdredisnaPosta.SelectedItem as PoslovnicaDTO);
@@ -68,7 +68,7 @@ namespace PS
 
             foreach (PosiljkaDTO posiljka in posiljkeIdLista)
             {
-                psdao.insert(new PosiljkaStatusDTO(new StatusDTO(2, ""), posiljka, kartaZakljucka));
+              //  psdao.insert(new PosiljkaStatusDTO(new StatusDTO(2, ""), posiljka, kartaZakljucka));
             }
             lbStatus.Text = "Kreirana karta zakljucka!";
             btnKreirajKartu.Enabled = false;

@@ -105,7 +105,7 @@
       <DependentUpon>DodavanjeZaposlenog.cs</DependentUpon>
     </Compile>
     <Compile Include="dto\KartaZakljuckaDTO.cs" />
-    <Compile Include="dto\KorisnickiNalogDTO.cs" />
+    <Compile Include="dto\KorisnikDTO.cs" />
     <Compile Include="dto\LinijaDTO.cs" />
     <Compile Include="dto\LinijaStavkaDTO.cs" />
     <Compile Include="dto\MjestoDTO.cs" />

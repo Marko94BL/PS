@@ -14,8 +14,8 @@ namespace PS
 {
     public partial class GlavnaForma : Form
     {
-        private static KorisnickiNalogDTO prijavljeni = null;
-        internal static KorisnickiNalogDTO Prijavljeni { get => prijavljeni; set => prijavljeni = value; }
+        private static KorisnikDTO prijavljeni = null;
+        internal static KorisnikDTO Prijavljeni { get => prijavljeni; set => prijavljeni = value; }
 
         public GlavnaForma()
         {

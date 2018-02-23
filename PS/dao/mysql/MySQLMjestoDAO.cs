@@ -13,8 +13,8 @@ namespace PS.dao.mysql
     {
         public List<MjestoDTO> mjesta()
         {
-           
-            
+
+
             MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
             conn.Open();
 
@@ -31,7 +31,7 @@ namespace PS.dao.mysql
             reader.Close();
             conn.Close();
             return lista;
-            
+
         }
 
         public MjestoDTO vratiMjesto(int mjestoId)
@@ -49,7 +49,7 @@ namespace PS.dao.mysql
             MySqlDataReader reader = cmd.ExecuteReader();
             if (reader.Read())
             {
-                mjesto = new MjestoDTO(reader.GetInt32(0), reader.GetString(1),reader.GetInt32(2));
+                mjesto = new MjestoDTO(reader.GetInt32(0), reader.GetString(1), reader.GetInt32(2));
             }
             reader.Close();
             conn.Close();

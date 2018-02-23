@@ -31,7 +31,7 @@ namespace PS
                 bool postoji = knDAO.daLiPostojiKorisnik(korisnickoIme);
                 if (postoji == true)
                 {
-                    KorisnickiNalogDTO knDTO = new KorisnickiNalogDTO();
+                    KorisnikDTO knDTO = new KorisnikDTO();
                     knDTO.KorisnickoIme = korisnickoIme;
                     if (cbIsAdmin.Checked)
                     {

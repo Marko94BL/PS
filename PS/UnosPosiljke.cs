@@ -35,7 +35,7 @@ namespace PS
                 cbOdredisnaPosta.Items.Add(poslovnica);
             }
 
-            PosiljkaTipDAO ptDAO = DAOFactory.getDAOFactory().getPosiljkaTipDAO();
+           // PosiljkaTipDAO ptDAO = DAOFactory.getDAOFactory().getPosiljkaTipDAO();
            // List<PosiljkaTipDTO> tipovi = ptDAO.posiljkaTipovi();
 
            /* foreach (PosiljkaTipDTO tip in tipovi)
@@ -57,14 +57,14 @@ namespace PS
             string identifikator = tbIdentifikator.Text.Trim();
             int id = int.Parse(identifikator);
             bool punoPolje = !(tbIdentifikator.MaskFull);
-            PosiljkaTipDTO vrstaPosiljke = (cbVrstaPosiljke.SelectedItem as PosiljkaTipDTO);
+           // PosiljkaTipDTO vrstaPosiljke = (cbVrstaPosiljke.SelectedItem as PosiljkaTipDTO);
             byte vanVrece = Convert.ToByte(cbVanVrece.Checked);
             PoslovnicaDTO odredisnaPosta = (cbPrijemnaPosta.SelectedItem as PoslovnicaDTO);
 
-            if (!(prijemnaPosta.Equals(null) || punoPolje || vrstaPosiljke.Equals(null) || odredisnaPosta.Equals(null)))
+            if (!(prijemnaPosta.Equals(null) || punoPolje /*|| vrstaPosiljke.Equals(null)*/ || odredisnaPosta.Equals(null)))
             {
                 PosiljkaDAO pDAO = DAOFactory.getDAOFactory().getPosiljkaDAO();
-                ZaposleniDAO zdao = DAOFactory.getDAOFactory().getZapsleniDAO();
+              //  ZaposleniDAO zdao = DAOFactory.getDAOFactory().getZapsleniDAO();
                // ZaposleniDTO zaposleni = zdao.vratiZaposlenog(GlavnaForma.Prijavljeni.Jmb);
                // PosiljkaDTO posiljka = new PosiljkaDTO(id, prijemnaPosta, odredisnaPosta, zaposleni, vrstaPosiljke, vrijeme, vanVrece);
                // bool rez = pDAO.insert(posiljka);
