@@ -60,7 +60,7 @@ namespace PS.dao.mysql
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                vrece.Add(new VrecaDTO(karta, reader.GetInt32(0), int.Parse(reader.GetString(1))));
+                vrece.Add(new VrecaDTO(karta, reader.GetInt32(0), reader.GetString(1)));
             }
             reader.Close();
             conn.Close();
