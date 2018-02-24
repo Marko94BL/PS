@@ -43,9 +43,9 @@ namespace PS
             this.Close();
         }
 
-        private void GlavniMeni_Load(object sender, EventArgs e)
+        private void btnGrupniSpisak_Click(object sender, EventArgs e)
         {
-
+            new GrupniSpisak().ShowDialog();
         }
     }
 }

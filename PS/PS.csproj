@@ -130,6 +130,12 @@
     <Compile Include="GlavniMeni.Designer.cs">
       <DependentUpon>GlavniMeni.cs</DependentUpon>
     </Compile>
+    <Compile Include="GrupniSpisak.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GrupniSpisak.Designer.cs">
+      <DependentUpon>GrupniSpisak.cs</DependentUpon>
+    </Compile>
     <Compile Include="Kartovanje.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -197,6 +203,9 @@
     <EmbeddedResource Include="GlavniMeni.resx">
       <DependentUpon>GlavniMeni.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GrupniSpisak.resx">
+      <DependentUpon>GrupniSpisak.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Kartovanje.resx">
       <DependentUpon>Kartovanje.cs</DependentUpon>
     </EmbeddedResource>
@@ -249,6 +258,11 @@
     <Content Include="docs\MySqlParameter.xml" />
     <Content Include="docs\MySqlParameterCollection.xml" />
     <Content Include="docs\MySqlTransaction.xml" />
+    <None Include="Resources\GrupniSpisak2.png" />
+    <None Include="Resources\GrupniSpisak.png" />
+    <None Include="Resources\GrupniSpisak1.ico" />
+    <None Include="Resources\GrupniSpisak1.png" />
+    <None Include="Resources\GrupniSpisak.ico" />
     <None Include="Resources\location.png" />
     <None Include="Resources\linija1.png" />
     <None Include="Resources\poslovnica.png" />
