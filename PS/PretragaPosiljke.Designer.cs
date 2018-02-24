@@ -103,9 +103,9 @@
             // tbIdentifikator
             // 
             this.tbIdentifikator.Location = new System.Drawing.Point(88, 18);
-            this.tbIdentifikator.Mask = "000000000";
+            this.tbIdentifikator.Mask = "AA000000000AA";
             this.tbIdentifikator.Name = "tbIdentifikator";
-            this.tbIdentifikator.Size = new System.Drawing.Size(72, 20);
+            this.tbIdentifikator.Size = new System.Drawing.Size(81, 20);
             this.tbIdentifikator.TabIndex = 5;
             // 
             // button1
@@ -132,7 +132,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(593, 299);
+            this.ClientSize = new System.Drawing.Size(593, 298);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tbIdentifikator);

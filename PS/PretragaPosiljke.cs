@@ -23,17 +23,18 @@ namespace PS
         {
             dgvPosiljke.Rows.Clear();
             string identifikator = tbIdentifikator.Text.Trim();
-            int id = int.Parse(identifikator);
-            PosiljkaStatusDAO pdao = DAOFactory.getDAOFactory().getPosiljkaStatusDAO();
-            List<PosiljkaStatusDTO> lista = pdao.posiljkeStatus();
+            PosiljkaDAO pDAO = DAOFactory.getDAOFactory().getPosiljkaDAO();
+            PosiljkaDTO posiljka = pDAO.vratiPosiljku(identifikator);
 
-            foreach (PosiljkaStatusDTO posiljka in lista)
+            PosiljkaStatusDAO psdao = DAOFactory.getDAOFactory().getPosiljkaStatusDAO();
+            List<PosiljkaStatusDTO> lista = psdao.posiljkeStatus();
+
+            foreach (PosiljkaStatusDTO posiljkaStatus in lista)
             {
-                if (id == posiljka.Posiljka.PosiljkaID)
+                if (identifikator.Equals(posiljkaStatus.Posiljka.PosiljkaID))
                 {
                     dgvPosiljke.Rows.Add(posiljka.Karta.PoslovnicaSalje.Naziv, posiljka.Karta.PoslovnicaPrima.Naziv,
                         posiljka.Status.Naziv, (posiljka.Status.Naziv.Equals("Poslana") ? posiljka.Karta.Vrijeme : posiljka.Karta.VrijemeStigla));
-                }
                 }
         }
     }
