@@ -14,6 +14,16 @@ namespace PS
 {
     public partial class DodavanjeLinija : Form
     {
+       
+
+        internal DodavanjeLinija(LinijaDTO linija)
+        {
+            cbPocetnaPosta.Text = linija.PoslovnicaSalje.Naziv;
+            cbKrajnjaPosta.Text = linija.PoslovnicaPrima.Naziv;
+            mtbDolazak.Text = linija.VrijemeDolaska.ToString();
+            mtbPolazak.Text = linija.VrijemePolaska.ToString();
+        }
+
         public DodavanjeLinija()
         {
             InitializeComponent();

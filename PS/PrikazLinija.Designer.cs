@@ -34,7 +34,6 @@
             this.Do = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vrijemeP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vrijemeD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.update = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLinije)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,12 +54,14 @@
             this.Od,
             this.Do,
             this.vrijemeP,
-            this.vrijemeD,
-            this.update});
+            this.vrijemeD});
             this.dgvLinije.Location = new System.Drawing.Point(15, 27);
             this.dgvLinije.Name = "dgvLinije";
-            this.dgvLinije.Size = new System.Drawing.Size(544, 244);
+            this.dgvLinije.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvLinije.Size = new System.Drawing.Size(444, 244);
             this.dgvLinije.TabIndex = 1;
+            this.dgvLinije.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLinije_CellClick);
+            this.dgvLinije.Click += new System.EventHandler(this.dgvLinije_Click);
             // 
             // Od
             // 
@@ -82,16 +83,11 @@
             this.vrijemeD.HeaderText = "Vrijeme dolaska";
             this.vrijemeD.Name = "vrijemeD";
             // 
-            // update
-            // 
-            this.update.HeaderText = "Update";
-            this.update.Name = "update";
-            // 
             // PrikazLinija
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(571, 300);
+            this.ClientSize = new System.Drawing.Size(476, 300);
             this.Controls.Add(this.dgvLinije);
             this.Controls.Add(this.label1);
             this.Name = "PrikazLinija";
@@ -111,6 +107,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Do;
         private System.Windows.Forms.DataGridViewTextBoxColumn vrijemeP;
         private System.Windows.Forms.DataGridViewTextBoxColumn vrijemeD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn update;
     }
 }
