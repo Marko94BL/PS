@@ -31,9 +31,7 @@ namespace PS
 
             foreach (PoslovnicaDTO poslovnica in lista)
             {
-                Console.Write(poslovnica.PostanskiCentar==null?"PC": poslovnica.PostanskiCentar.Naziv);
                 cbPrijemnaPosta.Items.Add(poslovnica);
-                //cbOdredisnaPosta.Items.Add(poslovnica);
             }
 
            
@@ -83,7 +81,7 @@ namespace PS
             {
                 text += posiljka.Barkod + "\r\n";
             }
-            System.IO.File.WriteAllText(@".\karteZakljucaka\"+kartaZakljucka.KartaID+".txt", text);
+            System.IO.File.WriteAllText(@".\karteZakljucaka\kz"+kartaZakljucka.KartaID+".txt", text);
            
             lbStatus.Text = "Kreirana karta zakljucka!";
             btnKreirajKartu.Enabled = false;
@@ -107,18 +105,20 @@ namespace PS
                 List<PoslovnicaDTO> listaSvih = pdao.poslovnice();
                 foreach (PoslovnicaDTO p in listaSvih)
                 {
-                    if (p.PostanskiCentar!=null && p.PostanskiCentar.PoslovnicaId == posl.PoslovnicaId)
+                    if (p.PostanskiCentar!=null && p.PostanskiCentar.PoslovnicaId == posl.PoslovnicaId && p.PoslovnicaId!=posl.PoslovnicaId)
                     {
                         cbOdredisnaPosta.Items.Add(p);
                     }
-                    else if(p.PostanskiCentar==null)
+                    else if(p.PostanskiCentar==null && p.PoslovnicaId!=posl.PoslovnicaId)
                     {
                         cbOdredisnaPosta.Items.Add(p);
                     }
                 }
+
+                
             }else
             {
-                PoslovnicaDTO pc = pdao.vratiPoslovnicu(posl.PoslovnicaId);
+                PoslovnicaDTO pc = pdao.vratiPoslovnicu(posl.PostanskiCentar.PoslovnicaId);
                 cbOdredisnaPosta.Items.Add(pc);
             }
         }

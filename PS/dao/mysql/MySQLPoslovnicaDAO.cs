@@ -20,7 +20,6 @@ namespace PS.dao.mysql
 
         public bool insert(PoslovnicaDTO poslovnica)
         {
-            //throw new NotImplementedException();
             MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
             try
             {
@@ -41,7 +40,6 @@ namespace PS.dao.mysql
                 else {
                     cmd.Parameters.AddWithValue("@IdPoslovnicaPC", null);
                 }
-               // cmd.Parameters.AddWithValue("@mjesto", poslovnica.Mjesto.MjestoId);
 
                 int brojRedova = cmd.ExecuteNonQuery();
             }
@@ -77,8 +75,7 @@ namespace PS.dao.mysql
                 PoslovnicaDTO pc = null;
                 try
                 {
-                    tmp = reader.GetInt32(1);
-                    pc = vratiPostanskiCentar(reader.GetInt32(1));
+                    pc = vratiPostanskiCentar(reader.GetInt32(4));
                 }
                 catch (Exception e)
                 {
