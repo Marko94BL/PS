@@ -30,7 +30,6 @@ namespace PS.dto
         public int PoslovnicaId { get => poslovnicaId; set => poslovnicaId = value; }
         public string Naziv { get => naziv; set => naziv = value; }
         public string Adresa { get => adresa; set => adresa = value; }
-        // public string Telefon { get => telefon; set => telefon = value; }
         internal PoslovnicaDTO PostanskiCentar { get => postanskiCentar; set => postanskiCentar = value; }
         internal MjestoDTO Mjesto { get => mjesto; set => mjesto = value; }
 

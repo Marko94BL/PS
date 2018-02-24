@@ -171,6 +171,7 @@
             this.cbPrijemnaPosta.Name = "cbPrijemnaPosta";
             this.cbPrijemnaPosta.Size = new System.Drawing.Size(233, 21);
             this.cbPrijemnaPosta.TabIndex = 28;
+            this.cbPrijemnaPosta.SelectedIndexChanged += new System.EventHandler(this.cbPrijemnaPosta_SelectedIndexChanged);
             // 
             // label8
             // 
@@ -215,7 +216,7 @@
             // tbIdentifikator
             // 
             this.tbIdentifikator.Location = new System.Drawing.Point(130, 153);
-            this.tbIdentifikator.Mask = "aa000000000aa";
+            this.tbIdentifikator.Mask = "LL000000000LL";
             this.tbIdentifikator.Name = "tbIdentifikator";
             this.tbIdentifikator.Size = new System.Drawing.Size(124, 20);
             this.tbIdentifikator.TabIndex = 31;

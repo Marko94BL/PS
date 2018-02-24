@@ -31,9 +31,12 @@ namespace PS
 
             foreach (PoslovnicaDTO poslovnica in lista)
             {
+                Console.Write(poslovnica.PostanskiCentar==null?"PC": poslovnica.PostanskiCentar.Naziv);
                 cbPrijemnaPosta.Items.Add(poslovnica);
-                cbOdredisnaPosta.Items.Add(poslovnica);
+                //cbOdredisnaPosta.Items.Add(poslovnica);
             }
+
+           
         }
 
         private void btnDodajNaPopis_Click(object sender, EventArgs e)
@@ -80,7 +83,7 @@ namespace PS
             {
                 text += posiljka.Barkod + "\r\n";
             }
-            System.IO.File.WriteAllText(@"C:\Users\racunar\source\repos\PS\"+kartaZakljucka.KartaID+".txt", text);
+            System.IO.File.WriteAllText(@".\karteZakljucaka\"+kartaZakljucka.KartaID+".txt", text);
            
             lbStatus.Text = "Kreirana karta zakljucka!";
             btnKreirajKartu.Enabled = false;
@@ -89,6 +92,35 @@ namespace PS
         private void btnKreirajSpisakRazmjene_Click(object sender, EventArgs e)
         {
             new PojedinacniSpisak(tbOtprema.Text.Trim(), prijemnaPosta, odredisnaPosta, datum, kartaZakljucka.KartaID).ShowDialog();
+        }
+
+        private void cbPrijemnaPosta_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbOdredisnaPosta.Items.Clear();
+            PoslovnicaDTO posl = cbPrijemnaPosta.SelectedItem as PoslovnicaDTO;
+            bool isPC;
+            if (posl.PostanskiCentar == null) isPC = true; else isPC = false;
+            Console.Write(isPC);
+            PoslovnicaDAO pdao = DAOFactory.getDAOFactory().getPoslovnicaDAO();
+            if (isPC)
+            {
+                List<PoslovnicaDTO> listaSvih = pdao.poslovnice();
+                foreach (PoslovnicaDTO p in listaSvih)
+                {
+                    if (p.PostanskiCentar!=null && p.PostanskiCentar.PoslovnicaId == posl.PoslovnicaId)
+                    {
+                        cbOdredisnaPosta.Items.Add(p);
+                    }
+                    else if(p.PostanskiCentar==null)
+                    {
+                        cbOdredisnaPosta.Items.Add(p);
+                    }
+                }
+            }else
+            {
+                PoslovnicaDTO pc = pdao.vratiPoslovnicu(posl.PoslovnicaId);
+                cbOdredisnaPosta.Items.Add(pc);
+            }
         }
     }
 }
