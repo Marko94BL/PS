@@ -1,0 +1,6 @@
+                                                                Datum: 2/24/2018 1:40:46 PM
+                                        Karta zaključka         Otprema: 1
+
+            Od: aaaa                                Za: bbb
++Prijemni broj
+_______________ RA123456789BA

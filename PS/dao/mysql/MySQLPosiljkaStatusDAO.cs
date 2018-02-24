@@ -21,16 +21,19 @@ namespace PS.dao.mysql
             try
             {
                 conn.Open();
-                MessageBox.Show(posiljkaStatus.Posiljka.PosiljkaID + "  " + posiljkaStatus.Karta.KartaID + "  " + posiljkaStatus.Status.StatusID);
+               // MessageBox.Show(posiljkaStatus.Posiljka.PosiljkaID + "  " + posiljkaStatus.Karta.KartaID + "  " + posiljkaStatus.Status.StatusID);
                 MySqlCommand cmd = conn.CreateCommand();
-                cmd.CommandText = "INSERT INTO posiljkastatus VALUES( @idPosiljkaStatus, @IdPosiljka, @IdKartaZakljucka, @IdStatus)";
+                cmd.CommandText = "INSERT INTO posiljkastatus VALUES(@idPosiljkaStatus, @IdPosiljka, @IdKartaZakljucka, @IdStatus)";
 
                 cmd.Parameters.AddWithValue("@idPosiljkaStatus", posiljkaStatus.PosiljkaStatusId);
                 cmd.Parameters.AddWithValue("@IdPosiljka", posiljkaStatus.Posiljka.PosiljkaID);
                 cmd.Parameters.AddWithValue("@IdKartaZakljucka", posiljkaStatus.Karta.KartaID);
                 cmd.Parameters.AddWithValue("@IdStatus", posiljkaStatus.Status.StatusID);
+                Console.Write(posiljkaStatus.PosiljkaStatusId + " " + posiljkaStatus.Posiljka.PosiljkaID + " " + posiljkaStatus.Karta.KartaID
+                    + " " + posiljkaStatus.Status.StatusID);
 
                 int brojRedova = cmd.ExecuteNonQuery();
+                Console.Write("****");
             }
             catch (MySqlException e)
             {

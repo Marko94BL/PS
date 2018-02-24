@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -70,6 +71,17 @@ namespace PS
             {
                 psdao.insert(new PosiljkaStatusDTO(new StatusDTO(1, "Poslana", "Pošiljka je poslana"), posiljka, kartaZakljucka, 0));
             }
+
+            //kreiranje stringa za upis u fajl
+            string text = "                                                                Datum: " + datum+"\r\n"+
+                          "                                        " + "Karta zaključka         Otprema: "+tbOtprema.Text.Trim()+"\r\n\r\n"+
+                "            Od: " + prijemnaPosta+"                                Za: "+odredisnaPosta+"\r\n"+ "Prijemni broj\r\n_______________\r\n ";
+            foreach (PosiljkaDTO posiljka in posiljkeIdLista)
+            {
+                text += posiljka.Barkod + "\r\n";
+            }
+            System.IO.File.WriteAllText(@"C:\Users\racunar\source\repos\PS\"+kartaZakljucka.KartaID+".txt", text);
+           
             lbStatus.Text = "Kreirana karta zakljucka!";
             btnKreirajKartu.Enabled = false;
         }

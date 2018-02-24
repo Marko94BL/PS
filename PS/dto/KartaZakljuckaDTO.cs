@@ -20,8 +20,8 @@ namespace PS.dto
        
         public KartaZakljuckaDTO() { }
 
-        
-        public KartaZakljuckaDTO(int kartaID, string vrstaZakljucka, DateTime vrijeme, int redniBrojOtpreme, string napomena, KorisnikDTO nalog, PoslovnicaDTO poslovnicaSalje, PoslovnicaDTO poslovnicaPrima)
+        public KartaZakljuckaDTO(int kartaID, string vrstaZakljucka, DateTime vrijeme, int redniBrojOtpreme,
+    string napomena, KorisnikDTO nalog, PoslovnicaDTO poslovnicaSalje, PoslovnicaDTO poslovnicaPrima)
         {
             this.kartaID = kartaID;
             this.vrstaZakljucka = vrstaZakljucka;
@@ -31,6 +31,22 @@ namespace PS.dto
             this.nalog = nalog;
             this.poslovnicaSalje = poslovnicaSalje;
             this.poslovnicaPrima = poslovnicaPrima;
+           
+
+        }
+
+        public KartaZakljuckaDTO(int kartaID, string vrstaZakljucka, DateTime vrijeme, int redniBrojOtpreme, 
+            string napomena, KorisnikDTO nalog, PoslovnicaDTO poslovnicaSalje, PoslovnicaDTO poslovnicaPrima, DateTime vrijemeStigla)
+        {
+            this.kartaID = kartaID;
+            this.vrstaZakljucka = vrstaZakljucka;
+            this.vrijemePoslana = vrijeme;
+            this.redniBrojOtpreme = redniBrojOtpreme;
+            this.napomena = napomena;
+            this.nalog = nalog;
+            this.poslovnicaSalje = poslovnicaSalje;
+            this.poslovnicaPrima = poslovnicaPrima;
+            this.vrijemeStigla = vrijemeStigla;
            
         }
 

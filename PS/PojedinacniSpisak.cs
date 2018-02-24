@@ -44,7 +44,7 @@ namespace PS
             {
                 KartaZakljuckaDTO karta = new KartaZakljuckaDTO();
                 karta.KartaID = kartaZakljuckaId;
-                vdao.insert(new VrecaDTO(karta, int.Parse(vreca), 0));
+                vdao.insert(new VrecaDTO(karta, 0, vreca));
             }
             MessageBox.Show("Pojedinacni spisak kreiran!");
             this.Close();
