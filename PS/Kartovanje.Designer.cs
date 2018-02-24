@@ -107,7 +107,7 @@
             this.tbOtprema.Location = new System.Drawing.Point(467, 17);
             this.tbOtprema.Name = "tbOtprema";
             this.tbOtprema.Size = new System.Drawing.Size(116, 20);
-            this.tbOtprema.TabIndex = 14;
+            this.tbOtprema.TabIndex = 0;
             // 
             // cbOdredisnaPosta
             // 
@@ -115,7 +115,7 @@
             this.cbOdredisnaPosta.Location = new System.Drawing.Point(350, 124);
             this.cbOdredisnaPosta.Name = "cbOdredisnaPosta";
             this.cbOdredisnaPosta.Size = new System.Drawing.Size(233, 21);
-            this.cbOdredisnaPosta.TabIndex = 16;
+            this.cbOdredisnaPosta.TabIndex = 2;
             // 
             // dgvKartaZakljucka
             // 
@@ -141,7 +141,7 @@
             this.dtpDatum.Location = new System.Drawing.Point(90, 124);
             this.dtpDatum.Name = "dtpDatum";
             this.dtpDatum.Size = new System.Drawing.Size(200, 20);
-            this.dtpDatum.TabIndex = 20;
+            this.dtpDatum.TabIndex = 3;
             // 
             // btnKreirajKartu
             // 
@@ -170,7 +170,7 @@
             this.cbPrijemnaPosta.Location = new System.Drawing.Point(350, 92);
             this.cbPrijemnaPosta.Name = "cbPrijemnaPosta";
             this.cbPrijemnaPosta.Size = new System.Drawing.Size(233, 21);
-            this.cbPrijemnaPosta.TabIndex = 28;
+            this.cbPrijemnaPosta.TabIndex = 1;
             this.cbPrijemnaPosta.SelectedIndexChanged += new System.EventHandler(this.cbPrijemnaPosta_SelectedIndexChanged);
             // 
             // label8
@@ -189,7 +189,7 @@
             this.tbNapomena.Multiline = true;
             this.tbNapomena.Name = "tbNapomena";
             this.tbNapomena.Size = new System.Drawing.Size(273, 120);
-            this.tbNapomena.TabIndex = 30;
+            this.tbNapomena.TabIndex = 6;
             // 
             // btnDodajNaPopis
             // 
@@ -197,7 +197,7 @@
             this.btnDodajNaPopis.Location = new System.Drawing.Point(260, 153);
             this.btnDodajNaPopis.Name = "btnDodajNaPopis";
             this.btnDodajNaPopis.Size = new System.Drawing.Size(30, 23);
-            this.btnDodajNaPopis.TabIndex = 21;
+            this.btnDodajNaPopis.TabIndex = 5;
             this.btnDodajNaPopis.Text = "+";
             this.btnDodajNaPopis.UseVisualStyleBackColor = true;
             this.btnDodajNaPopis.Click += new System.EventHandler(this.btnDodajNaPopis_Click);
@@ -219,7 +219,7 @@
             this.tbIdentifikator.Mask = "LL000000000LL";
             this.tbIdentifikator.Name = "tbIdentifikator";
             this.tbIdentifikator.Size = new System.Drawing.Size(124, 20);
-            this.tbIdentifikator.TabIndex = 31;
+            this.tbIdentifikator.TabIndex = 4;
             // 
             // lbStatus
             // 

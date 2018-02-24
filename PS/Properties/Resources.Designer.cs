@@ -123,6 +123,16 @@ namespace PS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap location {
+            get {
+                object obj = ResourceManager.GetObject("location", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap NovaPosiljka {
             get {
                 object obj = ResourceManager.GetObject("NovaPosiljka", resourceCulture);
