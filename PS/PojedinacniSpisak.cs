@@ -46,6 +46,17 @@ namespace PS
                 karta.KartaID = kartaZakljuckaId;
                 vdao.insert(new VrecaDTO(karta, 0, vreca));
             }
+
+            //kreiranje stringa za upis u fajl
+            string text = "                                                                Datum: " + tbDatum.Text + "\r\n" +
+                          "                                        " + "Spisak razmjene         Otprema: " + tbOtprema.Text.Trim() + "\r\n\r\n" +
+                "            Od: " + tbOd.Text + "                                              Za: " + tbZa.Text + "\r\n" + "Identifikator\r\n_______________\r\n ";
+            foreach (string vreca in vreceOIdLista)
+            {
+                text += vreca + "\r\n";
+            }
+            System.IO.File.WriteAllText(@".\spiskoviRazmjene\sr" + kartaZakljuckaId + ".txt", text);
+
             MessageBox.Show("Pojedinacni spisak kreiran!");
             this.Close();
         }

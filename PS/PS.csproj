@@ -159,6 +159,12 @@
     <Compile Include="Prijem.Designer.cs">
       <DependentUpon>Prijem.cs</DependentUpon>
     </Compile>
+    <Compile Include="PrikazLinija.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrikazLinija.Designer.cs">
+      <DependentUpon>PrikazLinija.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -205,6 +211,9 @@
     <EmbeddedResource Include="Prijem.resx">
       <DependentUpon>Prijem.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PrikazLinija.resx">
+      <DependentUpon>PrikazLinija.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -239,6 +248,7 @@
     <Content Include="docs\MySqlParameter.xml" />
     <Content Include="docs\MySqlParameterCollection.xml" />
     <Content Include="docs\MySqlTransaction.xml" />
+    <None Include="Resources\location.png" />
     <None Include="Resources\linija1.png" />
     <None Include="Resources\poslovnica.png" />
     <None Include="Resources\linija.png" />

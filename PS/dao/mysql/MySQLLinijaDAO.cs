@@ -40,5 +40,29 @@ namespace PS.dao.mysql
             }
             return true;
         }
+
+        public List<LinijaDTO> linije()
+        {
+            MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
+            conn.Open();
+
+            List<LinijaDTO> lista = new List<LinijaDTO>();
+
+            MySqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "SELECT * FROM linija";
+
+            MySqlDataReader reader = cmd.ExecuteReader();
+            PoslovnicaDAO pdao = DAOFactory.getDAOFactory().getPoslovnicaDAO();
+            PoslovnicaDTO prima = null, salje = null;
+            while (reader.Read())
+            {
+                salje = pdao.vratiPoslovnicu(reader.GetInt32(1));
+                prima = pdao.vratiPoslovnicu(reader.GetInt32(2));
+                lista.Add(new LinijaDTO(reader.GetInt32(0),salje, prima, TimeSpan.Parse(reader.GetInt32(3).ToString()), TimeSpan.Parse(reader.GetInt32(4).ToString()));
+            }
+            reader.Close();
+            conn.Close();
+            return lista;
+        }
     }
 }
