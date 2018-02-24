@@ -65,6 +65,7 @@
     <Compile Include="AdminMeni.Designer.cs">
       <DependentUpon>AdminMeni.cs</DependentUpon>
     </Compile>
+    <Compile Include="controlers\Printer.cs" />
     <Compile Include="dao\DAOFactory.cs" />
     <Compile Include="dao\KartaZakljuckaDAO.cs" />
     <Compile Include="dao\KorisnickiNalogDAO.cs" />
@@ -281,8 +282,6 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="controlers\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
