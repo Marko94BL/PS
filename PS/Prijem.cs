@@ -38,6 +38,9 @@ namespace PS
 
             btnOdjava.Enabled = false;
             bnPosiljkeNedostaju.Enabled = false;
+
+            btnOvjeraSpiska.Enabled = false;
+            btnOvjeraKarteZakljucka.Enabled = false;
         }
 
         
@@ -86,16 +89,28 @@ namespace PS
                         }
                         tbIdentifikatorVrece.Enabled = true;
                         btnVreca.Enabled = true;
+
+                        btnOvjeraSpiska.Enabled = true;
+                        btnOvjeraKarteZakljucka.Enabled = true;
                     }
                     else
                     {
+                        btnOvjeraSpiska.Enabled = false;
+                        btnOvjeraKarteZakljucka.Enabled = false;
                         MessageBox.Show("Ne postoji karta zaključka sa unešenim identifikatorom!", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
-                catch (Exception es) {
+                catch (Exception es)
+                {
+                    btnOvjeraSpiska.Enabled = false;
+                    btnOvjeraKarteZakljucka.Enabled = false;
                     MessageBox.Show("Ne postoji karta zaključka sa unešenim identifikatorom!", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                
+
+            }
+            else {
+                btnOvjeraSpiska.Enabled = false;
+                btnOvjeraKarteZakljucka.Enabled = false;
             }
         }
 
