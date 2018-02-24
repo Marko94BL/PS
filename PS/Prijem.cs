@@ -45,46 +45,56 @@ namespace PS
             if (tbIdentifikatorKarte != null && !tbIdentifikatorKarte.Text.Equals(""))
             {
                 KartaZakljuckaDAO kzdao = DAOFactory.getDAOFactory().getKartaZakljuckaDAO();
-                kartaZakljucka = kzdao.vratiKartaZakljucka(int.Parse(tbIdentifikatorKarte.Text.Trim()));
-
-                if (kartaZakljucka != null)
+                int id = 0;
+                try
                 {
+                    id = int.Parse(tbIdentifikatorKarte.Text.Trim());
+                    kartaZakljucka = kzdao.vratiKartaZakljucka(id);
 
-                    tbPolazna.Text = kartaZakljucka.PoslovnicaSalje.ToString();
-                    tbPolazna.Enabled = false;
-
-                    idPoslovnicaPrima = kartaZakljucka.PoslovnicaPrima.PoslovnicaId;
-
-                    tbPrijemna.Text = kartaZakljucka.PoslovnicaPrima.ToString();
-                    tbPrijemna.Enabled = false;
-                    tbDatumSlanja.Text = kartaZakljucka.Vrijeme.ToString();
-                    tbDatumSlanja.Enabled = false;
-
-                    VrecaDAO vdao = DAOFactory.getDAOFactory().getVrecaDAO();
-                    List<VrecaDTO> vrece = vdao.vrece(kartaZakljucka);
-
-                    PosiljkaStatusDAO psdao = DAOFactory.getDAOFactory().getPosiljkaStatusDAO();
-                    List<PosiljkaStatusDTO> posiljkeStatusLista = psdao.posiljkeStatus(kartaZakljucka);
-
-                    // dgvPosiljke = new DataGridView();
-                    // dgvVrece = new DataGridView();
-
-                    dgvVrece.Rows.Clear();
-                    dgvPosiljke.Rows.Clear();
-                    foreach (VrecaDTO vreca in vrece)
+                    if (kartaZakljucka != null)
                     {
-                        dgvVrece.Rows.Add(vreca.Broj, "NOK");
+
+                        tbPolazna.Text = kartaZakljucka.PoslovnicaSalje.ToString();
+                        tbPolazna.Enabled = false;
+
+                        idPoslovnicaPrima = kartaZakljucka.PoslovnicaPrima.PoslovnicaId;
+
+                        tbPrijemna.Text = kartaZakljucka.PoslovnicaPrima.ToString();
+                        tbPrijemna.Enabled = false;
+                        tbDatumSlanja.Text = kartaZakljucka.Vrijeme.ToString();
+                        tbDatumSlanja.Enabled = false;
+
+                        VrecaDAO vdao = DAOFactory.getDAOFactory().getVrecaDAO();
+                        List<VrecaDTO> vrece = vdao.vrece(kartaZakljucka);
+
+                        PosiljkaStatusDAO psdao = DAOFactory.getDAOFactory().getPosiljkaStatusDAO();
+                        List<PosiljkaStatusDTO> posiljkeStatusLista = psdao.posiljkeStatus(kartaZakljucka);
+
+                        // dgvPosiljke = new DataGridView();
+                        // dgvVrece = new DataGridView();
+
+                        dgvVrece.Rows.Clear();
+                        dgvPosiljke.Rows.Clear();
+                        foreach (VrecaDTO vreca in vrece)
+                        {
+                            dgvVrece.Rows.Add(vreca.Broj, "NOK");
+                        }
+                        foreach (PosiljkaStatusDTO posiljkaStatus in posiljkeStatusLista)
+                        {
+                            dgvPosiljke.Rows.Add(posiljkaStatus.Posiljka.Barkod, "NOK");
+                        }
+                        tbIdentifikatorVrece.Enabled = true;
+                        btnVreca.Enabled = true;
                     }
-                    foreach (PosiljkaStatusDTO posiljkaStatus in posiljkeStatusLista)
+                    else
                     {
-                        dgvPosiljke.Rows.Add(posiljkaStatus.Posiljka.Barkod, "NOK");
+                        MessageBox.Show("Ne postoji karta zaključka sa unešenim identifikatorom!", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    tbIdentifikatorVrece.Enabled = true;
-                    btnVreca.Enabled = true;
                 }
-                else {
+                catch (Exception es) {
                     MessageBox.Show("Ne postoji karta zaključka sa unešenim identifikatorom!", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+                
             }
         }
 
