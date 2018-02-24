@@ -105,7 +105,7 @@ namespace PS.dao.mysql
             throw new NotImplementedException();
         }
 
-        public PosiljkaDTO vratiPosiljku(int posiljkaId)
+        public PosiljkaDTO vratiPosiljku(string barkod)
         {
 
 
@@ -115,9 +115,9 @@ namespace PS.dao.mysql
             PosiljkaDTO posiljka = null;
 
             MySqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT * FROM posiljka WHERE posiljkaID = @posiljkaId";
+            cmd.CommandText = "SELECT * FROM posiljka WHERE Barkod = @Barkod";
 
-            cmd.Parameters.AddWithValue("@posiljkaId", posiljkaId);
+            cmd.Parameters.AddWithValue("@Barkod", barkod);
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {

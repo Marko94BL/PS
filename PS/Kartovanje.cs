@@ -38,7 +38,7 @@ namespace PS
         private void btnDodajNaPopis_Click(object sender, EventArgs e)
         {
             PosiljkaDAO pdao = DAOFactory.getDAOFactory().getPosiljkaDAO();
-            PosiljkaDTO posiljka = pdao.vratiPosiljku(int.Parse(tbIdentifikator.Text.Trim()));//sadrzaj text field-a
+            PosiljkaDTO posiljka = pdao.vratiPosiljku(tbIdentifikator.Text.Trim());//sadrzaj text field-a
             if(posiljka!=null)
             {
                 posiljkeIdLista.Add(posiljka);
@@ -65,10 +65,10 @@ namespace PS
             PosiljkaStatusDAO psdao = DAOFactory.getDAOFactory().getPosiljkaStatusDAO();
 
             kartaZakljucka.KartaID = kzdao.insert(kartaZakljucka);
-
+           
             foreach (PosiljkaDTO posiljka in posiljkeIdLista)
             {
-              //  psdao.insert(new PosiljkaStatusDTO(new StatusDTO(2, ""), posiljka, kartaZakljucka));
+                psdao.insert(new PosiljkaStatusDTO(new StatusDTO(1, "Poslana", "Pošiljka je poslana"), posiljka, kartaZakljucka, 0));
             }
             lbStatus.Text = "Kreirana karta zakljucka!";
             btnKreirajKartu.Enabled = false;

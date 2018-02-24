@@ -97,7 +97,7 @@ namespace PS
         private void btnPosiljke_Click(object sender, EventArgs e)
         {
             PosiljkaDAO pdao = DAOFactory.getDAOFactory().getPosiljkaDAO();
-            posiljka = pdao.vratiPosiljku(int.Parse(tbIdentifikatorPosiljke.Text.Trim()));
+            posiljka = pdao.vratiPosiljku(tbIdentifikatorPosiljke.Text.Trim());
             bool flag = false;
             foreach (DataGridViewRow red in dgvPosiljke.Rows)
             {

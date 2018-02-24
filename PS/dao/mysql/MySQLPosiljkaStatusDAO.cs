@@ -87,7 +87,7 @@ namespace PS.dao.mysql
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                PosiljkaDTO posiljka = new MySQLPosiljkaDAO().vratiPosiljku(reader.GetInt32(0));
+               // PosiljkaDTO posiljka = new MySQLPosiljkaDAO().vratiPosiljku(reader.GetInt32(0));
                 // posiljkeS.Add(new PosiljkaStatusDTO(new StatusDTO(reader.GetInt32(2), ""), posiljka, karta));//????
             }
             reader.Close();
