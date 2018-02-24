@@ -60,7 +60,7 @@ namespace PS
             byte vanVrece = Convert.ToByte(cbVanVrece.Checked);
             PoslovnicaDTO odredisnaPosta = (cbPrijemnaPosta.SelectedItem as PoslovnicaDTO);
 
-            if (!(prijemnaPosta.Equals(null) || punoPolje || odredisnaPosta.Equals(null)))
+            if (!(prijemnaPosta == null || punoPolje || odredisnaPosta == null))
             {
                 PosiljkaDAO pDAO = DAOFactory.getDAOFactory().getPosiljkaDAO();
                 KorisnickiNalogDAO kdao = DAOFactory.getDAOFactory().getKorisnickiNalogDAO();
@@ -70,6 +70,7 @@ namespace PS
                 bool rez = pDAO.insert(posiljka);
                 if (rez)
                 {
+                    MessageBox.Show("Uspješno ste dodali novu pošiljku", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
             }

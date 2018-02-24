@@ -167,6 +167,12 @@
     <Compile Include="Prijem.Designer.cs">
       <DependentUpon>Prijem.cs</DependentUpon>
     </Compile>
+    <Compile Include="PrikazKorisnickihNaloga.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrikazKorisnickihNaloga.Designer.cs">
+      <DependentUpon>PrikazKorisnickihNaloga.cs</DependentUpon>
+    </Compile>
     <Compile Include="PrikazLinija.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -222,6 +228,9 @@
     <EmbeddedResource Include="Prijem.resx">
       <DependentUpon>Prijem.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PrikazKorisnickihNaloga.resx">
+      <DependentUpon>PrikazKorisnickihNaloga.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PrikazLinija.resx">
       <DependentUpon>PrikazLinija.cs</DependentUpon>
     </EmbeddedResource>
@@ -264,6 +273,7 @@
     <None Include="Resources\GrupniSpisak1.ico" />
     <None Include="Resources\GrupniSpisak1.png" />
     <None Include="Resources\GrupniSpisak.ico" />
+    <None Include="Resources\korisnik.png" />
     <None Include="Resources\location.png" />
     <None Include="Resources\linija1.png" />
     <None Include="Resources\poslovnica.png" />

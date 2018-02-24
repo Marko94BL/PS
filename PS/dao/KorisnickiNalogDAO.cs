@@ -13,5 +13,7 @@ namespace PS.dao
         bool daLiPostojiKorisnik(string korisnickoIme);
         bool insert(KorisnikDTO kn);
         KorisnikDTO pretragaPoId(int id);
+        List<KorisnikDTO> vratiKorisnike();
+        void update(KorisnikDTO kDTO);
     }
 }

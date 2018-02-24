@@ -55,38 +55,42 @@ namespace PS
 
         private void btnKreirajKartu_Click(object sender, EventArgs e)
         {
-            prijemnaPosta = (cbPrijemnaPosta.SelectedItem as PoslovnicaDTO).ToString();
-            odredisnaPosta = (cbOdredisnaPosta.SelectedItem as PoslovnicaDTO).ToString();
-            datum = dtpDatum.Value.ToString();
-
-            KartaZakljuckaDAO kzdao = DAOFactory.getDAOFactory().getKartaZakljuckaDAO();
-            KorisnikDTO nalog = new KorisnikDTO();
-            nalog = GlavnaForma.Prijavljeni;
-            kartaZakljucka = new KartaZakljuckaDTO(0, "S", dtpDatum.Value, int.Parse(tbOtprema.Text.Trim()), tbNapomena.Text.Trim(),
-               nalog, cbPrijemnaPosta.SelectedItem as PoslovnicaDTO, cbOdredisnaPosta.SelectedItem as PoslovnicaDTO);
-
-            PosiljkaStatusDAO psdao = DAOFactory.getDAOFactory().getPosiljkaStatusDAO();
-
-            kartaZakljucka.KartaID = kzdao.insert(kartaZakljucka);
-           
-            foreach (PosiljkaDTO posiljka in posiljkeIdLista)
+            if (cbPrijemnaPosta.SelectedIndex > -1 && cbOdredisnaPosta.SelectedIndex > -1 && (tbOtprema != null && !tbOtprema.Text.Equals("")))
             {
-                psdao.insert(new PosiljkaStatusDTO(new StatusDTO(1, "Poslana", "Pošiljka je poslana"), posiljka, kartaZakljucka, 0));
-            }
+                prijemnaPosta = (cbPrijemnaPosta.SelectedItem as PoslovnicaDTO).ToString();
+                odredisnaPosta = (cbOdredisnaPosta.SelectedItem as PoslovnicaDTO).ToString();
+                datum = dtpDatum.Value.ToString();
 
-            //kreiranje stringa za upis u fajl
-            string text = "                                                                Datum: " + datum+"\r\n"+
-                          "                                        " + "Karta zaključka         Otprema: "+tbOtprema.Text.Trim()+"\r\n\r\n"+
-                "            Od: " + prijemnaPosta+"                                Za: "+odredisnaPosta+"\r\n"+ "Prijemni broj\r\n_______________\r\n ";
-            foreach (PosiljkaDTO posiljka in posiljkeIdLista)
-            {
-                text += posiljka.Barkod + "\r\n";
+            
+                KartaZakljuckaDAO kzdao = DAOFactory.getDAOFactory().getKartaZakljuckaDAO();
+                KorisnikDTO nalog = new KorisnikDTO();
+                nalog = GlavnaForma.Prijavljeni;
+                kartaZakljucka = new KartaZakljuckaDTO(0, "S", dtpDatum.Value, int.Parse(tbOtprema.Text.Trim()), tbNapomena.Text.Trim(),
+                   nalog, cbPrijemnaPosta.SelectedItem as PoslovnicaDTO, cbOdredisnaPosta.SelectedItem as PoslovnicaDTO);
+
+                PosiljkaStatusDAO psdao = DAOFactory.getDAOFactory().getPosiljkaStatusDAO();
+
+                kartaZakljucka.KartaID = kzdao.insert(kartaZakljucka);
+
+                foreach (PosiljkaDTO posiljka in posiljkeIdLista)
+                {
+                    psdao.insert(new PosiljkaStatusDTO(new StatusDTO(1, "Poslana", "Pošiljka je poslana"), posiljka, kartaZakljucka, 0));
+                }
+
+                //kreiranje stringa za upis u fajl
+                string text = "                                                                Datum: " + datum + "\r\n" +
+                              "                                        " + "Karta zaključka         Otprema: " + tbOtprema.Text.Trim() + "\r\n\r\n" +
+                    "            Od: " + prijemnaPosta + "                                Za: " + odredisnaPosta + "\r\n" + "Prijemni broj\r\n_______________\r\n ";
+                foreach (PosiljkaDTO posiljka in posiljkeIdLista)
+                {
+                    text += posiljka.Barkod + "\r\n";
+                }
+                System.IO.File.WriteAllText(@".\karteZakljucaka\kz" + kartaZakljucka.KartaID + ".txt", text);
+
+                lbStatus.Text = "Kreirana karta zakljucka!";
+                btnKreirajKartu.Enabled = false;
+                btnKreirajSpisakRazmjene.Enabled = true;
             }
-            System.IO.File.WriteAllText(@".\karteZakljucaka\kz"+kartaZakljucka.KartaID+".txt", text);
-           
-            lbStatus.Text = "Kreirana karta zakljucka!";
-            btnKreirajKartu.Enabled = false;
-            btnKreirajSpisakRazmjene.Enabled = true;
         }
 
         private void btnKreirajSpisakRazmjene_Click(object sender, EventArgs e)
