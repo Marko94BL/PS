@@ -38,9 +38,9 @@
             this.btnDodaj = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.dgvVrece = new System.Windows.Forms.DataGridView();
+            this.colIdentifikator = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnKreirajSpisak = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.colIdentifikator = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbDatum = new System.Windows.Forms.TextBox();
             this.tbZa = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -102,6 +102,7 @@
             this.tbIdentifikator.Name = "tbIdentifikator";
             this.tbIdentifikator.Size = new System.Drawing.Size(163, 20);
             this.tbIdentifikator.TabIndex = 25;
+            this.tbIdentifikator.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbIdentifikator_KeyDown);
             // 
             // label4
             // 
@@ -144,6 +145,13 @@
             this.dgvVrece.Size = new System.Drawing.Size(357, 234);
             this.dgvVrece.TabIndex = 28;
             // 
+            // colIdentifikator
+            // 
+            this.colIdentifikator.HeaderText = "Identifikator";
+            this.colIdentifikator.Name = "colIdentifikator";
+            this.colIdentifikator.ReadOnly = true;
+            this.colIdentifikator.Width = 315;
+            // 
             // btnKreirajSpisak
             // 
             this.btnKreirajSpisak.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -164,13 +172,6 @@
             this.label6.Size = new System.Drawing.Size(126, 20);
             this.label6.TabIndex = 30;
             this.label6.Text = "Spisak razmjene";
-            // 
-            // colIdentifikator
-            // 
-            this.colIdentifikator.HeaderText = "Identifikator";
-            this.colIdentifikator.Name = "colIdentifikator";
-            this.colIdentifikator.ReadOnly = true;
-            this.colIdentifikator.Width = 315;
             // 
             // tbDatum
             // 
