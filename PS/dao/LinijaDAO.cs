@@ -11,5 +11,6 @@ namespace PS.dao
     {
         bool insert(LinijaDTO linija);
         List<LinijaDTO> linije();
+        //LinijaDTO pretragaLinija(string salje, string prima);
     }
 }

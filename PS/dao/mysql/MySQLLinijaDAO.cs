@@ -58,11 +58,13 @@ namespace PS.dao.mysql
             {
                 salje = pdao.vratiPoslovnicu(reader.GetInt32(1));
                 prima = pdao.vratiPoslovnicu(reader.GetInt32(2));
-                lista.Add(new LinijaDTO(reader.GetInt32(0),salje, prima, TimeSpan.Parse(reader.GetInt32(3).ToString()), TimeSpan.Parse(reader.GetInt32(4).ToString()));
+                lista.Add(new LinijaDTO(reader.GetInt32(0), salje, prima, reader.GetTimeSpan(3), reader.GetTimeSpan(4)));
             }
             reader.Close();
             conn.Close();
             return lista;
         }
+
+        
     }
 }
