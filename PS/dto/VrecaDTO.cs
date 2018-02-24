@@ -14,14 +14,14 @@ namespace PS.dto
 
         public VrecaDTO(KartaZakljuckaDTO kartaId, int vrecaId, string broj)
         {
-            this.kartaZakljucka = kartaId;
-            this.vrecaId = vrecaId;
-            this.broj = broj;
+            this.KartaZakljucka = kartaId;
+            this.VrecaId = vrecaId;
+            this.Broj = broj;
 
         }
 
-        public int VrecaId { get => vrecaId; set => vrecaId = value; }
         public string Broj { get => broj; set => broj = value; }
+        public int VrecaId { get => vrecaId; set => vrecaId = value; }
         internal KartaZakljuckaDTO KartaZakljucka { get => kartaZakljucka; set => kartaZakljucka = value; }
     }
 }

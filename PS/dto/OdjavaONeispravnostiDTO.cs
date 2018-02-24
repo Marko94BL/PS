@@ -14,8 +14,14 @@ namespace PS.dto
         private KartaZakljuckaDTO kartaZakljucka;
        // private DateTime vrijeme;
         private PoslovnicaDTO poslovnica;
+       // private string v;
 
         public OdjavaONeispravnostiDTO() { }
+
+        public OdjavaONeispravnostiDTO(string v)
+        {
+            this.napomena = v;
+        }
 
         public OdjavaONeispravnostiDTO(int idOdjavaONeispravnosti, string napomena, PosiljkaDTO posiljka, KartaZakljuckaDTO kartaZakljucka, PoslovnicaDTO poslovnica)
         {

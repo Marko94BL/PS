@@ -21,7 +21,7 @@ namespace PS.dao.mysql
             try
             {
                 conn.Open();
-               // MessageBox.Show(posiljkaStatus.Posiljka.PosiljkaID + "  " + posiljkaStatus.Karta.KartaID + "  " + posiljkaStatus.Status.StatusID);
+                //MessageBox.Show(posiljkaStatus.Posiljka.PosiljkaID + "  " + posiljkaStatus.Karta.KartaID + "  " + posiljkaStatus.Status.StatusID);
                 MySqlCommand cmd = conn.CreateCommand();
                 cmd.CommandText = "INSERT INTO posiljkastatus VALUES(@idPosiljkaStatus, @IdPosiljka, @IdKartaZakljucka, @IdStatus)";
 
@@ -48,6 +48,41 @@ namespace PS.dao.mysql
             }
             return true;
 
+        }
+
+        public PosiljkaStatusDTO posiljkaStatusKarta(int posiljkaID)
+        {
+            MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
+            conn.Open();
+
+            // List<PosiljkaStatusDTO> posiljkeS = new List<PosiljkaStatusDTO>();
+            PosiljkaStatusDTO pt = null;
+
+            MySqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "SELECT * FROM posiljkastatus WHERE IdPosiljka = @IdPosiljka and IdStatus=1";//status poslane - te trebaju za prijem!
+            //cmd.Parameters.AddWithValue("@kartaId", kartaID);
+            cmd.Parameters.AddWithValue("@IdPosiljka", posiljkaID);
+
+            MySqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                PosiljkaDAO posDAO = DAOFactory.getDAOFactory().getPosiljkaDAO();
+                PosiljkaDTO posiljka = posDAO.vratiPosiljku(reader.GetInt32(1));
+
+                KartaZakljuckaDAO kzDAO = DAOFactory.getDAOFactory().getKartaZakljuckaDAO();
+                KartaZakljuckaDTO karta = kzDAO.vratiKartaZakljucka(reader.GetInt32(2));
+
+                StatusDAO sDAO = DAOFactory.getDAOFactory().getStatusDAO();
+                StatusDTO sDTO = sDAO.vratiStatus(reader.GetInt32(3));
+
+                pt = new PosiljkaStatusDTO(sDTO, posiljka, karta, reader.GetInt32(0));
+            }
+            else {
+                MessageBox.Show("Pošiljka ne postoji","Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            reader.Close();
+            conn.Close();
+            return pt;
         }
 
         public PosiljkaStatusDTO posiljkaStatusKartaIPosiljka(int posiljkaID, int kartaID)
@@ -123,8 +158,8 @@ namespace PS.dao.mysql
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-               // PosiljkaDTO posiljka = new MySQLPosiljkaDAO().vratiPosiljku(reader.GetInt32(0));
-                // posiljkeS.Add(new PosiljkaStatusDTO(new StatusDTO(reader.GetInt32(2), ""), posiljka, karta));//????
+               PosiljkaDTO posiljka = new MySQLPosiljkaDAO().vratiPosiljku(reader.GetInt32(0));
+               posiljkeS.Add(new PosiljkaStatusDTO(new StatusDTO(reader.GetInt32(3)), posiljka, karta,reader.GetInt32(0))); //????
             }
             reader.Close();
             conn.Close();
@@ -138,7 +173,7 @@ namespace PS.dao.mysql
             try
             {
                 conn.Open();
-                MessageBox.Show(posiljkaStatus.Posiljka.PosiljkaID + "  " + posiljkaStatus.Karta.KartaID + "  " + posiljkaStatus.Status.StatusID);
+               // MessageBox.Show(posiljkaStatus.Posiljka.PosiljkaID + "  " + posiljkaStatus.Karta.KartaID + "  " + posiljkaStatus.Status.StatusID);
                 MySqlCommand cmd = conn.CreateCommand();
                 cmd.CommandText = "UPDATE posiljkastatus SET  IdPosiljka=@IdPosiljka,IdKartaZakljucka=@IdKartaZakljucka,IdStatus= @IdStatus WHERE IdPosiljkaStatus= @idPosiljkaStatus";
 
@@ -162,5 +197,6 @@ namespace PS.dao.mysql
             }
             return true;
         }
+
     }
 }
