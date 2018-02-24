@@ -18,6 +18,41 @@ namespace PS.dao.mysql
             //return true;
         }
 
+        public PoslovnicaDTO pretragaPoNazivu(string naziv)
+        {
+            MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
+            conn.Open();
+
+            PoslovnicaDTO p = null;
+
+            MySqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "SELECT * FROM poslovnica WHERE Naziv = @naziv";
+
+            cmd.Parameters.AddWithValue("@naziv", naziv);
+
+            MySqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                int tmp;
+                PoslovnicaDTO pc = null;
+                try
+                {
+                    tmp = reader.GetInt32(1);
+                    pc = vratiPostanskiCentar(reader.GetInt32(4));//vrati postanski centar sa idOm iz kolone 1
+                }
+                catch (Exception e)
+                {
+                    e.ToString();
+                }
+                MjestoDAO mdao = new MySQLMjestoDAO();
+                MjestoDTO m = mdao.vratiMjesto(reader.GetInt32(2));
+                p = new PoslovnicaDTO(reader.GetInt32(0), reader.GetString(1), m, reader.GetString(3), pc);
+            }
+            reader.Close();
+            conn.Close();
+            return p;
+        }
+
         public bool insert(PoslovnicaDTO poslovnica)
         {
             MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);

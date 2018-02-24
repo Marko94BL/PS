@@ -45,20 +45,27 @@ namespace PS
 
         private void dgvLinije_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            /* int index = e.RowIndex;// get the Row Index
-             DataGridViewRow selectedRow = dgvLinije.Rows[index];
-             string od = selectedRow.Cells[0].Value.ToString();
-             string doo = selectedRow.Cells[1].Value.ToString();
-             string vrP = selectedRow.Cells[2].Value.ToString();
-             string vrD = selectedRow.Cells[3].Value.ToString();
-
-             LinijaDAO ldao = DAOFactory.getDAOFactory().getLinijaDAO();
-             LinijaDTO l = ldao.
-             new DodavanjeLinija().ShowDialog();*/
+            
 
             if (dgvLinije.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
-                MessageBox.Show(dgvLinije.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
+                // MessageBox.Show(dgvLinije.Rows[e.RowIndex].Cells[0].Value.ToString());
+                string od = dgvLinije.Rows[e.RowIndex].Cells[0].Value.ToString();
+                string doo = dgvLinije.Rows[e.RowIndex].Cells[1].Value.ToString();
+                string vrijemeD= dgvLinije.Rows[e.RowIndex].Cells[2].Value.ToString();
+                string vrijemeP = dgvLinije.Rows[e.RowIndex].Cells[3].Value.ToString();
+
+                LinijaDTO linija = null;
+                PoslovnicaDAO pdao = DAOFactory.getDAOFactory().getPoslovnicaDAO();
+                PoslovnicaDTO salje = pdao.pretragaPoNazivu(od);
+                PoslovnicaDTO prima = pdao.pretragaPoNazivu(doo);
+                TimeSpan vD = TimeSpan.Parse(vrijemeD);
+                TimeSpan vP = TimeSpan.Parse(vrijemeP);
+
+                LinijaDAO ldao = DAOFactory.getDAOFactory().getLinijaDAO();
+                linija=ldao.
+
+
             }
 
 
