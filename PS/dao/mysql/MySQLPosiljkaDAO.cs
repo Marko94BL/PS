@@ -105,6 +105,36 @@ namespace PS.dao.mysql
             throw new NotImplementedException();
         }
 
+        public PosiljkaDTO vratiPosiljku(string barkod)
+        {
+
+
+            MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
+            conn.Open();
+
+            PosiljkaDTO posiljka = null;
+
+            MySqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "SELECT * FROM posiljka WHERE Barkod = @barkod";
+
+            cmd.Parameters.AddWithValue("@barkod", barkod);
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                PoslovnicaDAO pdao = new MySQLDAOFactory().getPoslovnicaDAO();
+                PoslovnicaDTO pSalje = pdao.vratiPoslovnicu(reader.GetInt32(4));//vrati poslovnicu sa id koji mu je vracen kroz rezultat
+                PoslovnicaDTO pPrima = pdao.vratiPoslovnicu(reader.GetInt32(5));
+                KorisnickiNalogDAO knDAO = new MySQLKorisnickiNalogDAO();
+                KorisnikDTO nalog = knDAO.pretragaPoId(reader.GetInt32(3));
+
+                posiljka = new PosiljkaDTO(reader.GetInt32(0), pSalje, pPrima, nalog, reader.GetDateTime(2), reader.GetByte(6), reader.GetString(1));
+            }
+            reader.Close();
+            conn.Close();
+            return posiljka;
+
+        }
+
         public PosiljkaDTO vratiPosiljku(int posiljkaId)
         {
 
