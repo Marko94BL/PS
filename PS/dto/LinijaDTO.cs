@@ -30,5 +30,10 @@ namespace PS.dto
         public TimeSpan VrijemeDolaska { get => vrijemeDolaska; set => vrijemeDolaska = value; }
         internal PoslovnicaDTO PoslovnicaSalje { get => poslovnicaSalje; set => poslovnicaSalje = value; }
         internal PoslovnicaDTO PoslovnicaPrima { get => poslovnicaPrima; set => poslovnicaPrima = value; }
+
+        public override string ToString()
+        {
+            return PoslovnicaSalje.Mjesto.PostanskiBroj + " " + PoslovnicaSalje.Mjesto.Naziv + "-" + PoslovnicaPrima.Mjesto.PostanskiBroj + " " + PoslovnicaPrima.Mjesto.Naziv;
+        }
     }
 }
