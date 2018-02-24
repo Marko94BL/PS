@@ -106,7 +106,7 @@ namespace PS.dao.mysql
 
             MySqlCommand cmd = conn.CreateCommand();
 
-            cmd.CommandText = "SELECT * FROM korisnik WHERE @IdKorisnik=?";
+            cmd.CommandText = "SELECT * FROM korisnik WHERE IdKorisnik=@IdKorisnik";
 
             cmd.Parameters.AddWithValue("@IdKorisnik", id);
 

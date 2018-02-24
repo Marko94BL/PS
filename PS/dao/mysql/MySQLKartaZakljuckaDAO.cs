@@ -53,19 +53,19 @@ namespace PS.dao.mysql
                 conn.Open();
 
                 MySqlCommand cmd = conn.CreateCommand();
-                cmd.CommandText = "INSERT INTO karta_zakljucka VALUES(@IdKartaZakljucka, @IdPoslovnicaSalje, @IdPoslovnicaPrima, @VrijemeKreiranja, " +
-                    "@VrstaZakljucka,  @RedniBrojOtpreme, @VrijemeStigla, @Napomena)";
+                cmd.CommandText = "INSERT INTO kartazakljucka VALUES(@IdKartaZakljucka, @IdPoslovnicaSalje, @IdPoslovnicaPrima, @VrijemePoslana, " +
+                    "@VrijemeStigla, @VrstaZakljucka,  @RedniBrojOtpreme,  @Napomena, @IdKorisnik)";
 
                 cmd.Parameters.AddWithValue("@IdKartaZakljucka", kartaZakljucka.KartaID);
                 cmd.Parameters.AddWithValue("@IdPoslovnicaSalje", kartaZakljucka.PoslovnicaSalje.PoslovnicaId);
                 cmd.Parameters.AddWithValue("@IdPoslovnicaPrima", kartaZakljucka.PoslovnicaPrima.PoslovnicaId);
-                cmd.Parameters.AddWithValue("@VrijemeKreiranja", kartaZakljucka.Vrijeme);
+                cmd.Parameters.AddWithValue("@VrijemePoslana", kartaZakljucka.Vrijeme);
+                cmd.Parameters.AddWithValue("@VrijemeStigla", kartaZakljucka.VrijemeStigla);
                 cmd.Parameters.AddWithValue("@VrstaZakljucka", kartaZakljucka.VrstaZakljucka);
                 cmd.Parameters.AddWithValue("@RedniBrojOtpreme", kartaZakljucka.RedniBrojOtpreme);
-                cmd.Parameters.AddWithValue("@VrijemeStigla", kartaZakljucka.VrijemeStigla);
+                cmd.Parameters.AddWithValue("@IdKorisnik", kartaZakljucka.Nalog.NalogId);
                 cmd.Parameters.AddWithValue("@Napomena", kartaZakljucka.Napomena);
-
-
+                cmd.Parameters.AddWithValue("@IdKorisnik", kartaZakljucka.Nalog.NalogId);
                 cmd.ExecuteNonQuery();
                 id = cmd.LastInsertedId;
             }
@@ -102,9 +102,9 @@ namespace PS.dao.mysql
             KartaZakljuckaDTO kz = null;
 
             MySqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT * FROM karta_zakljucka WHERE IdKartaZakljucka = @IdKartaZakljucka";
+            cmd.CommandText = "SELECT * FROM kartazakljucka WHERE IdKartaZakljucka = @IdKartaZakljucka";
 
-            cmd.Parameters.AddWithValue("@IdKArtaZakljucka", kartaId);
+            cmd.Parameters.AddWithValue("@IdKartaZakljucka", kartaId);
 
             MySqlDataReader reader = cmd.ExecuteReader();
             if (reader.Read())
@@ -116,7 +116,7 @@ namespace PS.dao.mysql
                 KorisnickiNalogDAO kndao = DAOFactory.getDAOFactory().getKorisnickiNalogDAO();
                 KorisnikDTO nalog = kndao.pretragaPoId(reader.GetInt32(8));
 
-                kz = new KartaZakljuckaDTO(reader.GetInt32(0),reader.GetString(4),reader.GetDateTime(3),reader.GetInt32(5),reader.GetString(7),nalog,poslovnicaSalje,poslovnicaPrima);
+                kz = new KartaZakljuckaDTO(reader.GetInt32(0),reader.GetString(5),reader.GetDateTime(3),reader.GetInt32(6),reader.GetString(7),nalog,poslovnicaSalje,poslovnicaPrima);
             }
             reader.Close();
             conn.Close();

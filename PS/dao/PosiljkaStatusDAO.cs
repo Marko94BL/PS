@@ -12,6 +12,7 @@ namespace PS.dao
         List<PosiljkaStatusDTO> posiljkeStatus();
         List<PosiljkaStatusDTO> posiljkeStatus(KartaZakljuckaDTO karta);
         bool insert(PosiljkaStatusDTO posiljkaStatus);
+        PosiljkaStatusDTO posiljkaStatusKartaIPosiljka(int posiljkaID, int kartaID);
         // bool update(PosiljkaStatusDTO posiljkaStatus);
 
     }

@@ -16,6 +16,7 @@ namespace PS
     {
         private KartaZakljuckaDTO kartaZakljucka;
         private PosiljkaDTO posiljka;
+        private int idPoslovnicaPrima = 0;
 
         public Prijem()
         {
@@ -27,6 +28,7 @@ namespace PS
             btnOdjava.Enabled = false;
         }
 
+        
         private void btnKarta_Click(object sender, EventArgs e)
         {
             KartaZakljuckaDAO kzdao = DAOFactory.getDAOFactory().getKartaZakljuckaDAO();
@@ -34,6 +36,9 @@ namespace PS
 
             tbPolazna.Text = kartaZakljucka.PoslovnicaSalje.ToString();
             tbPolazna.Enabled = false;
+
+            idPoslovnicaPrima = kartaZakljucka.PoslovnicaPrima.PoslovnicaId;
+
             tbPrijemna.Text = kartaZakljucka.PoslovnicaPrima.ToString();
             tbPrijemna.Enabled = false;
             tbDatumSlanja.Text = kartaZakljucka.Vrijeme.ToString();
@@ -51,7 +56,7 @@ namespace PS
             }
             foreach (PosiljkaStatusDTO posiljkaStatus in posiljkeStatusLista)
             {
-               dgvPosiljke.Rows.Add(posiljkaStatus.Posiljka.PosiljkaID.ToString(), "NOK");
+               dgvPosiljke.Rows.Add(posiljkaStatus.Posiljka.Barkod, "NOK");
             }
         }
 
@@ -60,7 +65,8 @@ namespace PS
             bool flag = false;
             foreach (DataGridViewRow red in dgvVrece.Rows)
             {
-                if ((tbIdentifikatorVrece.Text.Trim()).Equals(red.Cells[0].Value))
+                //System.Console.Write(tbIdentifikatorVrece.Text.Trim() + " "+ red.Cells[0].Value.GetType()+" ");
+                if (red.Cells[0].Value != null && (tbIdentifikatorVrece.Text.Trim()).Equals(red.Cells[0].Value.ToString()))
                 {
                     flag = true;
                     red.Cells[1].Value = "OK";
@@ -97,11 +103,11 @@ namespace PS
         private void btnPosiljke_Click(object sender, EventArgs e)
         {
             PosiljkaDAO pdao = DAOFactory.getDAOFactory().getPosiljkaDAO();
-            posiljka = pdao.vratiPosiljku(int.Parse(tbIdentifikatorPosiljke.Text.Trim()));
+            posiljka = pdao.vratiPosiljku(tbIdentifikatorPosiljke.Text.Trim());
             bool flag = false;
             foreach (DataGridViewRow red in dgvPosiljke.Rows)
             {
-                if ((tbIdentifikatorPosiljke.Text.Trim()).Equals(red.Cells[0].Value))
+                if (red.Cells[0].Value != null && (tbIdentifikatorPosiljke.Text.Trim()).Equals(red.Cells[0].Value))
                 {
                     flag = true;
                     red.Cells[1].Value = "OK";
@@ -119,21 +125,24 @@ namespace PS
         {
             tbIdentifikatorPosiljke.Text = "";
 
-            string stringP = tbPrijemna.Text.Trim();
-            string poslovnicaId = stringP.Split(' ').First();
             PoslovnicaDAO podao = DAOFactory.getDAOFactory().getPoslovnicaDAO();
-            PoslovnicaDTO odredisnaPosta = podao.vratiPoslovnicu(int.Parse(poslovnicaId));
+            PoslovnicaDTO odredisnaPosta = podao.vratiPoslovnicu(idPoslovnicaPrima);
 
             string napomena = "Primljena posiljka nije adresirana za prijemnu postu!";
             OdjavaONeispravnostiDAO odao = DAOFactory.getDAOFactory().getOdjavaONeispravnostiDAO();
-            OdjavaONeispravnostiDTO odjava = new OdjavaONeispravnostiDTO(napomena,
-                posiljka, DateTime.Now, odredisnaPosta);
 
-          //  odao.insert(odjava);
+
+            OdjavaONeispravnostiDTO odjava = new OdjavaONeispravnostiDTO(0, napomena, posiljka, kartaZakljucka,odredisnaPosta);
+
+            odao.insert(odjava);
+            PosiljkaStatusDAO posiljkaStatusDAO = DAOFactory.getDAOFactory().getPosiljkaStatusDAO();
+            PosiljkaStatusDTO psDTO = posiljkaStatusDAO.posiljkaStatusKartaIPosiljka(posiljka.PosiljkaID, kartaZakljucka.KartaID);
+
+            MessageBox.Show("Uspješno ste prijavili grešku prilikom prijema", "Uspješna prijava", MessageBoxButtons.OK, MessageBoxIcon.Information);
             btnOdjava.Enabled = false;
         }
 
-        private void btnOvjeraKarteZakljucka_Click(object sender, EventArgs e)
+        private void btnOvjeraKarteZakljucka_Click(object sender, EventArgs e) //moram promjeniti status posiljke u primljen tj 2
         {
             KartaZakljuckaDAO kdao = DAOFactory.getDAOFactory().getKartaZakljuckaDAO();
             kartaZakljucka.VrijemeStigla = dtpDatumPolaska.Value;

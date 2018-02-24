@@ -11,7 +11,7 @@ namespace PS.dao
     {
         // List<PosiljkaDTO> posiljke();
         // List<PosiljkaDTO> posiljke(DateTime datum);
-        PosiljkaDTO vratiPosiljku(int posiljkaId);
+        PosiljkaDTO vratiPosiljku(string barkod);
         bool insert(PosiljkaDTO posiljka);
         // bool update(PosiljkaDTO posiljka);
         //  bool delete(String id);

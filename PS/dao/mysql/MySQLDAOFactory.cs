@@ -18,6 +18,11 @@ namespace PS.dao.mysql
             return new MySQLOdjavaONeispravnostiDAO();
         }
 
+        public override StatusDAO getStatusDAO()
+        {
+            return new MySQLStatusDAO();
+        }
+
         public override VrecaDAO getVrecaDAO()
         {
             return new MySQLVrecaDAO();

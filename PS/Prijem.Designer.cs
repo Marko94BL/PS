@@ -220,9 +220,9 @@
             // lbStatusSpiska
             // 
             this.lbStatusSpiska.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbStatusSpiska.Location = new System.Drawing.Point(58, 437);
+            this.lbStatusSpiska.Location = new System.Drawing.Point(24, 415);
             this.lbStatusSpiska.Name = "lbStatusSpiska";
-            this.lbStatusSpiska.Size = new System.Drawing.Size(99, 47);
+            this.lbStatusSpiska.Size = new System.Drawing.Size(160, 47);
             this.lbStatusSpiska.TabIndex = 26;
             this.lbStatusSpiska.Text = "Status pojedinačnog spiska razmjene";
             // 
@@ -238,7 +238,7 @@
             // lbStatusKarte
             // 
             this.lbStatusKarte.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbStatusKarte.Location = new System.Drawing.Point(327, 428);
+            this.lbStatusKarte.Location = new System.Drawing.Point(327, 415);
             this.lbStatusKarte.Name = "lbStatusKarte";
             this.lbStatusKarte.Size = new System.Drawing.Size(143, 47);
             this.lbStatusKarte.TabIndex = 28;
@@ -247,7 +247,7 @@
             // btnOvjeraSpiska
             // 
             this.btnOvjeraSpiska.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOvjeraSpiska.Location = new System.Drawing.Point(172, 440);
+            this.btnOvjeraSpiska.Location = new System.Drawing.Point(15, 465);
             this.btnOvjeraSpiska.Name = "btnOvjeraSpiska";
             this.btnOvjeraSpiska.Size = new System.Drawing.Size(127, 44);
             this.btnOvjeraSpiska.TabIndex = 29;
@@ -258,7 +258,7 @@
             // btnOvjeraKarteZakljucka
             // 
             this.btnOvjeraKarteZakljucka.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOvjeraKarteZakljucka.Location = new System.Drawing.Point(479, 449);
+            this.btnOvjeraKarteZakljucka.Location = new System.Drawing.Point(484, 465);
             this.btnOvjeraKarteZakljucka.Name = "btnOvjeraKarteZakljucka";
             this.btnOvjeraKarteZakljucka.Size = new System.Drawing.Size(127, 44);
             this.btnOvjeraKarteZakljucka.TabIndex = 30;
@@ -350,9 +350,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(330, 470);
+            this.button1.Location = new System.Drawing.Point(330, 465);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(140, 23);
+            this.button1.Size = new System.Drawing.Size(116, 44);
             this.button1.TabIndex = 41;
             this.button1.Text = "Prikaži neispravne";
             this.button1.UseVisualStyleBackColor = true;
@@ -362,7 +362,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(618, 494);
+            this.ClientSize = new System.Drawing.Size(623, 521);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnOdjava);
             this.Controls.Add(this.tbDatumSlanja);
@@ -391,8 +391,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
-            this.MaximumSize = new System.Drawing.Size(634, 532);
-            this.MinimumSize = new System.Drawing.Size(634, 532);
+            this.MaximumSize = new System.Drawing.Size(639, 560);
+            this.MinimumSize = new System.Drawing.Size(639, 560);
             this.Name = "Prijem";
             this.Text = "Pošte Srpske - Prijem pošiljaka";
             this.Load += new System.EventHandler(this.Prijem_Load);

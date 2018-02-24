@@ -7,8 +7,8 @@ using PS.dto;
 
 namespace PS.dao
 {
-    interface OdjavaONeispravnostiDAO
+    interface StatusDAO
     {
-        bool insert(OdjavaONeispravnostiDTO odjava);
+        StatusDTO vratiStatus(int v);
     }
 }
