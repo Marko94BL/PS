@@ -60,6 +60,14 @@ namespace PS
             MessageBox.Show("Pojedinacni spisak kreiran!");
             this.Close();
         }
+
+        private void tbIdentifikator_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnDodaj_Click(this, new EventArgs());
+            }
+        }
     }
 }
 
