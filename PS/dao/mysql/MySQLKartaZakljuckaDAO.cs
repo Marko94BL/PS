@@ -53,16 +53,17 @@ namespace PS.dao.mysql
                 conn.Open();
 
                 MySqlCommand cmd = conn.CreateCommand();
-                cmd.CommandText = "INSERT INTO kartazakljucka VALUES(@IdKartaZakljucka, @IdPoslovnicaSalje, @IdPoslovnicaPrima, @VrijemeKreiranja, " +
-                    "@VrstaZakljucka,  @RedniBrojOtpreme, @VrijemeStigla, @Napomena, @IdKorsnik)";
+                cmd.CommandText = "INSERT INTO kartazakljucka VALUES(@IdKartaZakljucka, @IdPoslovnicaSalje, @IdPoslovnicaPrima, @VrijemePoslana, " +
+                    "@VrijemeStigla, @VrstaZakljucka,  @RedniBrojOtpreme,  @Napomena, @IdKorisnik)";
 
                 cmd.Parameters.AddWithValue("@IdKartaZakljucka", kartaZakljucka.KartaID);
                 cmd.Parameters.AddWithValue("@IdPoslovnicaSalje", kartaZakljucka.PoslovnicaSalje.PoslovnicaId);
                 cmd.Parameters.AddWithValue("@IdPoslovnicaPrima", kartaZakljucka.PoslovnicaPrima.PoslovnicaId);
-                cmd.Parameters.AddWithValue("@VrijemeKreiranja", kartaZakljucka.Vrijeme);
+                cmd.Parameters.AddWithValue("@VrijemePoslana", kartaZakljucka.Vrijeme);
+                cmd.Parameters.AddWithValue("@VrijemeStigla", kartaZakljucka.VrijemeStigla);
                 cmd.Parameters.AddWithValue("@VrstaZakljucka", kartaZakljucka.VrstaZakljucka);
                 cmd.Parameters.AddWithValue("@RedniBrojOtpreme", kartaZakljucka.RedniBrojOtpreme);
-                cmd.Parameters.AddWithValue("@VrijemeStigla", kartaZakljucka.VrijemeStigla);
+                cmd.Parameters.AddWithValue("@IdKorisnik", kartaZakljucka.Nalog.NalogId);
                 cmd.Parameters.AddWithValue("@Napomena", kartaZakljucka.Napomena);
                 cmd.Parameters.AddWithValue("@IdKorisnik", kartaZakljucka.Nalog.NalogId);
                 cmd.ExecuteNonQuery();

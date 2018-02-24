@@ -136,35 +136,32 @@ namespace PS.dao.mysql
 
         public PoslovnicaDTO vratiPostanskiCentar(int poslovnicaId)
         {
-            throw new NotImplementedException();
-            /*
+            
             MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
             conn.Open();
 
             PoslovnicaDTO poslovnica = null;
 
             MySqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT * FROM poslovnica WHERE poslovnicaID = @poslovnicaId";
+            cmd.CommandText = "SELECT * FROM poslovnica WHERE IdPoslovnica = @IdPoslovnica";
 
-            cmd.Parameters.AddWithValue("@poslovnicaId", poslovnicaId);
+            cmd.Parameters.AddWithValue("@IdPoslovnica", poslovnicaId);
 
             MySqlDataReader reader = cmd.ExecuteReader();
             if (reader.Read())
             {
                 MjestoDAO mdao = new MySQLMjestoDAO();
-                MjestoDTO m = mdao.vratiMjesto(reader.GetInt32(5));
-                poslovnica = new PoslovnicaDTO(reader.GetInt32(0), null, reader.GetString(2), reader.GetString(3),
-                    reader.GetString(4), m);
+                MjestoDTO m = mdao.vratiMjesto(reader.GetInt32(2));
+                poslovnica = new PoslovnicaDTO(reader.GetInt32(0), reader.GetString(1), m, reader.GetString(3), null);
             }
             reader.Close();
             conn.Close();
             return poslovnica;
-            */
+            
         }
 
         public PoslovnicaDTO vratiPoslovnicu(int poslovnicaId)
         {
-            //throw new NotImplementedException();
             
             MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
             conn.Open();
@@ -172,9 +169,9 @@ namespace PS.dao.mysql
             PoslovnicaDTO p = null;
 
             MySqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT * FROM poslovnica WHERE IdPoslovnica = @poslovnicaId";
+            cmd.CommandText = "SELECT * FROM poslovnica WHERE IdPoslovnica = @IdPoslovnica";
 
-            cmd.Parameters.AddWithValue("@poslovnicaId", poslovnicaId);
+            cmd.Parameters.AddWithValue("@IdPoslovnica", poslovnicaId);
 
             MySqlDataReader reader = cmd.ExecuteReader();
             if (reader.Read())
@@ -184,7 +181,7 @@ namespace PS.dao.mysql
                 try
                 {
                     tmp = reader.GetInt32(1);
-                    pc = vratiPostanskiCentar(reader.GetInt32(1));
+                    pc = vratiPostanskiCentar(reader.GetInt32(4));//vrati postanski centar sa idOm iz kolone 1
                 }
                 catch (Exception e)
                 {
@@ -192,7 +189,7 @@ namespace PS.dao.mysql
                 }
                 MjestoDAO mdao = new MySQLMjestoDAO();
                 MjestoDTO m = mdao.vratiMjesto(reader.GetInt32(2));
-                p = new PoslovnicaDTO(reader.GetInt32(0),reader.GetString(1),m,reader.GetString(3),pc);
+                p = new PoslovnicaDTO(reader.GetInt32(0), reader.GetString(1), m, reader.GetString(3), pc);
             }
             reader.Close();
             conn.Close();
