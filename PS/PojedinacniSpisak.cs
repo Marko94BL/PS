@@ -36,6 +36,8 @@ namespace PS
             vreceOIdLista.Add(tbIdentifikator.Text.Trim());
             dgvVrece.Rows.Add(tbIdentifikator.Text.Trim());
             tbIdentifikator.Text = "";
+            btnKreirajSpisak.Enabled = true;
+
         }
 
         private void btnKreirajSpisak_Click(object sender, EventArgs e)
@@ -68,6 +70,11 @@ namespace PS
             {
                 btnDodaj_Click(this, new EventArgs());
             }
+        }
+
+        private void PojedinacniSpisak_Load(object sender, EventArgs e)
+        {
+            btnKreirajSpisak.Enabled = false;
         }
     }
 }
