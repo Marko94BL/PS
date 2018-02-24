@@ -43,7 +43,7 @@
             this.gdwKorisnickiNalozi.Location = new System.Drawing.Point(0, 0);
             this.gdwKorisnickiNalozi.Name = "gdwKorisnickiNalozi";
             this.gdwKorisnickiNalozi.ReadOnly = true;
-            this.gdwKorisnickiNalozi.Size = new System.Drawing.Size(284, 261);
+            this.gdwKorisnickiNalozi.Size = new System.Drawing.Size(284, 160);
             this.gdwKorisnickiNalozi.TabIndex = 0;
             this.gdwKorisnickiNalozi.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdwKorisnickiNalozi_CellClick);
             // 
@@ -60,8 +60,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(284, 160);
             this.Controls.Add(this.gdwKorisnickiNalozi);
+            this.MaximumSize = new System.Drawing.Size(300, 199);
+            this.MinimumSize = new System.Drawing.Size(300, 199);
             this.Name = "PrikazKorisnickihNaloga";
             this.Text = "PrikazKorisnickihNaloga";
             this.Load += new System.EventHandler(this.PrikazKorisnickihNaloga_Load);

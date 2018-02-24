@@ -144,7 +144,7 @@ namespace PS.dao.mysql
 
         }
 
-        public List<PosiljkaStatusDTO> posiljkeStatus(KartaZakljuckaDTO karta)//??? sta radi ova metoda????
+        public List<PosiljkaStatusDTO> posiljkeStatus(KartaZakljuckaDTO karta)//ovu metodu dragana popravila i treba njoj ovakava
         {
 
             MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
@@ -153,13 +153,16 @@ namespace PS.dao.mysql
             List<PosiljkaStatusDTO> posiljkeS = new List<PosiljkaStatusDTO>();
 
             MySqlCommand cmd = conn.CreateCommand();
+            System.Console.WriteLine("upit "+ karta.KartaID);
             cmd.CommandText = "SELECT * FROM posiljkastatus WHERE IdKartaZakljucka = @kartaId AND IdStatus = 1";//status poslane - te trebaju za prijem!
             cmd.Parameters.AddWithValue("@kartaId", karta.KartaID);
 
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                PosiljkaDTO posiljka = new MySQLPosiljkaDAO().vratiPosiljku(reader.GetInt32(0));
+                //System.Console.WriteLine("**********************************************");
+                PosiljkaDTO posiljka = new MySQLPosiljkaDAO().vratiPosiljku(reader.GetInt32(1));
+               // System.Console.WriteLine("********************************************** "+posiljka.Barkod);
                 posiljkeS.Add(new PosiljkaStatusDTO(new StatusDTO(reader.GetInt32(3)), posiljka, karta, reader.GetInt32(0))); //????
             }
             reader.Close();
