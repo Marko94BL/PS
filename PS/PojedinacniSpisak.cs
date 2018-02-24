@@ -35,6 +35,7 @@ namespace PS
         {
             vreceOIdLista.Add(tbIdentifikator.Text.Trim());
             dgvVrece.Rows.Add(tbIdentifikator.Text.Trim());
+            tbIdentifikator.Text = "";
         }
 
         private void btnKreirajSpisak_Click(object sender, EventArgs e)
