@@ -63,7 +63,8 @@ namespace PS
                 TimeSpan vP = TimeSpan.Parse(vrijemeP);
 
                 LinijaDAO ldao = DAOFactory.getDAOFactory().getLinijaDAO();
-                linija=ldao.
+                linija = ldao.pretragaLinijaOdDO(salje.PoslovnicaId, prima.PoslovnicaId);
+                new DodavanjeLinija(linija).ShowDialog();
 
 
             }

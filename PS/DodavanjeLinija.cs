@@ -18,6 +18,16 @@ namespace PS
 
         internal DodavanjeLinija(LinijaDTO linija)
         {
+
+            InitializeComponent();
+            PoslovnicaDAO pDAO = DAOFactory.getDAOFactory().getPoslovnicaDAO();
+            List<PoslovnicaDTO> lista = pDAO.poslovnice();
+
+            foreach (PoslovnicaDTO poslovnica in lista)
+            {
+                cbPocetnaPosta.Items.Add(poslovnica);
+                cbKrajnjaPosta.Items.Add(poslovnica);
+            }
             cbPocetnaPosta.Text = linija.PoslovnicaSalje.Naziv;
             cbKrajnjaPosta.Text = linija.PoslovnicaPrima.Naziv;
             mtbDolazak.Text = linija.VrijemeDolaska.ToString();
@@ -27,12 +37,13 @@ namespace PS
         public DodavanjeLinija()
         {
             InitializeComponent();
+            cbPocetnaPosta.Text = "Odaberite";
+             cbKrajnjaPosta.Text = "Odaberite";
         }
 
         private void DodavanjeLinija_Load(object sender, EventArgs e)
         {
-            cbPocetnaPosta.Text = "Odaberite";
-            cbKrajnjaPosta.Text = "Odaberite";
+        
 
             PoslovnicaDAO pDAO = DAOFactory.getDAOFactory().getPoslovnicaDAO();
             List<PoslovnicaDTO> lista = pDAO.poslovnice();

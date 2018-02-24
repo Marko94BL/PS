@@ -18,16 +18,28 @@ namespace PS.dao.mysql
             try
             {
                 conn.Open();
+                LinijaDTO l = pretragaLinijaOdDO(linija.PoslovnicaSalje.PoslovnicaId, linija.PoslovnicaPrima.PoslovnicaId);
+                if (l != null)
+                {
+                    Console.Write("vrsi se update");
+                    update(l);
+                }
+                else
+                {
 
-                MySqlCommand cmd = conn.CreateCommand();
-                cmd.CommandText = "INSERT INTO linija VALUES(@IdLinija, @IdPoslovnicaSalje, @IdPoslovnicaPrima, @VrijemePolaska, @VrijemeDolaska)";
+                    Console.Write("vrsi se insert");
 
-                cmd.Parameters.AddWithValue("@IdLinija", linija.LinijaId);
-                cmd.Parameters.AddWithValue("@IdPoslovnicaSalje", linija.PoslovnicaSalje.PoslovnicaId);
-                cmd.Parameters.AddWithValue("@IdPoslovnicaPrima", linija.PoslovnicaPrima.PoslovnicaId);
-                cmd.Parameters.AddWithValue("@VrijemePolaska", linija.VrijemePolaska);
-                cmd.Parameters.AddWithValue("@VrijemeDolaska", linija.VrijemeDolaska);
-                int brojRedova = cmd.ExecuteNonQuery();
+
+                    MySqlCommand cmd = conn.CreateCommand();
+                    cmd.CommandText = "INSERT INTO linija VALUES(@IdLinija, @IdPoslovnicaSalje, @IdPoslovnicaPrima, @VrijemePolaska, @VrijemeDolaska)";
+
+                    cmd.Parameters.AddWithValue("@IdLinija", linija.LinijaId);
+                    cmd.Parameters.AddWithValue("@IdPoslovnicaSalje", linija.PoslovnicaSalje.PoslovnicaId);
+                    cmd.Parameters.AddWithValue("@IdPoslovnicaPrima", linija.PoslovnicaPrima.PoslovnicaId);
+                    cmd.Parameters.AddWithValue("@VrijemePolaska", linija.VrijemePolaska);
+                    cmd.Parameters.AddWithValue("@VrijemeDolaska", linija.VrijemeDolaska);
+                    int brojRedova = cmd.ExecuteNonQuery();
+                }
             }
             catch (MySqlException e)
             {
@@ -39,6 +51,40 @@ namespace PS.dao.mysql
                 conn.Close();
             }
             return true;
+        }
+
+        public void update(LinijaDTO linija)
+        {
+            MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
+            try
+            {
+                conn.Open();
+                
+                    MySqlCommand cmd = conn.CreateCommand();
+                    cmd.CommandText = "UPDATE linija SET IdLinija=@idLinije, IdPoslovnicaSalje = @IdPoslovnicaSalje,IdPoslovnicaPrima= @IdPoslovnicaPrima, VrijemePolaska=@VrijemePolaska,VrijemeDolaska= @VrijemeDolaska";
+
+                    cmd.Parameters.AddWithValue("@IdLinija", linija.LinijaId); 
+                cmd.Parameters.AddWithValue("@IdPoslovnicaSalje", linija.PoslovnicaSalje.PoslovnicaId); 
+                cmd.Parameters.AddWithValue("@IdPoslovnicaPrima", linija.PoslovnicaPrima.PoslovnicaId); 
+                cmd.Parameters.AddWithValue("@VrijemePolaska", linija.VrijemePolaska); 
+                cmd.Parameters.AddWithValue("@VrijemeDolaska", linija.VrijemeDolaska);
+                int brojRedova = cmd.ExecuteNonQuery();
+             
+
+            }
+            catch (MySqlException e)
+            {
+                System.Windows.Forms.MessageBox.Show("Greska pri update", "Greska", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+
+                e.ErrorCode.ToString();
+                
+               
+            }
+            finally
+            {
+                conn.Close();
+            }
+            //return true;
         }
 
         public List<LinijaDTO> linije()
@@ -82,18 +128,18 @@ namespace PS.dao.mysql
             MySqlDataReader reader = cmd.ExecuteReader();
             PoslovnicaDAO pdao = DAOFactory.getDAOFactory().getPoslovnicaDAO();
             PoslovnicaDTO prima = null, salje = null;
-            //LinijaDTO linija= 
+            LinijaDTO linija = null;
             while (reader.Read())
             {
                 salje = pdao.vratiPoslovnicu(reader.GetInt32(1));
                 prima = pdao.vratiPoslovnicu(reader.GetInt32(2));
-                lista.Add(new LinijaDTO(reader.GetInt32(0), salje, prima, reader.GetTimeSpan(3), reader.GetTimeSpan(4)));
+                linija=new LinijaDTO(reader.GetInt32(0), salje, prima, reader.GetTimeSpan(3), reader.GetTimeSpan(4));
             }
             reader.Close();
             conn.Close();
-            return null;
+            return linija;
         }
 
-
+        
     }
 }
