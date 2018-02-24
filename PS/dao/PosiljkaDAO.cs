@@ -12,6 +12,7 @@ namespace PS.dao
         // List<PosiljkaDTO> posiljke();
         // List<PosiljkaDTO> posiljke(DateTime datum);
         PosiljkaDTO vratiPosiljku(string barkod);
+        PosiljkaDTO vratiPosiljku(int posiljkaId);
         bool insert(PosiljkaDTO posiljka);
         // bool update(PosiljkaDTO posiljka);
         //  bool delete(String id);
