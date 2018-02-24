@@ -17,7 +17,7 @@ namespace PS.dto
         private PoslovnicaDTO poslovnicaSalje;
         private PoslovnicaDTO poslovnicaPrima;
         private DateTime vrijemeStigla;
-
+       
         public KartaZakljuckaDTO() { }
 
         
@@ -31,6 +31,7 @@ namespace PS.dto
             this.nalog = nalog;
             this.poslovnicaSalje = poslovnicaSalje;
             this.poslovnicaPrima = poslovnicaPrima;
+           
         }
 
         public int KartaID { get => kartaID; set => kartaID = value; }
@@ -42,5 +43,6 @@ namespace PS.dto
         internal KorisnikDTO Nalog { get => nalog; set => nalog = value; }
         internal PoslovnicaDTO PoslovnicaSalje { get => poslovnicaSalje; set => poslovnicaSalje = value; }
         internal PoslovnicaDTO PoslovnicaPrima { get => poslovnicaPrima; set => poslovnicaPrima = value; }
+      //  internal KorisnikDTO Korisnik { get => korisnik; set => korisnik = value; }
     }
 }

@@ -164,15 +164,15 @@ namespace PS.dao.mysql
 
         public PoslovnicaDTO vratiPoslovnicu(int poslovnicaId)
         {
-            throw new NotImplementedException();
-            /*
+            //throw new NotImplementedException();
+            
             MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
             conn.Open();
 
             PoslovnicaDTO p = null;
 
             MySqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT * FROM poslovnica WHERE poslovnicaID = @poslovnicaId";
+            cmd.CommandText = "SELECT * FROM poslovnica WHERE IdPoslovnica = @poslovnicaId";
 
             cmd.Parameters.AddWithValue("@poslovnicaId", poslovnicaId);
 
@@ -191,14 +191,13 @@ namespace PS.dao.mysql
                     e.ToString();
                 }
                 MjestoDAO mdao = new MySQLMjestoDAO();
-                MjestoDTO m = mdao.vratiMjesto(reader.GetInt32(5));
-                p = new PoslovnicaDTO(reader.GetInt32(0), pc, reader.GetString(2), reader.GetString(3),
-                    reader.GetString(4), m);
+                MjestoDTO m = mdao.vratiMjesto(reader.GetInt32(2));
+                p = new PoslovnicaDTO(reader.GetInt32(0),reader.GetString(1),m,reader.GetString(3),pc);
             }
             reader.Close();
             conn.Close();
             return p;
-            */
+            
         }
     }
 }

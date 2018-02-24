@@ -80,11 +80,13 @@
     <Compile Include="dao\mysql\MySQLPosiljkaDAO.cs" />
     <Compile Include="dao\mysql\MySQLPosiljkaStatusDAO.cs" />
     <Compile Include="dao\mysql\MySQLPoslovnicaDAO.cs" />
+    <Compile Include="dao\mysql\MySQLStatusDAO.cs" />
     <Compile Include="dao\mysql\MySQLVrecaDAO.cs" />
     <Compile Include="dao\OdjavaONeispravnostiDAO.cs" />
     <Compile Include="dao\PosiljkaDAO.cs" />
     <Compile Include="dao\PosiljkaStatusDAO.cs" />
     <Compile Include="dao\PoslovnicaDAO.cs" />
+    <Compile Include="dao\StatusDAO.cs" />
     <Compile Include="dao\VrecaDAO.cs" />
     <Compile Include="DodavanjeLinija.cs">
       <SubType>Form</SubType>

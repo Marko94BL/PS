@@ -14,6 +14,11 @@ namespace PS.dto
 
         public StatusDTO() { }
 
+        public StatusDTO(int statusID)
+        {
+            this.statusID = statusID;
+        }
+
         public StatusDTO(int statusID, string naziv, string opis)
         {
             this.statusID = statusID;

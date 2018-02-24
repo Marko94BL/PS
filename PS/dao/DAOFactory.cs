@@ -18,6 +18,7 @@ namespace PS.dao
         public abstract VrecaDAO getVrecaDAO();
         public abstract OdjavaONeispravnostiDAO getOdjavaONeispravnostiDAO();
         public abstract LinijaDAO getLinijaDAO();
+        public abstract StatusDAO getStatusDAO();
 
         public static DAOFactory getDAOFactory()
         {

@@ -52,8 +52,8 @@ namespace PS.dao.mysql
 
         public List<PosiljkaDTO> posiljke()
         {
-            throw new NotImplementedException();
-            /*
+          //  throw new NotImplementedException();
+            
             MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
             conn.Open();
 
@@ -70,13 +70,13 @@ namespace PS.dao.mysql
             reader.Close();
             conn.Close();
             return lista;
-            */
+            
         }
 
         public List<PosiljkaDTO> posiljke(DateTime datum)
         {
-            throw new NotImplementedException();
-            /*
+          //  throw new NotImplementedException();
+            
             MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
             conn.Open();
 
@@ -97,7 +97,7 @@ namespace PS.dao.mysql
             reader.Close();
             conn.Close();
             return lista;
-            */
+            
         }
 
         public bool update(PosiljkaDTO posiljka)
@@ -115,7 +115,7 @@ namespace PS.dao.mysql
             PosiljkaDTO posiljka = null;
 
             MySqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT * FROM posiljka WHERE posiljkaID = @posiljkaId";
+            cmd.CommandText = "SELECT * FROM posiljka WHERE IdPosiljka = @posiljkaId";
 
             cmd.Parameters.AddWithValue("@posiljkaId", posiljkaId);
             MySqlDataReader reader = cmd.ExecuteReader();

@@ -8,24 +8,28 @@ namespace PS.dto
 {
     class OdjavaONeispravnostiDTO
     {
+        private int idOdjavaONeispravnosti;
         private string napomena;
         private PosiljkaDTO posiljka;
-        private DateTime vrijeme;
+        private KartaZakljuckaDTO kartaZakljucka;
+       // private DateTime vrijeme;
         private PoslovnicaDTO poslovnica;
 
         public OdjavaONeispravnostiDTO() { }
 
-        public OdjavaONeispravnostiDTO(string napomena, PosiljkaDTO posiljka, DateTime vrijeme, PoslovnicaDTO poslovnica)
+        public OdjavaONeispravnostiDTO(int idOdjavaONeispravnosti, string napomena, PosiljkaDTO posiljka, KartaZakljuckaDTO kartaZakljucka, PoslovnicaDTO poslovnica)
         {
-            this.napomena = napomena;
-            this.posiljka = posiljka;
-            this.vrijeme = vrijeme;
-            this.poslovnica = poslovnica;
+            this.IdOdjavaONeispravnosti = idOdjavaONeispravnosti;
+            this.Napomena = napomena;
+            this.Posiljka = posiljka;
+            this.KartaZakljucka = kartaZakljucka;
+            this.Poslovnica = poslovnica;
         }
 
+        public int IdOdjavaONeispravnosti { get => idOdjavaONeispravnosti; set => idOdjavaONeispravnosti = value; }
         public string Napomena { get => napomena; set => napomena = value; }
-        public DateTime Vrijeme { get => vrijeme; set => vrijeme = value; }
         internal PosiljkaDTO Posiljka { get => posiljka; set => posiljka = value; }
+        internal KartaZakljuckaDTO KartaZakljucka { get => kartaZakljucka; set => kartaZakljucka = value; }
         internal PoslovnicaDTO Poslovnica { get => poslovnica; set => poslovnica = value; }
     }
 }
