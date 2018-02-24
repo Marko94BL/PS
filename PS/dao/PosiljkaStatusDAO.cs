@@ -15,6 +15,7 @@ namespace PS.dao
         PosiljkaStatusDTO posiljkaStatusKartaIPosiljka(int posiljkaID, int kartaID);
         bool update(PosiljkaStatusDTO psDTO);
         PosiljkaStatusDTO posiljkaStatusKarta(int posiljkaID);
+        List<PracenjePosiljkeDTO> posiljkeStatusPracenjePosiljke(string barkod);
         // bool update(PosiljkaStatusDTO posiljkaStatus);
 
     }

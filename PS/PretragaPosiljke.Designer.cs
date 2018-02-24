@@ -36,7 +36,6 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnArhiva = new System.Windows.Forms.Button();
             this.tbIdentifikator = new System.Windows.Forms.MaskedTextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPosiljke)).BeginInit();
             this.SuspendLayout();
@@ -98,34 +97,29 @@
             this.btnArhiva.TabIndex = 4;
             this.btnArhiva.Text = "Prikaži";
             this.btnArhiva.UseVisualStyleBackColor = true;
-            this.btnArhiva.Click += new System.EventHandler(this.btnArhiva_Click);
+            this.btnArhiva.Click += new System.EventHandler(this.btnPretrazi_Click);
             // 
             // tbIdentifikator
             // 
             this.tbIdentifikator.Location = new System.Drawing.Point(88, 18);
             this.tbIdentifikator.Mask = "LL000000000LL";
             this.tbIdentifikator.Name = "tbIdentifikator";
-            this.tbIdentifikator.Size = new System.Drawing.Size(81, 20);
+            this.tbIdentifikator.Size = new System.Drawing.Size(89, 20);
             this.tbIdentifikator.TabIndex = 5;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(381, 14);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(85, 27);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Arhivirano";
-            this.button1.UseVisualStyleBackColor = true;
+            this.tbIdentifikator.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbIdentifikator_KeyDown);
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox1.Location = new System.Drawing.Point(183, 20);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(106, 17);
             this.checkBox1.TabIndex = 7;
             this.checkBox1.Text = "zadnjih 6 mjeseci";
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // PretragaPosiljke
             // 
@@ -134,7 +128,6 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(593, 298);
             this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.tbIdentifikator);
             this.Controls.Add(this.btnArhiva);
             this.Controls.Add(this.dgvPosiljke);
@@ -143,6 +136,7 @@
             this.MinimumSize = new System.Drawing.Size(609, 337);
             this.Name = "PretragaPosiljke";
             this.Text = "Pošte Srpske - Pretraga pošiljaka";
+            this.Load += new System.EventHandler(this.PretragaPosiljke_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPosiljke)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -159,7 +153,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colOznaka;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox checkBox1;
     }
 }

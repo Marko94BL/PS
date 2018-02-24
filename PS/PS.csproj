@@ -115,6 +115,7 @@
     <Compile Include="dto\PosiljkaDTO.cs" />
     <Compile Include="dto\PosiljkaStatusDTO.cs" />
     <Compile Include="dto\PoslovnicaDTO.cs" />
+    <Compile Include="dto\PracenjePosiljkeDTO.cs" />
     <Compile Include="dto\StatusDTO.cs" />
     <Compile Include="dto\VrecaDTO.cs" />
     <Compile Include="GlavnaForma.cs">

@@ -77,8 +77,9 @@ namespace PS.dao.mysql
 
                 pt = new PosiljkaStatusDTO(sDTO, posiljka, karta, reader.GetInt32(0));
             }
-            else {
-                MessageBox.Show("Pošiljka ne postoji","Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+            {
+                MessageBox.Show("Pošiljka ne postoji", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             reader.Close();
             conn.Close();
@@ -100,7 +101,7 @@ namespace PS.dao.mysql
             cmd.Parameters.AddWithValue("@IdPosiljka", posiljkaID);
 
             MySqlDataReader reader = cmd.ExecuteReader();
-            if(reader.Read())
+            if (reader.Read())
             {
                 PosiljkaDAO posDAO = DAOFactory.getDAOFactory().getPosiljkaDAO();
                 PosiljkaDTO posiljka = posDAO.vratiPosiljku(reader.GetInt32(1));
@@ -111,7 +112,7 @@ namespace PS.dao.mysql
                 StatusDAO sDAO = DAOFactory.getDAOFactory().getStatusDAO();
                 StatusDTO sDTO = sDAO.vratiStatus(reader.GetInt32(3));
 
-                pt = new PosiljkaStatusDTO(sDTO,posiljka,karta,reader.GetInt32(0));
+                pt = new PosiljkaStatusDTO(sDTO, posiljka, karta, reader.GetInt32(0));
             }
             reader.Close();
             conn.Close();
@@ -158,8 +159,8 @@ namespace PS.dao.mysql
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-               PosiljkaDTO posiljka = new MySQLPosiljkaDAO().vratiPosiljku(reader.GetInt32(0));
-               posiljkeS.Add(new PosiljkaStatusDTO(new StatusDTO(reader.GetInt32(3)), posiljka, karta,reader.GetInt32(0))); //????
+                PosiljkaDTO posiljka = new MySQLPosiljkaDAO().vratiPosiljku(reader.GetInt32(0));
+                posiljkeS.Add(new PosiljkaStatusDTO(new StatusDTO(reader.GetInt32(3)), posiljka, karta, reader.GetInt32(0))); //????
             }
             reader.Close();
             conn.Close();
@@ -173,7 +174,7 @@ namespace PS.dao.mysql
             try
             {
                 conn.Open();
-               // MessageBox.Show(posiljkaStatus.Posiljka.PosiljkaID + "  " + posiljkaStatus.Karta.KartaID + "  " + posiljkaStatus.Status.StatusID);
+                // MessageBox.Show(posiljkaStatus.Posiljka.PosiljkaID + "  " + posiljkaStatus.Karta.KartaID + "  " + posiljkaStatus.Status.StatusID);
                 MySqlCommand cmd = conn.CreateCommand();
                 cmd.CommandText = "UPDATE posiljkastatus SET  IdPosiljka=@IdPosiljka,IdKartaZakljucka=@IdKartaZakljucka,IdStatus= @IdStatus WHERE IdPosiljkaStatus= @idPosiljkaStatus";
 
@@ -198,5 +199,59 @@ namespace PS.dao.mysql
             return true;
         }
 
+
+        public List<PracenjePosiljkeDTO> posiljkeStatusPracenjePosiljke(string barkod)
+        {
+            MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
+            conn.Open();
+
+            MySqlCommand cmd1 = conn.CreateCommand();
+            cmd1.CommandText = "SELECT idPosiljka FROM posiljka WHERE BarKod = @barkod";
+            cmd1.Parameters.AddWithValue("@barkod", barkod);
+            List<int> listaIdenta = new List<int>();
+            MySqlDataReader reader1 = cmd1.ExecuteReader();
+            while (reader1.Read())
+            {
+                listaIdenta.Add(reader1.GetInt32(0));
+            }
+            reader1.Close();
+            List<PracenjePosiljkeDTO> lista = new List<PracenjePosiljkeDTO>();
+
+            foreach (int idPosiljka in listaIdenta)
+            {
+                MySqlCommand cmd = conn.CreateCommand();
+
+                cmd.CommandText = "SELECT * FROM pracenje_posiljke WHERE IdPosiljka = @idPosiljka";
+                cmd.Parameters.AddWithValue("@idPosiljka", idPosiljka);
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    PoslovnicaDTO salje = new PoslovnicaDTO();
+                    salje.Naziv = reader.GetString(1);
+                    PoslovnicaDTO prima = new PoslovnicaDTO();
+                    prima.Naziv = reader.GetString(2);
+                    KartaZakljuckaDTO karta = new KartaZakljuckaDTO();
+                    karta.PoslovnicaSalje = salje;
+                    karta.PoslovnicaPrima = prima;
+                    try
+                    {
+                        karta.Vrijeme = reader.GetDateTime(4);
+                        karta.VrijemeStigla = reader.GetDateTime(5);
+                    }
+                    catch (Exception) { }
+                    StatusDTO status = new StatusDTO();
+                    status.Naziv = reader.GetString(3);
+                    PosiljkaDTO posiljka = new PosiljkaDTO();
+                    posiljka.PosiljkaID = reader.GetInt32(0);
+                    lista.Add(new PracenjePosiljkeDTO(posiljka, salje, prima, status, karta));
+                }
+                reader.Close();
+            }
+
+
+            conn.Close();
+            return lista;
+        }
     }
 }

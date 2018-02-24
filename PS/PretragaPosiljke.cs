@@ -19,23 +19,39 @@ namespace PS
             InitializeComponent();
         }
 
-        private void btnArhiva_Click(object sender, EventArgs e)
+        private void btnPretrazi_Click(object sender, EventArgs e)
         {
             dgvPosiljke.Rows.Clear();
+
             string identifikator = tbIdentifikator.Text.Trim();
-            PosiljkaDAO pDAO = DAOFactory.getDAOFactory().getPosiljkaDAO();
-            PosiljkaDTO posiljka = pDAO.vratiPosiljku(identifikator);
+            System.Console.WriteLine("ident: " + identifikator);
 
             PosiljkaStatusDAO psdao = DAOFactory.getDAOFactory().getPosiljkaStatusDAO();
-            List<PosiljkaStatusDTO> lista = psdao.posiljkeStatus();
+            List<PracenjePosiljkeDTO> lista = psdao.posiljkeStatusPracenjePosiljke(identifikator);
 
-            foreach (PosiljkaStatusDTO posiljkaStatus in lista)
+            foreach (PracenjePosiljkeDTO pracenje in lista)
             {
-                if (identifikator.Equals(posiljkaStatus.Posiljka.PosiljkaID))
-                {
-                    //dgvPosiljke.Rows.Add(posiljka.Karta.PoslovnicaSalje.Naziv, posiljka.Karta.PoslovnicaPrima.Naziv,
-                      //  posiljka.Status.Naziv, (posiljka.Status.Naziv.Equals("Poslana") ? posiljka.Karta.Vrijeme : posiljka.Karta.VrijemeStigla));
-                }
+                if(!checkBox1.Checked || (checkBox1.Checked && (pracenje.Status.Naziv.Equals("Poslana") ? pracenje.Karta.Vrijeme : pracenje.Karta.VrijemeStigla).AddMonths(6) > DateTime.Now))
+                    dgvPosiljke.Rows.Add(pracenje.Karta.PoslovnicaSalje.Naziv, pracenje.Karta.PoslovnicaPrima.Naziv,
+                      pracenje.Status.Naziv, (pracenje.Status.Naziv.Equals("Poslana") ? pracenje.Karta.Vrijeme : pracenje.Karta.VrijemeStigla));
+            }
+        }
+
+        private void PretragaPosiljke_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            btnPretrazi_Click(sender, e);
+        }
+
+        private void tbIdentifikator_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnPretrazi_Click(this, new EventArgs());
             }
         }
     }
