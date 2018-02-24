@@ -11,18 +11,19 @@ namespace PS.dao.mysql
 {
     class MySQLLinijaDAO : LinijaDAO
     {
-        public bool insert(LinijaDTO linija)
+        public long insert(LinijaDTO linija, int pocetna, int krajnja)
         {
-
+            long rez = 0;
             MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
             try
             {
                 conn.Open();
-                LinijaDTO l = pretragaLinijaOdDO(linija.PoslovnicaSalje.PoslovnicaId, linija.PoslovnicaPrima.PoslovnicaId);
+                LinijaDTO l = pretragaLinijaOdDO(pocetna, krajnja);
                 if (l != null)
                 {
                     Console.Write("vrsi se update");
-                    update(l);
+                    linija.LinijaId = l.LinijaId;
+                    update(linija);
                 }
                 else
                 {
@@ -39,18 +40,19 @@ namespace PS.dao.mysql
                     cmd.Parameters.AddWithValue("@VrijemePolaska", linija.VrijemePolaska);
                     cmd.Parameters.AddWithValue("@VrijemeDolaska", linija.VrijemeDolaska);
                     int brojRedova = cmd.ExecuteNonQuery();
+                    rez = cmd.LastInsertedId;
                 }
             }
             catch (MySqlException e)
             {
                 e.ErrorCode.ToString();
-                return false;
+                return 0;
             }
             finally
             {
                 conn.Close();
             }
-            return true;
+            return rez;
         }
 
         public void update(LinijaDTO linija)
@@ -61,9 +63,13 @@ namespace PS.dao.mysql
                 conn.Open();
                 
                     MySqlCommand cmd = conn.CreateCommand();
-                    cmd.CommandText = "UPDATE linija SET IdLinija=@idLinije, IdPoslovnicaSalje = @IdPoslovnicaSalje,IdPoslovnicaPrima= @IdPoslovnicaPrima, VrijemePolaska=@VrijemePolaska,VrijemeDolaska= @VrijemeDolaska";
+                    cmd.CommandText = "UPDATE linija SET IdPoslovnicaSalje = @IdPoslovnicaSalje,IdPoslovnicaPrima= @IdPoslovnicaPrima," +
+                    " VrijemePolaska=@VrijemePolaska,VrijemeDolaska= @VrijemeDolaska WHERE IdLinija=@idLinije";
 
-                    cmd.Parameters.AddWithValue("@IdLinija", linija.LinijaId); 
+                Console.Write("======" + linija.LinijaId + " " + linija.PoslovnicaSalje.PoslovnicaId + " " + linija.PoslovnicaPrima.PoslovnicaId + " " +
+                    linija.VrijemePolaska + " " + linija.VrijemeDolaska + "======");
+
+                cmd.Parameters.AddWithValue("@idLinije", linija.LinijaId); 
                 cmd.Parameters.AddWithValue("@IdPoslovnicaSalje", linija.PoslovnicaSalje.PoslovnicaId); 
                 cmd.Parameters.AddWithValue("@IdPoslovnicaPrima", linija.PoslovnicaPrima.PoslovnicaId); 
                 cmd.Parameters.AddWithValue("@VrijemePolaska", linija.VrijemePolaska); 
@@ -75,7 +81,8 @@ namespace PS.dao.mysql
             catch (MySqlException e)
             {
                 System.Windows.Forms.MessageBox.Show("Greska pri update", "Greska", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-
+                System.Console.WriteLine(e.StackTrace);
+               
                 e.ErrorCode.ToString();
                 
                

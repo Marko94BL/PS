@@ -19,6 +19,7 @@ namespace PS.dao
         public abstract OdjavaONeispravnostiDAO getOdjavaONeispravnostiDAO();
         public abstract LinijaDAO getLinijaDAO();
         public abstract StatusDAO getStatusDAO();
+        public abstract LinijaStavkaDAO GetLinijaStavkaDAO();
 
         public static DAOFactory getDAOFactory()
         {
