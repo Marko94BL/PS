@@ -149,7 +149,7 @@
             this.btnKreirajKartu.Location = new System.Drawing.Point(467, 356);
             this.btnKreirajKartu.Name = "btnKreirajKartu";
             this.btnKreirajKartu.Size = new System.Drawing.Size(116, 39);
-            this.btnKreirajKartu.TabIndex = 23;
+            this.btnKreirajKartu.TabIndex = 5;
             this.btnKreirajKartu.Text = "Kreiraj kartu zaključka";
             this.btnKreirajKartu.UseVisualStyleBackColor = true;
             this.btnKreirajKartu.Click += new System.EventHandler(this.btnKreirajKartu_Click);
@@ -189,7 +189,7 @@
             this.tbNapomena.Multiline = true;
             this.tbNapomena.Name = "tbNapomena";
             this.tbNapomena.Size = new System.Drawing.Size(273, 120);
-            this.tbNapomena.TabIndex = 6;
+            this.tbNapomena.TabIndex = 4;
             // 
             // btnDodajNaPopis
             // 
@@ -208,7 +208,7 @@
             this.btnKreirajSpisakRazmjene.Location = new System.Drawing.Point(309, 443);
             this.btnKreirajSpisakRazmjene.Name = "btnKreirajSpisakRazmjene";
             this.btnKreirajSpisakRazmjene.Size = new System.Drawing.Size(274, 38);
-            this.btnKreirajSpisakRazmjene.TabIndex = 26;
+            this.btnKreirajSpisakRazmjene.TabIndex = 6;
             this.btnKreirajSpisakRazmjene.Text = "Kreiraj spisak razmjene";
             this.btnKreirajSpisakRazmjene.UseVisualStyleBackColor = true;
             this.btnKreirajSpisakRazmjene.Click += new System.EventHandler(this.btnKreirajSpisakRazmjene_Click);
@@ -219,7 +219,8 @@
             this.tbIdentifikator.Mask = "LL000000000LL";
             this.tbIdentifikator.Name = "tbIdentifikator";
             this.tbIdentifikator.Size = new System.Drawing.Size(124, 20);
-            this.tbIdentifikator.TabIndex = 4;
+            this.tbIdentifikator.TabIndex = 3;
+            this.tbIdentifikator.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbIdentifikator_KeyDown);
             // 
             // lbStatus
             // 
@@ -244,7 +245,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(594, 495);
+            this.ClientSize = new System.Drawing.Size(594, 494);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.lbStatus);
             this.Controls.Add(this.tbIdentifikator);
@@ -268,6 +269,7 @@
             this.MinimumSize = new System.Drawing.Size(610, 533);
             this.Name = "Kartovanje";
             this.Text = "Pošte Srpske - Kartovanje";
+            this.Load += new System.EventHandler(this.Kartovanje_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKartaZakljucka)).EndInit();
             this.ResumeLayout(false);

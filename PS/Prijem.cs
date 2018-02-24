@@ -37,6 +37,7 @@ namespace PS
             btnVreca.Enabled = false;
 
             btnOdjava.Enabled = false;
+            bnPosiljkeNedostaju.Enabled = false;
         }
 
         
@@ -109,10 +110,12 @@ namespace PS
                     flag = true;
                     red.Cells[1].Value = "OK";
                     lbStatusVrece.Text = "Vreca pripada karti zakljucka!";
+                    
                 }
             }
             if(!flag)
                 lbStatusVrece.Text = "Vreca ne pripada karti zakljucka!";
+            tbIdentifikatorVrece.Text = "";
         }
 
         private void btnOvjeraSpiska_Click(object sender, EventArgs e)
@@ -139,6 +142,7 @@ namespace PS
 
             tbIdentifikatorPosiljke.Enabled = true;
             btnPosiljke.Enabled = true;
+            
         }
 
         private void btnPosiljke_Click(object sender, EventArgs e)
@@ -154,6 +158,7 @@ namespace PS
                     flag = true;
                     red.Cells[1].Value = "OK";
                     lbStatusPosiljke.Text = "Posiljka pripada karti zakljucka!";
+                    tbIdentifikatorPosiljke.Text = "";
                 }
             }
             if (!flag)
@@ -197,6 +202,7 @@ namespace PS
                 MessageBox.Show("Pošiljka ne postoji!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
              btnOdjava.Enabled = false;
+            tbIdentifikatorPosiljke.Text = "";
         }
 
         private void btnOvjeraKarteZakljucka_Click(object sender, EventArgs e) //moram promjeniti status posiljke u primljen tj 2
@@ -239,6 +245,7 @@ namespace PS
                 lbStatusKarte.Text = "Primljene sve posiljke sa karte zakljucka.";
             else
                 lbStatusKarte.Text = "Broj pošiljaka koje nisu pristigle:" + counter;
+            bnPosiljkeNedostaju.Enabled = true;
         }
 
         private void bnPosiljkeNedostaju_Click(object sender, EventArgs e)
@@ -256,6 +263,31 @@ namespace PS
                 }
             }
             new NedostajcePosiljke(nedostajucePosiljke).ShowDialog();
+        }
+
+        private void tbIdentifikatorKarte_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnKarta_Click(this, new EventArgs());
+            }
+        }
+
+        private void tbIdentifikatorVrece_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnVreca_Click(this, new EventArgs());
+            }
+
+        }
+
+        private void tbIdentifikatorPosiljke_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnPosiljke_Click(this, new EventArgs());
+            }
         }
     }
 }

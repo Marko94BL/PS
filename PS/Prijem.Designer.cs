@@ -198,14 +198,18 @@
             this.tbIdentifikatorVrece.Location = new System.Drawing.Point(117, 145);
             this.tbIdentifikatorVrece.Name = "tbIdentifikatorVrece";
             this.tbIdentifikatorVrece.Size = new System.Drawing.Size(145, 20);
-            this.tbIdentifikatorVrece.TabIndex = 23;
+            this.tbIdentifikatorVrece.TabIndex = 1;
+            this.tbIdentifikatorVrece.Enter += new System.EventHandler(this.btnVreca_Click);
+            this.tbIdentifikatorVrece.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbIdentifikatorVrece_KeyDown);
             // 
             // tbIdentifikatorPosiljke
             // 
             this.tbIdentifikatorPosiljke.Location = new System.Drawing.Point(440, 145);
             this.tbIdentifikatorPosiljke.Name = "tbIdentifikatorPosiljke";
             this.tbIdentifikatorPosiljke.Size = new System.Drawing.Size(130, 20);
-            this.tbIdentifikatorPosiljke.TabIndex = 24;
+            this.tbIdentifikatorPosiljke.TabIndex = 2;
+            this.tbIdentifikatorPosiljke.Enter += new System.EventHandler(this.btnPosiljke_Click);
+            this.tbIdentifikatorPosiljke.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbIdentifikatorPosiljke_KeyDown);
             // 
             // lbStatusVrece
             // 
@@ -289,6 +293,7 @@
             this.tbIdentifikatorKarte.Name = "tbIdentifikatorKarte";
             this.tbIdentifikatorKarte.Size = new System.Drawing.Size(105, 20);
             this.tbIdentifikatorKarte.TabIndex = 0;
+            this.tbIdentifikatorKarte.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbIdentifikatorKarte_KeyDown);
             // 
             // btnKarta
             // 
@@ -335,7 +340,7 @@
             this.tbDatumSlanja.Location = new System.Drawing.Point(117, 107);
             this.tbDatumSlanja.Name = "tbDatumSlanja";
             this.tbDatumSlanja.Size = new System.Drawing.Size(182, 20);
-            this.tbDatumSlanja.TabIndex = 39;
+            this.tbDatumSlanja.TabIndex = 0;
             // 
             // btnOdjava
             // 

@@ -50,6 +50,7 @@ namespace PS
             { 
                 MessageBox.Show("Posiljka sa unijetim ID ne postoji.");
             }
+            tbIdentifikator.Text = "";
         }
 
         private void btnKreirajKartu_Click(object sender, EventArgs e)
@@ -85,6 +86,7 @@ namespace PS
            
             lbStatus.Text = "Kreirana karta zakljucka!";
             btnKreirajKartu.Enabled = false;
+            btnKreirajSpisakRazmjene.Enabled = true;
         }
 
         private void btnKreirajSpisakRazmjene_Click(object sender, EventArgs e)
@@ -121,6 +123,20 @@ namespace PS
                 PoslovnicaDTO pc = pdao.vratiPoslovnicu(posl.PostanskiCentar.PoslovnicaId);
                 cbOdredisnaPosta.Items.Add(pc);
             }
+        }
+
+        private void tbIdentifikator_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnDodajNaPopis_Click(this, new EventArgs());
+            }
+        }
+
+        private void Kartovanje_Load(object sender, EventArgs e)
+        {
+            btnKreirajSpisakRazmjene.Enabled = false;
+           // tbIdentifikator.Select(0, 0);
         }
     }
 }
