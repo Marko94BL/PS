@@ -58,5 +58,12 @@ namespace PS
             this.Show();
 
         }
+
+        private void btnPregledZaposlenih_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new PrikazKorisnickihNaloga().ShowDialog();
+            this.Show();
+        }
     }
 }
