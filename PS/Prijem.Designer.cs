@@ -288,7 +288,7 @@
             this.tbIdentifikatorKarte.Location = new System.Drawing.Point(172, 74);
             this.tbIdentifikatorKarte.Name = "tbIdentifikatorKarte";
             this.tbIdentifikatorKarte.Size = new System.Drawing.Size(105, 20);
-            this.tbIdentifikatorKarte.TabIndex = 34;
+            this.tbIdentifikatorKarte.TabIndex = 0;
             // 
             // btnKarta
             // 

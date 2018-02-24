@@ -50,5 +50,13 @@ namespace PS
             form.ShowDialog();
             this.Show();
         }
+
+        private void btnLinijeLista_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new PrikazLinija().ShowDialog();
+            this.Show();
+
+        }
     }
 }

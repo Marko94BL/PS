@@ -21,18 +21,17 @@ namespace PS.dao.mysql
             {
                 conn.Open();
                 MySqlCommand cmd = conn.CreateCommand();
-                /*cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "vrijeme_prijema_karte_zakljucka"; // Naziv procedure
                 cmd.Parameters.AddWithValue("@id", kartaZakljucka.KartaID);
                 cmd.Parameters["@id"].Direction = ParameterDirection.Input;
                 cmd.Parameters.AddWithValue("@vrijeme", kartaZakljucka.VrijemeStigla);
-                cmd.Parameters["@vrijeme"].Direction = ParameterDirection.Input;*/
+                cmd.Parameters["@vrijeme"].Direction = ParameterDirection.Input;
                 cmd.ExecuteNonQuery();
             }
             catch (MySqlException e)
             {
-                MessageBox.Show(e.Number == 1062 ? "Postoji ..... sa datim brojem pošte."
-                : "Greška prilikom dodavanja novog mesta.");
+                MessageBox.Show("Greška prilikom ažurairanja datuma!");
                 return false;
             }
             finally { conn.Close(); }

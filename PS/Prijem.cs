@@ -26,38 +26,75 @@ namespace PS
 
         private void Prijem_Load(object sender, EventArgs e)
         {
+            tbPolazna.Enabled = false;
+            tbPrijemna.Enabled = false;
+            tbDatumSlanja.Enabled = false;
+
+            tbIdentifikatorPosiljke.Enabled = false;
+            btnPosiljke.Enabled = false;
+
+            tbIdentifikatorVrece.Enabled = false;
+            btnVreca.Enabled = false;
+
             btnOdjava.Enabled = false;
         }
 
         
         private void btnKarta_Click(object sender, EventArgs e)
         {
-            KartaZakljuckaDAO kzdao = DAOFactory.getDAOFactory().getKartaZakljuckaDAO();
-            kartaZakljucka = kzdao.vratiKartaZakljucka(int.Parse(tbIdentifikatorKarte.Text.Trim()));
-
-            tbPolazna.Text = kartaZakljucka.PoslovnicaSalje.ToString();
-            tbPolazna.Enabled = false;
-
-            idPoslovnicaPrima = kartaZakljucka.PoslovnicaPrima.PoslovnicaId;
-
-            tbPrijemna.Text = kartaZakljucka.PoslovnicaPrima.ToString();
-            tbPrijemna.Enabled = false;
-            tbDatumSlanja.Text = kartaZakljucka.Vrijeme.ToString();
-            tbDatumSlanja.Enabled = false;
-
-            VrecaDAO vdao = DAOFactory.getDAOFactory().getVrecaDAO();
-            List<VrecaDTO> vrece = vdao.vrece(kartaZakljucka);
-
-            PosiljkaStatusDAO psdao = DAOFactory.getDAOFactory().getPosiljkaStatusDAO();
-            List<PosiljkaStatusDTO> posiljkeStatusLista = psdao.posiljkeStatus(kartaZakljucka);
-
-            foreach (VrecaDTO vreca in vrece)
+            if (tbIdentifikatorKarte != null && !tbIdentifikatorKarte.Text.Equals(""))
             {
-                dgvVrece.Rows.Add(vreca.Broj, "NOK");
-            }
-            foreach (PosiljkaStatusDTO posiljkaStatus in posiljkeStatusLista)
-            {
-               dgvPosiljke.Rows.Add(posiljkaStatus.Posiljka.Barkod, "NOK");
+                KartaZakljuckaDAO kzdao = DAOFactory.getDAOFactory().getKartaZakljuckaDAO();
+                int id = 0;
+                try
+                {
+                    id = int.Parse(tbIdentifikatorKarte.Text.Trim());
+                    kartaZakljucka = kzdao.vratiKartaZakljucka(id);
+
+                    if (kartaZakljucka != null)
+                    {
+
+                        tbPolazna.Text = kartaZakljucka.PoslovnicaSalje.ToString();
+                        tbPolazna.Enabled = false;
+
+                        idPoslovnicaPrima = kartaZakljucka.PoslovnicaPrima.PoslovnicaId;
+
+                        tbPrijemna.Text = kartaZakljucka.PoslovnicaPrima.ToString();
+                        tbPrijemna.Enabled = false;
+                        tbDatumSlanja.Text = kartaZakljucka.Vrijeme.ToString();
+                        tbDatumSlanja.Enabled = false;
+
+                        VrecaDAO vdao = DAOFactory.getDAOFactory().getVrecaDAO();
+                        List<VrecaDTO> vrece = vdao.vrece(kartaZakljucka);
+
+                        PosiljkaStatusDAO psdao = DAOFactory.getDAOFactory().getPosiljkaStatusDAO();
+                        List<PosiljkaStatusDTO> posiljkeStatusLista = psdao.posiljkeStatus(kartaZakljucka);
+
+                        // dgvPosiljke = new DataGridView();
+                        // dgvVrece = new DataGridView();
+
+                        dgvVrece.Rows.Clear();
+                        dgvPosiljke.Rows.Clear();
+                        foreach (VrecaDTO vreca in vrece)
+                        {
+                            dgvVrece.Rows.Add(vreca.Broj, "NOK");
+                        }
+                        foreach (PosiljkaStatusDTO posiljkaStatus in posiljkeStatusLista)
+                        {
+                            dgvPosiljke.Rows.Add(posiljkaStatus.Posiljka.Barkod, "NOK");
+                        }
+                        tbIdentifikatorVrece.Enabled = true;
+                        btnVreca.Enabled = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ne postoji karta zaključka sa unešenim identifikatorom!", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception es) {
+                    MessageBox.Show("Ne postoji karta zaključka sa unešenim identifikatorom!", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                
             }
         }
 
@@ -99,12 +136,16 @@ namespace PS
                 lbStatusSpiska.Text = "Primljene sve vreće sa spiska razmjene.";
             else
                 lbStatusSpiska.Text = "Broj vreća koje nisu pristigle:" + counter;
+
+            tbIdentifikatorPosiljke.Enabled = true;
+            btnPosiljke.Enabled = true;
         }
 
         private void btnPosiljke_Click(object sender, EventArgs e)
         {
             PosiljkaDAO pdao = DAOFactory.getDAOFactory().getPosiljkaDAO();
             posiljka = pdao.vratiPosiljku(tbIdentifikatorPosiljke.Text.Trim());
+            //System.Console.Write("na klik posiljkaID "+posiljka.PosiljkaID);
             bool flag = false;
             foreach (DataGridViewRow red in dgvPosiljke.Rows)
             {
@@ -135,18 +176,25 @@ namespace PS
 
             OdjavaONeispravnostiDTO odjava = new OdjavaONeispravnostiDTO(0, napomena, posiljka, kartaZakljucka,odredisnaPosta);
 
-            odao.insert(odjava);
-
-            //azuriranje statusa posiljke u visak
-            PosiljkaStatusDAO posiljkaStatusDAO = DAOFactory.getDAOFactory().getPosiljkaStatusDAO();
-            System.Console.Write("id posiljka "+posiljka.PosiljkaID+" id karta " +kartaZakljucka.KartaID);
-            PosiljkaStatusDTO psDTO = posiljkaStatusDAO.posiljkaStatusKarta(posiljka.PosiljkaID);
-            if (psDTO != null)
+            if (posiljka != null)
             {
-                psDTO.Status.StatusID = 4;
-                posiljkaStatusDAO.update(psDTO);
+                odao.insert(odjava);
 
-                MessageBox.Show("Uspješno ste prijavili grešku prilikom prijema", "Uspješna prijava", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //azuriranje statusa posiljke u visak
+                PosiljkaStatusDAO posiljkaStatusDAO = DAOFactory.getDAOFactory().getPosiljkaStatusDAO();
+                System.Console.Write("id posiljka " + posiljka.PosiljkaID + " id karta " + kartaZakljucka.KartaID);
+                PosiljkaStatusDTO psDTO = posiljkaStatusDAO.posiljkaStatusKarta(posiljka.PosiljkaID);
+                if (psDTO != null)
+                {
+                    psDTO.Status.StatusID = 4;
+                    // posiljkaStatusDAO.update(psDTO);
+                    posiljkaStatusDAO.insert(psDTO);
+
+                    MessageBox.Show("Uspješno ste prijavili grešku prilikom prijema", "Uspješna prijava", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else {
+                MessageBox.Show("Pošiljka ne postoji!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
              btnOdjava.Enabled = false;
         }
@@ -154,8 +202,10 @@ namespace PS
         private void btnOvjeraKarteZakljucka_Click(object sender, EventArgs e) //moram promjeniti status posiljke u primljen tj 2
         {
             KartaZakljuckaDAO kdao = DAOFactory.getDAOFactory().getKartaZakljuckaDAO();
+
             kartaZakljucka.VrijemeStigla = dtpDatumPolaska.Value;
             kdao.azurirajDatum(kartaZakljucka);
+
             int counter = 0;
             string ok = "OK";
             PosiljkaStatusDAO pdao = DAOFactory.getDAOFactory().getPosiljkaStatusDAO();
@@ -168,9 +218,13 @@ namespace PS
                 {
                     if (ok.Equals(red.Cells[1].Value.ToString()))
                     {
+                        PosiljkaDAO posDAO = DAOFactory.getDAOFactory().getPosiljkaDAO();
                         PosiljkaDTO p = new PosiljkaDTO();
-                        p.PosiljkaID = int.Parse(red.Cells[0].Value.ToString());
-                      //  pdao.insert(new PosiljkaStatusDTO(new StatusDTO(1, ""), p, kartaZakljucka));
+                        // p.PosiljkaID = int.Parse(red.Cells[0].Value.ToString());
+                        p = posDAO.vratiPosiljku(red.Cells[0].Value.ToString());
+
+                        pdao.insert(new PosiljkaStatusDTO(new StatusDTO(2),p,kartaZakljucka,0));
+
                     }
                     else
                     {

@@ -25,7 +25,7 @@ namespace PS.dao.mysql
                 MySqlCommand cmd = conn.CreateCommand();
                 cmd.CommandText = "INSERT INTO posiljkastatus VALUES(@idPosiljkaStatus, @IdPosiljka, @IdKartaZakljucka, @IdStatus)";
 
-                cmd.Parameters.AddWithValue("@idPosiljkaStatus", posiljkaStatus.PosiljkaStatusId);
+                cmd.Parameters.AddWithValue("@idPosiljkaStatus", 0);
                 cmd.Parameters.AddWithValue("@IdPosiljka", posiljkaStatus.Posiljka.PosiljkaID);
                 cmd.Parameters.AddWithValue("@IdKartaZakljucka", posiljkaStatus.Karta.KartaID);
                 cmd.Parameters.AddWithValue("@IdStatus", posiljkaStatus.Status.StatusID);
@@ -37,8 +37,8 @@ namespace PS.dao.mysql
             }
             catch (MySqlException e)
             {
-
-                MessageBox.Show(this.GetType().Name + " " + MethodBase.GetCurrentMethod().Name + ": posiljka sa datim statusom vec postoji!",
+                System.Console.WriteLine("posiljkaID " + posiljkaStatus.Posiljka.PosiljkaID+" kartaID "+ posiljkaStatus.Karta.KartaID+" statusID "+ posiljkaStatus.Status.StatusID);
+                MessageBox.Show(this.GetType().Name + " " + MethodBase.GetCurrentMethod().Name + ": posiljka status greska!",
                     "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }

@@ -15,5 +15,6 @@ namespace PS.dao
         PoslovnicaDTO vratiPoslovnicu(int poslovnicaId);
         bool insert(PoslovnicaDTO poslovnica);
         bool delete(String nazivFakulteta);
+       // List<PoslovnicaDTO> getPoslovniceSaIdPC(int id);
     }
 }

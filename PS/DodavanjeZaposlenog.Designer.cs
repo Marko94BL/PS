@@ -35,6 +35,8 @@
             this.tbLozinka = new System.Windows.Forms.TextBox();
             this.btnDodajZaposlenog = new System.Windows.Forms.Button();
             this.cbIsAdmin = new System.Windows.Forms.CheckBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tbLozinka2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,22 +74,23 @@
             // 
             this.tbKorisnickoIme.Location = new System.Drawing.Point(269, 24);
             this.tbKorisnickoIme.Name = "tbKorisnickoIme";
-            this.tbKorisnickoIme.Size = new System.Drawing.Size(163, 20);
-            this.tbKorisnickoIme.TabIndex = 3;
+            this.tbKorisnickoIme.Size = new System.Drawing.Size(160, 20);
+            this.tbKorisnickoIme.TabIndex = 0;
             // 
             // tbLozinka
             // 
             this.tbLozinka.Location = new System.Drawing.Point(269, 59);
             this.tbLozinka.Name = "tbLozinka";
-            this.tbLozinka.Size = new System.Drawing.Size(166, 20);
-            this.tbLozinka.TabIndex = 4;
+            this.tbLozinka.PasswordChar = '*';
+            this.tbLozinka.Size = new System.Drawing.Size(160, 20);
+            this.tbLozinka.TabIndex = 1;
             // 
             // btnDodajZaposlenog
             // 
-            this.btnDodajZaposlenog.Location = new System.Drawing.Point(305, 103);
+            this.btnDodajZaposlenog.Location = new System.Drawing.Point(305, 123);
             this.btnDodajZaposlenog.Name = "btnDodajZaposlenog";
             this.btnDodajZaposlenog.Size = new System.Drawing.Size(124, 36);
-            this.btnDodajZaposlenog.TabIndex = 5;
+            this.btnDodajZaposlenog.TabIndex = 4;
             this.btnDodajZaposlenog.Text = "Potvrdi unos";
             this.btnDodajZaposlenog.UseVisualStyleBackColor = true;
             this.btnDodajZaposlenog.Click += new System.EventHandler(this.btnDodajZaposlenog_Click);
@@ -96,17 +99,38 @@
             // 
             this.cbIsAdmin.AutoSize = true;
             this.cbIsAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbIsAdmin.Location = new System.Drawing.Point(118, 103);
+            this.cbIsAdmin.Location = new System.Drawing.Point(118, 123);
             this.cbIsAdmin.Name = "cbIsAdmin";
             this.cbIsAdmin.Size = new System.Drawing.Size(61, 19);
-            this.cbIsAdmin.TabIndex = 6;
+            this.cbIsAdmin.TabIndex = 3;
             this.cbIsAdmin.Text = "Admin";
             this.cbIsAdmin.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(115, 91);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(111, 13);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Ponovite unos lozinke";
+            // 
+            // tbLozinka2
+            // 
+            this.tbLozinka2.Location = new System.Drawing.Point(269, 91);
+            this.tbLozinka2.Name = "tbLozinka2";
+            this.tbLozinka2.PasswordChar = '*';
+            this.tbLozinka2.Size = new System.Drawing.Size(160, 20);
+            this.tbLozinka2.TabIndex = 2;
             // 
             // DodavanjeZaposlenog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(441, 171);
+            this.Controls.Add(this.tbLozinka2);
+            this.Controls.Add(this.label3);
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(441, 151);
             this.Controls.Add(this.cbIsAdmin);
             this.Controls.Add(this.btnDodajZaposlenog);
@@ -133,5 +157,7 @@
         private System.Windows.Forms.TextBox tbLozinka;
         private System.Windows.Forms.Button btnDodajZaposlenog;
         private System.Windows.Forms.CheckBox cbIsAdmin;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox tbLozinka2;
     }
 }
