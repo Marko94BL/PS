@@ -17,6 +17,7 @@ namespace PS
         private KartaZakljuckaDTO kartaZakljucka;
         private PosiljkaDTO posiljka;
         private int idPoslovnicaPrima = 0;
+        private List<PosiljkaDTO> nedostajucePosiljke ;
 
         public Prijem()
         {
@@ -52,7 +53,7 @@ namespace PS
 
             foreach (VrecaDTO vreca in vrece)
             {
-                dgvVrece.Rows.Add(vreca.VrecaId, "NOK");
+                dgvVrece.Rows.Add(vreca.Broj, "NOK");
             }
             foreach (PosiljkaStatusDTO posiljkaStatus in posiljkeStatusLista)
             {
@@ -65,8 +66,8 @@ namespace PS
             bool flag = false;
             foreach (DataGridViewRow red in dgvVrece.Rows)
             {
-                //System.Console.Write(tbIdentifikatorVrece.Text.Trim() + " "+ red.Cells[0].Value.GetType()+" ");
-                if (red.Cells[0].Value != null && (tbIdentifikatorVrece.Text.Trim()).Equals(red.Cells[0].Value.ToString()))
+               // System.Console.Write(tbIdentifikatorVrece.Text.Trim() + " "+ red.Cells[0].Value+" *");
+                if (red.Cells[0].Value != null && (tbIdentifikatorVrece.Text.Trim()).Equals(red.Cells[0].Value))
                 {
                     flag = true;
                     red.Cells[1].Value = "OK";
@@ -128,18 +129,26 @@ namespace PS
             PoslovnicaDAO podao = DAOFactory.getDAOFactory().getPoslovnicaDAO();
             PoslovnicaDTO odredisnaPosta = podao.vratiPoslovnicu(idPoslovnicaPrima);
 
-            string napomena = "Primljena posiljka nije adresirana za prijemnu postu!";
+            string napomena = "Primljena posiljka pronađena u pošti "+odredisnaPosta.Naziv;
             OdjavaONeispravnostiDAO odao = DAOFactory.getDAOFactory().getOdjavaONeispravnostiDAO();
 
 
             OdjavaONeispravnostiDTO odjava = new OdjavaONeispravnostiDTO(0, napomena, posiljka, kartaZakljucka,odredisnaPosta);
 
             odao.insert(odjava);
-            PosiljkaStatusDAO posiljkaStatusDAO = DAOFactory.getDAOFactory().getPosiljkaStatusDAO();
-            PosiljkaStatusDTO psDTO = posiljkaStatusDAO.posiljkaStatusKartaIPosiljka(posiljka.PosiljkaID, kartaZakljucka.KartaID);
 
-            MessageBox.Show("Uspješno ste prijavili grešku prilikom prijema", "Uspješna prijava", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            btnOdjava.Enabled = false;
+            //azuriranje statusa posiljke u visak
+            PosiljkaStatusDAO posiljkaStatusDAO = DAOFactory.getDAOFactory().getPosiljkaStatusDAO();
+            System.Console.Write("id posiljka "+posiljka.PosiljkaID+" id karta " +kartaZakljucka.KartaID);
+            PosiljkaStatusDTO psDTO = posiljkaStatusDAO.posiljkaStatusKarta(posiljka.PosiljkaID);
+            if (psDTO != null)
+            {
+                psDTO.Status.StatusID = 4;
+                posiljkaStatusDAO.update(psDTO);
+
+                MessageBox.Show("Uspješno ste prijavili grešku prilikom prijema", "Uspješna prijava", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+             btnOdjava.Enabled = false;
         }
 
         private void btnOvjeraKarteZakljucka_Click(object sender, EventArgs e) //moram promjeniti status posiljke u primljen tj 2
@@ -176,6 +185,23 @@ namespace PS
                 lbStatusKarte.Text = "Primljene sve posiljke sa karte zakljucka.";
             else
                 lbStatusKarte.Text = "Broj pošiljaka koje nisu pristigle:" + counter;
+        }
+
+        private void bnPosiljkeNedostaju_Click(object sender, EventArgs e)
+        {
+            nedostajucePosiljke = new List<PosiljkaDTO>();
+            PosiljkaDAO pdao = DAOFactory.getDAOFactory().getPosiljkaDAO();
+           // posiljka = pdao.vratiPosiljku(tbIdentifikatorPosiljke.Text.Trim());
+
+            foreach (DataGridViewRow red in dgvPosiljke.Rows)
+            {
+                // System.Console.Write(tbIdentifikatorVrece.Text.Trim() + " "+ red.Cells[0].Value+" *");
+                if (red.Cells[0].Value != null && ("NOK".Equals(red.Cells[1].Value)))
+                {
+                    nedostajucePosiljke.Add(pdao.vratiPosiljku(red.Cells[0].Value.ToString()));
+                }
+            }
+            new NedostajcePosiljke(nedostajucePosiljke).ShowDialog();
         }
     }
 }

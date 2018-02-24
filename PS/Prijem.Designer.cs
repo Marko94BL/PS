@@ -59,7 +59,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.tbDatumSlanja = new System.Windows.Forms.TextBox();
             this.btnOdjava = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.bnPosiljkeNedostaju = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVrece)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPosiljke)).BeginInit();
@@ -348,14 +348,15 @@
             this.btnOdjava.UseVisualStyleBackColor = true;
             this.btnOdjava.Click += new System.EventHandler(this.btnOdjava_Click);
             // 
-            // button1
+            // bnPosiljkeNedostaju
             // 
-            this.button1.Location = new System.Drawing.Point(330, 465);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(116, 44);
-            this.button1.TabIndex = 41;
-            this.button1.Text = "Prikaži neispravne";
-            this.button1.UseVisualStyleBackColor = true;
+            this.bnPosiljkeNedostaju.Location = new System.Drawing.Point(330, 465);
+            this.bnPosiljkeNedostaju.Name = "bnPosiljkeNedostaju";
+            this.bnPosiljkeNedostaju.Size = new System.Drawing.Size(116, 44);
+            this.bnPosiljkeNedostaju.TabIndex = 41;
+            this.bnPosiljkeNedostaju.Text = "Prikaži pošiljke koje nedostaju";
+            this.bnPosiljkeNedostaju.UseVisualStyleBackColor = true;
+            this.bnPosiljkeNedostaju.Click += new System.EventHandler(this.bnPosiljkeNedostaju_Click);
             // 
             // Prijem
             // 
@@ -363,7 +364,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(623, 521);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.bnPosiljkeNedostaju);
             this.Controls.Add(this.btnOdjava);
             this.Controls.Add(this.tbDatumSlanja);
             this.Controls.Add(this.label11);
@@ -437,6 +438,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colIdentifikatorV;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPrimljenaV;
         private System.Windows.Forms.Button btnOdjava;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bnPosiljkeNedostaju;
     }
 }

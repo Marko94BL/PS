@@ -115,7 +115,7 @@ namespace PS.dao.mysql
             PosiljkaDTO posiljka = null;
 
             MySqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT * FROM posiljka WHERE Barkod = @barkod";
+            cmd.CommandText = "SELECT * FROM posiljka WHERE BarKod = @barkod";
 
             cmd.Parameters.AddWithValue("@barkod", barkod);
             MySqlDataReader reader = cmd.ExecuteReader();
@@ -145,7 +145,7 @@ namespace PS.dao.mysql
             PosiljkaDTO posiljka = null;
 
             MySqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT * FROM posiljka WHERE posiljkaID = @posiljkaID";
+            cmd.CommandText = "SELECT * FROM posiljka WHERE IdPosiljka = @posiljkaID";
 
             cmd.Parameters.AddWithValue("@posiljkaID", posiljkaId);
             MySqlDataReader reader = cmd.ExecuteReader();
