@@ -141,7 +141,7 @@
             // tbIdentifikator
             // 
             this.tbIdentifikator.Location = new System.Drawing.Point(107, 86);
-            this.tbIdentifikator.Mask = "AA000000000AA";
+            this.tbIdentifikator.Mask = "LL000000000LL";
             this.tbIdentifikator.Name = "tbIdentifikator";
             this.tbIdentifikator.Size = new System.Drawing.Size(85, 20);
             this.tbIdentifikator.TabIndex = 3;
