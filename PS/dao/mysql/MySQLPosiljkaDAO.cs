@@ -28,14 +28,15 @@ namespace PS.dao.mysql
 
                 MySqlCommand cmd = conn.CreateCommand();
                 cmd.CommandText = "INSERT INTO posiljka VALUES(@IdPosiljka, @Barkod, @Vrijeme,@IdKorisnik, @IdPoslovnicaSalje, @IdPoslovnicaPrima, @VanVrece)";
-
                 cmd.Parameters.AddWithValue("@IdPosiljka", posiljka.PosiljkaID);
                 cmd.Parameters.AddWithValue("@Barkod", posiljka.Barkod);
                 cmd.Parameters.AddWithValue("@Vrijeme", posiljka.Vrijeme);
-                cmd.Parameters.AddWithValue("@IdKorisnik", posiljka.Nalog);
+                cmd.Parameters.AddWithValue("@IdKorisnik", posiljka.Nalog.NalogId);
                 cmd.Parameters.AddWithValue("@IdPoslovnicaSalje", posiljka.PoslovnicaSalje.PoslovnicaId);
                 cmd.Parameters.AddWithValue("@IdPoslovnicaPrima", posiljka.PoslovnicaPrima.PoslovnicaId);
                 cmd.Parameters.AddWithValue("@VanVrece", posiljka.VanVerce);
+                System.Console.WriteLine(cmd.CommandText);
+                System.Console.WriteLine("prijemnaPosta: " + posiljka.PoslovnicaSalje.PoslovnicaId + " odredisnaPosta: " + posiljka.PoslovnicaPrima.PoslovnicaId + " korisnik: " + posiljka.Nalog.NalogId + " vrijeme: " + posiljka.Vrijeme + " vanVrece: " + posiljka.VanVerce + " ident: " + posiljka.Barkod);
                 int brojRedova = cmd.ExecuteNonQuery();
             }
             catch (MySqlException e)

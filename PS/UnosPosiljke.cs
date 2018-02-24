@@ -55,23 +55,23 @@ namespace PS
             PoslovnicaDTO prijemnaPosta = (cbPrijemnaPosta.SelectedItem as PoslovnicaDTO);
             DateTime vrijeme = DateTime.Now;
             string identifikator = tbIdentifikator.Text.Trim();
-            int id = int.Parse(identifikator);
             bool punoPolje = !(tbIdentifikator.MaskFull);
            // PosiljkaTipDTO vrstaPosiljke = (cbVrstaPosiljke.SelectedItem as PosiljkaTipDTO);
             byte vanVrece = Convert.ToByte(cbVanVrece.Checked);
             PoslovnicaDTO odredisnaPosta = (cbPrijemnaPosta.SelectedItem as PoslovnicaDTO);
 
-            if (!(prijemnaPosta.Equals(null) || punoPolje /*|| vrstaPosiljke.Equals(null)*/ || odredisnaPosta.Equals(null)))
+            if (!(prijemnaPosta.Equals(null) || punoPolje || odredisnaPosta.Equals(null)))
             {
                 PosiljkaDAO pDAO = DAOFactory.getDAOFactory().getPosiljkaDAO();
-              //  ZaposleniDAO zdao = DAOFactory.getDAOFactory().getZapsleniDAO();
-               // ZaposleniDTO zaposleni = zdao.vratiZaposlenog(GlavnaForma.Prijavljeni.Jmb);
-               // PosiljkaDTO posiljka = new PosiljkaDTO(id, prijemnaPosta, odredisnaPosta, zaposleni, vrstaPosiljke, vrijeme, vanVrece);
-               // bool rez = pDAO.insert(posiljka);
-               // if (rez)
-               // {
-                //    this.Close();
-               // }
+                KorisnickiNalogDAO kdao = DAOFactory.getDAOFactory().getKorisnickiNalogDAO();
+                KorisnikDTO korisnik = kdao.pretragaPoId(GlavnaForma.Prijavljeni.NalogId);
+                System.Console.WriteLine("prijemnaPosta: " + prijemnaPosta + " odredisnaPosta: " + odredisnaPosta + " korisnik: " + korisnik.NalogId + " vrijeme: " + vrijeme + " vanVrece: " + vanVrece + " ident: " + identifikator);
+                PosiljkaDTO posiljka = new PosiljkaDTO(0, prijemnaPosta, odredisnaPosta, korisnik, vrijeme, vanVrece, identifikator);
+                bool rez = pDAO.insert(posiljka);
+                if (rez)
+                {
+                    this.Close();
+                }
             }
         }
 
