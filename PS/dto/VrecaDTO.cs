@@ -9,19 +9,19 @@ namespace PS.dto
     class VrecaDTO
     {
         private KartaZakljuckaDTO kartaZakljucka;
-        private int broj;
+        private string broj;
         private int vrecaId;
 
-        public VrecaDTO(KartaZakljuckaDTO kartaId, int vrecaId, int broj)
+        public VrecaDTO(KartaZakljuckaDTO kartaId, int vrecaId, string broj)
         {
-            this.kartaZakljucka = kartaId;
-            this.vrecaId = vrecaId;
-            this.broj = broj;
+            this.KartaZakljucka = kartaId;
+            this.VrecaId = vrecaId;
+            this.Broj = broj;
 
         }
 
+        public string Broj { get => broj; set => broj = value; }
         public int VrecaId { get => vrecaId; set => vrecaId = value; }
-        public int Broj { get => broj; set => broj = value; }
         internal KartaZakljuckaDTO KartaZakljucka { get => kartaZakljucka; set => kartaZakljucka = value; }
     }
 }

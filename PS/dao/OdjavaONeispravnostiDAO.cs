@@ -10,5 +10,6 @@ namespace PS.dao
     interface OdjavaONeispravnostiDAO
     {
         bool insert(OdjavaONeispravnostiDTO odjava);
+        OdjavaONeispravnostiDTO OdjavaPosiljka(int posiljkaID);
     }
 }

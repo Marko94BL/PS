@@ -33,9 +33,10 @@ namespace PS
             {
                 if (identifikator.Equals(posiljkaStatus.Posiljka.PosiljkaID))
                 {
-                    dgvPosiljke.Rows.Add(posiljka.Karta.PoslovnicaSalje.Naziv, posiljka.Karta.PoslovnicaPrima.Naziv,
-                        posiljka.Status.Naziv, (posiljka.Status.Naziv.Equals("Poslana") ? posiljka.Karta.Vrijeme : posiljka.Karta.VrijemeStigla));
+                    //dgvPosiljke.Rows.Add(posiljka.Karta.PoslovnicaSalje.Naziv, posiljka.Karta.PoslovnicaPrima.Naziv,
+                      //  posiljka.Status.Naziv, (posiljka.Status.Naziv.Equals("Poslana") ? posiljka.Karta.Vrijeme : posiljka.Karta.VrijemeStigla));
                 }
+            }
         }
     }
 }

@@ -48,5 +48,28 @@ namespace PS.dao.mysql
             return true;
             
         }
+
+        public OdjavaONeispravnostiDTO OdjavaPosiljka(int posiljkaID)
+        {
+            MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
+            conn.Open();
+
+            OdjavaONeispravnostiDTO odjava = null;
+
+            MySqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "SELECT * FROM objavaoneispravnosti WHERE IdPosiljka = @posiljkaID";
+
+            cmd.Parameters.AddWithValue("@posiljkaID", posiljkaID);
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                odjava = new OdjavaONeispravnostiDTO(reader.GetString(1));
+            }
+            reader.Close();
+            conn.Close();
+            return odjava;
+
+        }
     }
 }
+

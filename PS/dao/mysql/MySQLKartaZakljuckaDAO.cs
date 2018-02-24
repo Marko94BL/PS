@@ -60,12 +60,14 @@ namespace PS.dao.mysql
                 cmd.Parameters.AddWithValue("@IdPoslovnicaSalje", kartaZakljucka.PoslovnicaSalje.PoslovnicaId);
                 cmd.Parameters.AddWithValue("@IdPoslovnicaPrima", kartaZakljucka.PoslovnicaPrima.PoslovnicaId);
                 cmd.Parameters.AddWithValue("@VrijemePoslana", kartaZakljucka.Vrijeme);
-                cmd.Parameters.AddWithValue("@VrijemeStigla", kartaZakljucka.VrijemeStigla);
+                cmd.Parameters.AddWithValue("@VrijemeStigla", null);
                 cmd.Parameters.AddWithValue("@VrstaZakljucka", kartaZakljucka.VrstaZakljucka);
                 cmd.Parameters.AddWithValue("@RedniBrojOtpreme", kartaZakljucka.RedniBrojOtpreme);
                 cmd.Parameters.AddWithValue("@IdKorisnik", kartaZakljucka.Nalog.NalogId);
                 cmd.Parameters.AddWithValue("@Napomena", kartaZakljucka.Napomena);
-                cmd.Parameters.AddWithValue("@IdKorisnik", kartaZakljucka.Nalog.NalogId);
+                //cmd.Parameters.AddWithValue("@IdKorisnik", kartaZakljucka.Nalog.NalogId);
+                Console.Write(kartaZakljucka.KartaID +" "+ kartaZakljucka.PoslovnicaSalje.PoslovnicaId +" "+ kartaZakljucka.PoslovnicaPrima.PoslovnicaId+" "+ kartaZakljucka.Vrijeme+" "+
+                    kartaZakljucka.VrijemeStigla+ " "+ kartaZakljucka.VrstaZakljucka+" " + kartaZakljucka.RedniBrojOtpreme+ " "+ kartaZakljucka.Nalog.NalogId+ " "+ kartaZakljucka.Napomena);
                 cmd.ExecuteNonQuery();
                 id = cmd.LastInsertedId;
             }
