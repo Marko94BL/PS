@@ -76,38 +76,42 @@ namespace PS
         private void gdwKorisnickiNalozi_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             var senderGrid = (DataGridView)sender;
+           // System.Console.WriteLine("index "+);
+            if (e.ColumnIndex != -1) {
+                if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
+                    e.RowIndex >= 0)
+                {
+                    // System.Console.WriteLine("u ifu je");
+                    KorisnickiNalogDAO knDAO = DAOFactory.getDAOFactory().getKorisnickiNalogDAO();
+                    KorisnikDTO kDTO = knDAO.pronadjiKorisnika(senderGrid.Rows[e.RowIndex].Cells[0].Value.ToString());
+                    kDTO.Akrivan = 0;
+                    // System.Console.WriteLine("kornsik " + kDTO.KorisnickoIme + " " + kDTO.NalogId);
+                    knDAO.update(kDTO);
 
-            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
-                e.RowIndex >= 0)
-            {
-               // System.Console.WriteLine("u ifu je");
-                KorisnickiNalogDAO knDAO = DAOFactory.getDAOFactory().getKorisnickiNalogDAO();
-                KorisnikDTO kDTO = knDAO.pronadjiKorisnika(senderGrid.Rows[e.RowIndex].Cells[0].Value.ToString());
-                kDTO.Akrivan = 0;
-               // System.Console.WriteLine("kornsik " + kDTO.KorisnickoIme + " " + kDTO.NalogId);
-                knDAO.update(kDTO);
-
-                ucitajTabelu();
-                ucitajTabelu1();
+                    ucitajTabelu();
+                    ucitajTabelu1();
+                }
             }
         }
 
         private void dgwBlokirani_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             var senderGrid1 = (DataGridView)sender;
-
-            if (senderGrid1.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
-                e.RowIndex >= 0)
+            if (e.ColumnIndex != -1)
             {
-                // System.Console.WriteLine("u ifu je");
-                KorisnickiNalogDAO knDAO = DAOFactory.getDAOFactory().getKorisnickiNalogDAO();
-                KorisnikDTO kDTO = knDAO.pronadjiBanovanogKorisnika(senderGrid1.Rows[e.RowIndex].Cells[0].Value.ToString());
-                kDTO.Akrivan = 1;
-                // System.Console.WriteLine("kornsik " + kDTO.KorisnickoIme + " " + kDTO.NalogId);
-                knDAO.update(kDTO);
+                if (senderGrid1.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
+                    e.RowIndex >= 0)
+                {
+                    // System.Console.WriteLine("u ifu je");
+                    KorisnickiNalogDAO knDAO = DAOFactory.getDAOFactory().getKorisnickiNalogDAO();
+                    KorisnikDTO kDTO = knDAO.pronadjiBanovanogKorisnika(senderGrid1.Rows[e.RowIndex].Cells[0].Value.ToString());
+                    kDTO.Akrivan = 1;
+                    // System.Console.WriteLine("kornsik " + kDTO.KorisnickoIme + " " + kDTO.NalogId);
+                    knDAO.update(kDTO);
 
-                ucitajTabelu();
-                ucitajTabelu1();
+                    ucitajTabelu();
+                    ucitajTabelu1();
+                }
             }
         }
     }

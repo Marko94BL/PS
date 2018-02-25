@@ -146,13 +146,20 @@ namespace PS
             String username = GlavnaForma.Prijavljeni.KorisnickoIme;
             PoslovnicaDTO pocetnaPosta = (cbPocetnaPosta.SelectedItem as PoslovnicaDTO);
             PoslovnicaDTO krajnjaPosta = (cbKrajnjaPosta.SelectedItem as PoslovnicaDTO);
-            System.Console.WriteLine("Dolazak:" + mtbDolazak.Text.Trim());
+            //System.Console.WriteLine("Dolazak:" + mtbDolazak.Text.Trim());
 
             if (!(pocetnaPosta==null|| krajnjaPosta==null || ":".Equals(mtbPolazak.Text.Trim()) || ":".Equals(mtbDolazak.Text.Trim())))
             {
-                //mtbDolazak.mas
-                TimeSpan vrijemeP = TimeSpan.Parse(mtbPolazak.Text);
-                TimeSpan vrijemeD = TimeSpan.Parse(mtbDolazak.Text);
+                TimeSpan vrijemeP;
+                TimeSpan vrijemeD;
+                try
+                {
+                    vrijemeP = TimeSpan.Parse(mtbPolazak.Text);
+                    vrijemeD = TimeSpan.Parse(mtbDolazak.Text);
+                }
+                catch (Exception ec) {
+                    return;
+                }
 
                 button1.Enabled = true;
                 cbStavka.Enabled = true;

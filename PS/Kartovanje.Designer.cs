@@ -128,6 +128,7 @@
             this.colIdentifikator});
             this.dgvKartaZakljucka.Location = new System.Drawing.Point(12, 188);
             this.dgvKartaZakljucka.Name = "dgvKartaZakljucka";
+            this.dgvKartaZakljucka.ReadOnly = true;
             this.dgvKartaZakljucka.Size = new System.Drawing.Size(278, 266);
             this.dgvKartaZakljucka.TabIndex = 19;
             // 
