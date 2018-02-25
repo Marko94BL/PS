@@ -65,7 +65,7 @@ namespace PS
                         bool tmp = knDAO.insert(knDTO);
                         if (tmp == true)
                         {
-                            MessageBox.Show("Uspješno ste dodali novi korisnički nalog", "Uspješno dodavanje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Uspješno ste dodali novi korisnički nalog!", "Uspješno dodavanje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             tbKorisnickoIme.Text = "";
                             tbLozinka.Text = "";
                             tbLozinka2.Text = "";
@@ -73,7 +73,7 @@ namespace PS
                         }
                         else
                         {
-                            MessageBox.Show("Došlo je greške prilikom dodavanja", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Došlo je greške prilikom dodavanja!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             tbKorisnickoIme.Text = "";
                             tbLozinka.Text = "";
                             tbLozinka2.Text = "";
@@ -82,7 +82,7 @@ namespace PS
                     }
                     else
                     {
-                        MessageBox.Show("Korisnik sa navedenim korisničkim imenom postoji. Unesite drugo korisničko ime", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Korisnik sa navedenim korisničkim imenom postoji. Unesite drugo korisničko ime!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         tbKorisnickoIme.Text = "";
                         tbLozinka.Text = "";
                         tbLozinka2.Text = "";
@@ -92,7 +92,7 @@ namespace PS
                 }
                 else
                 {
-                    MessageBox.Show("Unesena i ponovljena lozinka se ne poklapaju ", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Unesena i ponovljena lozinka se ne poklapaju.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     //tbKorisnickoIme.Text = "";
                     tbLozinka.Text = "";
                     tbLozinka2.Text = "";

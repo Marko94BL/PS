@@ -65,5 +65,12 @@ namespace PS
             new PrikazKorisnickihNaloga().ShowDialog();
             this.Show();
         }
+
+        private void btnPregledNaloga_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new PrikazKorisnickihNaloga().ShowDialog();
+            this.Show();
+        }
     }
 }

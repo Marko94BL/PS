@@ -46,7 +46,7 @@
             this.dgvStavka = new System.Windows.Forms.DataGridView();
             this.Poslovnica = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Vrijeme = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnZavrsi = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStavka)).BeginInit();
             this.SuspendLayout();
@@ -224,16 +224,16 @@
             this.Vrijeme.Name = "Vrijeme";
             this.Vrijeme.Width = 168;
             // 
-            // button1
+            // btnZavrsi
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(308, 415);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(84, 30);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Završi unos";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnZavrsi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnZavrsi.Location = new System.Drawing.Point(260, 415);
+            this.btnZavrsi.Name = "btnZavrsi";
+            this.btnZavrsi.Size = new System.Drawing.Size(132, 30);
+            this.btnZavrsi.TabIndex = 8;
+            this.btnZavrsi.Text = "Završi unos";
+            this.btnZavrsi.UseVisualStyleBackColor = true;
+            this.btnZavrsi.Click += new System.EventHandler(this.button1_Click);
             // 
             // DodavanjeLinija
             // 
@@ -241,7 +241,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(407, 458);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnZavrsi);
             this.Controls.Add(this.dgvStavka);
             this.Controls.Add(this.btnAddStavka);
             this.Controls.Add(this.mtbStavka);
@@ -286,7 +286,7 @@
         private System.Windows.Forms.MaskedTextBox mtbStavka;
         private System.Windows.Forms.Button btnAddStavka;
         private System.Windows.Forms.DataGridView dgvStavka;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnZavrsi;
         private System.Windows.Forms.DataGridViewTextBoxColumn Poslovnica;
         private System.Windows.Forms.DataGridViewTextBoxColumn Vrijeme;
     }
