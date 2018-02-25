@@ -119,6 +119,10 @@
             // 
             // dgvKartaZakljucka
             // 
+            this.dgvKartaZakljucka.AllowUserToAddRows = false;
+            this.dgvKartaZakljucka.AllowUserToDeleteRows = false;
+            this.dgvKartaZakljucka.AllowUserToResizeColumns = false;
+            this.dgvKartaZakljucka.AllowUserToResizeRows = false;
             this.dgvKartaZakljucka.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvKartaZakljucka.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colIdentifikator});

@@ -40,6 +40,7 @@
             // 
             // gdwKorisnickiNalozi
             // 
+            this.gdwKorisnickiNalozi.AllowUserToAddRows = false;
             this.gdwKorisnickiNalozi.AllowUserToDeleteRows = false;
             this.gdwKorisnickiNalozi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gdwKorisnickiNalozi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
