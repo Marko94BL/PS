@@ -155,6 +155,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.MaximumSize = new System.Drawing.Size(380, 174);
+            this.MinimumSize = new System.Drawing.Size(380, 174);
             this.Name = "DodavanjePoslovnice";
             this.Text = "Pošte Srpske - Dodavanje Poslovnice";
             this.Load += new System.EventHandler(this.DodavanjePoslovnice_Load);

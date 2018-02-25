@@ -137,6 +137,10 @@
             // 
             // dgvVrece
             // 
+            this.dgvVrece.AllowUserToAddRows = false;
+            this.dgvVrece.AllowUserToDeleteRows = false;
+            this.dgvVrece.AllowUserToResizeColumns = false;
+            this.dgvVrece.AllowUserToResizeRows = false;
             this.dgvVrece.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVrece.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colIdentifikator});

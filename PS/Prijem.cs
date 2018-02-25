@@ -50,11 +50,11 @@ namespace PS
             {
                 KartaZakljuckaDAO kzdao = DAOFactory.getDAOFactory().getKartaZakljuckaDAO();
                 int id = 0;
-                try
-                {
+                //try
+              //  {
                     id = int.Parse(tbIdentifikatorKarte.Text.Trim());
                     kartaZakljucka = kzdao.vratiKartaZakljucka(id);
-
+                    System.Console.WriteLine("sta god hoces "+kartaZakljucka.KartaID);
                     if (kartaZakljucka != null)
                     {
 
@@ -72,8 +72,9 @@ namespace PS
                         List<VrecaDTO> vrece = vdao.vrece(kartaZakljucka);
 
                         PosiljkaStatusDAO psdao = DAOFactory.getDAOFactory().getPosiljkaStatusDAO();
+                        //System.Console.WriteLine("prije get posiljke");
                         List<PosiljkaStatusDTO> posiljkeStatusLista = psdao.posiljkeStatus(kartaZakljucka);
-
+                        //System.Console.WriteLine("poslije get posiljke");
                         // dgvPosiljke = new DataGridView();
                         // dgvVrece = new DataGridView();
 
@@ -83,9 +84,11 @@ namespace PS
                         {
                             dgvVrece.Rows.Add(vreca.Broj, "NOK");
                         }
-                        foreach (PosiljkaStatusDTO posiljkaStatus in posiljkeStatusLista)
+                   // System.Console.WriteLine("posiljkaLista " + posiljkeStatusLista== null);
+                    foreach (PosiljkaStatusDTO posiljkaStatus in posiljkeStatusLista)
                         {
-                            dgvPosiljke.Rows.Add(posiljkaStatus.Posiljka.Barkod, "NOK");
+                       // System.Console.WriteLine("posiljka " + posiljka == null);
+                        dgvPosiljke.Rows.Add(posiljkaStatus.Posiljka.Barkod, "NOK");
                         }
                         tbIdentifikatorVrece.Enabled = true;
                         btnVreca.Enabled = true;
@@ -99,13 +102,14 @@ namespace PS
                         btnOvjeraKarteZakljucka.Enabled = false;
                         MessageBox.Show("Ne postoji karta zaključka sa unešenim identifikatorom!", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                }
-                catch (Exception es)
+               // }
+               /* catch (Exception es)
                 {
+                    System.Console.WriteLine(es.StackTrace);
                     btnOvjeraSpiska.Enabled = false;
                     btnOvjeraKarteZakljucka.Enabled = false;
                     MessageBox.Show("Ne postoji karta zaključka sa unešenim identifikatorom!", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                }*/
 
             }
             else {

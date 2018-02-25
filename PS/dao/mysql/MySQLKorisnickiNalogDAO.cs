@@ -177,5 +177,55 @@ namespace PS.dao.mysql
             }
            // return true;
         }
+
+        public List<KorisnikDTO> vratiKorisnikeBlokirane()
+        {
+            MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
+            conn.Open();
+
+            MySqlCommand cmd = conn.CreateCommand();
+
+            cmd.CommandText = "SELECT * FROM korisnik WHERE aktivan = 0";
+
+            List<KorisnikDTO> lista = new List<KorisnikDTO>();
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                KorisnikDTO k = new KorisnikDTO(reader.GetString(1), reader.GetInt32(0), reader.GetString(2), reader.GetByte(5), reader.GetInt32(3), reader.GetString(4), reader.GetByte(6));
+                lista.Add(k);
+
+            }
+
+            reader.Close();
+            conn.Close();
+            return lista;
+        }
+
+        public KorisnikDTO pronadjiBanovanogKorisnika(string v)
+        {
+            MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
+            conn.Open();
+
+            MySqlCommand cmd = conn.CreateCommand();
+
+            cmd.CommandText = "SELECT * FROM korisnik WHERE korisnickoIme = @korisnickoIme AND " +
+             "aktivan = 0";
+
+            cmd.Parameters.AddWithValue("@korisnickoIme", v);
+            //cmd.Parameters.AddWithValue("@hashVrijednost", hashVrijednost);
+
+            MySqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                KorisnikDTO k = new KorisnikDTO(reader.GetString(1), reader.GetInt32(0), reader.GetString(2), reader.GetByte(5), reader.GetInt32(3), reader.GetString(4), reader.GetByte(6));
+                reader.Close();
+                conn.Close();
+                return k;
+            }
+
+            reader.Close();
+            conn.Close();
+            return null;
+        }
     }
 }

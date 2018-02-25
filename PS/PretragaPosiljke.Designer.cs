@@ -52,6 +52,10 @@
             // 
             // dgvPosiljke
             // 
+            this.dgvPosiljke.AllowUserToAddRows = false;
+            this.dgvPosiljke.AllowUserToDeleteRows = false;
+            this.dgvPosiljke.AllowUserToResizeColumns = false;
+            this.dgvPosiljke.AllowUserToResizeRows = false;
             this.dgvPosiljke.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPosiljke.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colDatumVrijeme,

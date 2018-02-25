@@ -80,6 +80,15 @@ namespace PS
                             cbIsAdmin.Checked = false;
                         }
                     }
+                    else
+                    {
+                        MessageBox.Show("Korisnik sa navedenim korisničkim imenom postoji. Unesite drugo korisničko ime", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        tbKorisnickoIme.Text = "";
+                        tbLozinka.Text = "";
+                        tbLozinka2.Text = "";
+                        cbIsAdmin.Checked = false;
+
+                    }
                 }
                 else
                 {
@@ -90,15 +99,7 @@ namespace PS
                     cbIsAdmin.Checked = false;
                 }
             }
-            else
-            {
-                MessageBox.Show("Korisnik sa navedenim korisničkim imenom postoji. Unesite drugo korisničko ime", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                tbKorisnickoIme.Text = "";
-                tbLozinka.Text = "";
-                tbLozinka2.Text = "";
-                cbIsAdmin.Checked = false;
-
-            }
+            
         }
 
         private void DodavanjeZaposlenog_Load(object sender, EventArgs e)
