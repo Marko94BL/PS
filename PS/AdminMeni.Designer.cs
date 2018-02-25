@@ -68,7 +68,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(132, 37);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Dodavanje korisnickog naloga";
+            this.label3.Text = "Dodavanje korisničkog naloga";
             // 
             // label4
             // 
@@ -162,7 +162,7 @@
             this.Controls.Add(this.btnDodavanjePoslovnice);
             this.Controls.Add(this.btnDodavanjeLinije);
             this.Name = "AdminMeni";
-            this.Text = "AdminMeni";
+            this.Text = "Pošte Srpske - Admin meni";
             this.Load += new System.EventHandler(this.AdminMeni_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

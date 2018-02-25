@@ -26,7 +26,7 @@ namespace PS.dao.mysql
                     cmd.Parameters.AddWithValue("@IdLinija", stavka.LinijaId);
                     cmd.Parameters.AddWithValue("@IdPoslovnica", stavka.Poslovnica.PoslovnicaId);
                     cmd.Parameters.AddWithValue("@Vrijeme", stavka.Vrijeme);
-                Console.Write(stavka.LinijaId+" "+stavka.Poslovnica.PoslovnicaId+" "+stavka.Vrijeme);
+                    Console.Write(stavka.LinijaId+" "+stavka.Poslovnica.PoslovnicaId+" "+stavka.Vrijeme);
                     int brojRedova = cmd.ExecuteNonQuery();
             }
             catch (MySqlException e)
@@ -68,7 +68,7 @@ namespace PS.dao.mysql
             {
                 conn.Close();
             }
-            //return true;
+           
         }
 
         public List<LinijaStavkaDTO> stavke(int idLinija)

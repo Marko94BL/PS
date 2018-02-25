@@ -36,7 +36,7 @@ namespace PS
 
             //cb_Mjesto.Items.Add(mjestoDAO.mjesta());
             PoslovnicaDAO poslovnicaDAO = DAOFactory.getDAOFactory().getPoslovnicaDAO();
-            List<PoslovnicaDTO> listaPoslovnica = poslovnicaDAO.poslovnice();
+            List<PoslovnicaDTO> listaPoslovnica = poslovnicaDAO.postanskiCentri();
             foreach (PoslovnicaDTO poslovnica in listaPoslovnica)
             {
                 combo_PostanskiCentar.Items.Add(poslovnica);

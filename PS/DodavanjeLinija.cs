@@ -15,12 +15,13 @@ namespace PS
     public partial class DodavanjeLinija : Form
     {
         int pocetna, krajnja;
-        long rez;
-        int idLinije;
+        long rez=0;
+        int idLinije=0;
 
         internal DodavanjeLinija(LinijaDTO linija)
         {
-            idLinije = linija.LinijaId;
+            rez = linija.LinijaId;
+            Console.WriteLine("rez u kontruktoru update: "+rez);
             InitializeComponent();
             PoslovnicaDAO pDAO = DAOFactory.getDAOFactory().getPoslovnicaDAO();
             List<PoslovnicaDTO> lista = pDAO.poslovnice();
@@ -62,6 +63,9 @@ namespace PS
         public DodavanjeLinija()
         {
             InitializeComponent();
+            idLinije = 0;
+            rez = 0;
+            Console.WriteLine("rez u kontruktoru nova: " + rez);
             cbPocetnaPosta.Text = "Odaberite";
              cbKrajnjaPosta.Text = "Odaberite";
         }
@@ -78,10 +82,10 @@ namespace PS
                 cbStavka.Items.Add(poslovnica);
             }
 
-            //dgvStavka.Enabled = false;
-            //cbStavka.Enabled = false;
-            //mtbStavka.Enabled = false;
-            //btnAddStavka.Enabled = false;
+            dgvStavka.Enabled = false;
+            cbStavka.Enabled = false;
+            mtbStavka.Enabled = false;
+            btnAddStavka.Enabled = false;
 
         }
 
@@ -98,7 +102,8 @@ namespace PS
             }
             
             LinijaStavkaDAO lsdao = DAOFactory.getDAOFactory().GetLinijaStavkaDAO();
-            LinijaStavkaDTO lstavka = new LinijaStavkaDTO(idLinije, stavka, vrijeme);
+            Console.WriteLine("rez prilikom dodavaanja stavke: " + rez);
+            LinijaStavkaDTO lstavka = new LinijaStavkaDTO(int.Parse(rez.ToString()), stavka, vrijeme);
           
             int p = lsdao.insert(lstavka);
             dgvStavka.Rows.Add(lstavka.Poslovnica.Naziv, lstavka.Vrijeme.ToString());
@@ -129,7 +134,8 @@ namespace PS
                 PoslovnicaDTO poslovnica = posl.vratiSaImenom(dgvStavka.Rows[e.RowIndex].Cells[0].Value.ToString());
 
                 LinijaStavkaDTO lsDTO = new LinijaStavkaDTO();
-                lsDTO.LinijaId = idLinije;
+                Console.WriteLine("rez kad kliknem na delete: " + rez);
+                lsDTO.LinijaId = int.Parse(rez.ToString());//idLinije
                 lsDTO.Poslovnica = poslovnica;
                 lsDAO.delete(lsDTO);
                 ucitajTabelu();
@@ -140,7 +146,8 @@ namespace PS
 
             dgvStavka.Rows.Clear();
             LinijaStavkaDAO lsDAO = DAOFactory.getDAOFactory().GetLinijaStavkaDAO();
-            List<LinijaStavkaDTO> listastavke = lsDAO.stavke(idLinije);
+            Console.WriteLine("rez azuriram tabelu: " + rez);
+            List<LinijaStavkaDTO> listastavke = lsDAO.stavke(int.Parse(rez.ToString()));//idLinije
 
             foreach (LinijaStavkaDTO stavka in listastavke)
             {
@@ -175,8 +182,8 @@ namespace PS
                 btnAddStavka.Enabled = true;
 
                 LinijaDAO lDAO = DAOFactory.getDAOFactory().getLinijaDAO();
-                
-                LinijaDTO linija1 = new LinijaDTO(id, pocetnaPosta, krajnjaPosta,vrijemeP, vrijemeD );
+                Console.WriteLine("rez kad dodajem liniju: " + rez);
+                LinijaDTO linija1 = new LinijaDTO(int.Parse(rez.ToString()), pocetnaPosta, krajnjaPosta,vrijemeP, vrijemeD );//umjesto rez=id
                  rez = lDAO.insert(linija1, pocetna, krajnja);
                 if (rez!=0)
                 {
