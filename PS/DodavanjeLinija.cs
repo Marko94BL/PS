@@ -163,6 +163,11 @@ namespace PS
             PoslovnicaDTO pocetnaPosta = (cbPocetnaPosta.SelectedItem as PoslovnicaDTO);
             PoslovnicaDTO krajnjaPosta = (cbKrajnjaPosta.SelectedItem as PoslovnicaDTO);
 
+            btnZavrsi.Enabled = true;
+            cbStavka.Enabled = true;
+            mtbStavka.Enabled = true;
+            btnAddStavka.Enabled = true;
+
             if (!(pocetnaPosta==null|| krajnjaPosta==null || ":".Equals(mtbPolazak.Text.Trim()) || ":".Equals(mtbDolazak.Text.Trim())))
             {
                 TimeSpan vrijemeP;
@@ -176,10 +181,7 @@ namespace PS
                     return;
                 }
 
-                btnZavrsi.Enabled = true;
-                cbStavka.Enabled = true;
-                mtbStavka.Enabled = true;
-                btnAddStavka.Enabled = true;
+
 
                 LinijaDAO lDAO = DAOFactory.getDAOFactory().getLinijaDAO();
                 Console.WriteLine("rez kad dodajem liniju: " + rez);
@@ -193,13 +195,14 @@ namespace PS
                     //this.Close();
                 }
 
-                cbPocetnaPosta.Enabled = false;
-                cbKrajnjaPosta.Enabled = false;
-                mtbPolazak.Enabled = false;
-                mtbDolazak.Enabled = false;
-                btnOk.Enabled = false;
+  
 
             }
+            cbPocetnaPosta.Enabled = false;
+            cbKrajnjaPosta.Enabled = false;
+            mtbPolazak.Enabled = false;
+            mtbDolazak.Enabled = false;
+            btnOk.Enabled = false;
         }
     }
 }

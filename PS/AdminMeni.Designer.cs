@@ -57,7 +57,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(188, 103);
+            this.label2.Location = new System.Drawing.Point(354, 103);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(127, 15);
             this.label2.TabIndex = 5;
@@ -66,7 +66,7 @@
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(345, 103);
+            this.label3.Location = new System.Drawing.Point(183, 103);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(132, 37);
             this.label3.TabIndex = 6;
@@ -76,7 +76,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(230, 248);
+            this.label4.Location = new System.Drawing.Point(383, 248);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(45, 15);
             this.label4.TabIndex = 7;
@@ -97,7 +97,7 @@
             // 
             this.btnOdjava.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnOdjava.BackgroundImage")));
             this.btnOdjava.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnOdjava.Location = new System.Drawing.Point(191, 157);
+            this.btnOdjava.Location = new System.Drawing.Point(357, 157);
             this.btnOdjava.Name = "btnOdjava";
             this.btnOdjava.Size = new System.Drawing.Size(108, 88);
             this.btnOdjava.TabIndex = 3;
@@ -108,7 +108,7 @@
             // 
             this.btnDodavanjeZaposlenog.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDodavanjeZaposlenog.BackgroundImage")));
             this.btnDodavanjeZaposlenog.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnDodavanjeZaposlenog.Location = new System.Drawing.Point(357, 12);
+            this.btnDodavanjeZaposlenog.Location = new System.Drawing.Point(191, 12);
             this.btnDodavanjeZaposlenog.Name = "btnDodavanjeZaposlenog";
             this.btnDodavanjeZaposlenog.Size = new System.Drawing.Size(108, 88);
             this.btnDodavanjeZaposlenog.TabIndex = 2;
@@ -119,7 +119,7 @@
             // 
             this.btnDodavanjePoslovnice.BackgroundImage = global::PS.Properties.Resources.poslovnica;
             this.btnDodavanjePoslovnice.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnDodavanjePoslovnice.Location = new System.Drawing.Point(191, 12);
+            this.btnDodavanjePoslovnice.Location = new System.Drawing.Point(357, 12);
             this.btnDodavanjePoslovnice.Name = "btnDodavanjePoslovnice";
             this.btnDodavanjePoslovnice.Size = new System.Drawing.Size(108, 88);
             this.btnDodavanjePoslovnice.TabIndex = 1;
@@ -151,7 +151,7 @@
             // 
             this.btnPregledNaloga.BackgroundImage = global::PS.Properties.Resources.korisnik;
             this.btnPregledNaloga.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnPregledNaloga.Location = new System.Drawing.Point(357, 157);
+            this.btnPregledNaloga.Location = new System.Drawing.Point(191, 157);
             this.btnPregledNaloga.Name = "btnPregledNaloga";
             this.btnPregledNaloga.Size = new System.Drawing.Size(108, 88);
             this.btnPregledNaloga.TabIndex = 10;
@@ -162,7 +162,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(340, 248);
+            this.label5.Location = new System.Drawing.Point(172, 248);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(143, 15);
             this.label5.TabIndex = 11;
@@ -173,7 +173,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(495, 282);
+            this.ClientSize = new System.Drawing.Size(488, 283);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnPregledNaloga);
             this.Controls.Add(this.lblLinijePregled);
