@@ -78,7 +78,7 @@
             this.cbPocetnaPosta.Location = new System.Drawing.Point(113, 86);
             this.cbPocetnaPosta.Name = "cbPocetnaPosta";
             this.cbPocetnaPosta.Size = new System.Drawing.Size(100, 21);
-            this.cbPocetnaPosta.TabIndex = 2;
+            this.cbPocetnaPosta.TabIndex = 0;
             // 
             // label2
             // 
@@ -96,7 +96,7 @@
             this.cbKrajnjaPosta.Location = new System.Drawing.Point(113, 125);
             this.cbKrajnjaPosta.Name = "cbKrajnjaPosta";
             this.cbKrajnjaPosta.Size = new System.Drawing.Size(100, 21);
-            this.cbKrajnjaPosta.TabIndex = 4;
+            this.cbKrajnjaPosta.TabIndex = 2;
             // 
             // label3
             // 
@@ -124,7 +124,7 @@
             this.btnOk.Location = new System.Drawing.Point(308, 157);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(84, 26);
-            this.btnOk.TabIndex = 9;
+            this.btnOk.TabIndex = 4;
             this.btnOk.Text = "Potvrdi unos";
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
@@ -135,7 +135,7 @@
             this.mtbDolazak.Mask = "00:00";
             this.mtbDolazak.Name = "mtbDolazak";
             this.mtbDolazak.Size = new System.Drawing.Size(52, 20);
-            this.mtbDolazak.TabIndex = 11;
+            this.mtbDolazak.TabIndex = 3;
             this.mtbDolazak.ValidatingType = typeof(System.DateTime);
             // 
             // mtbPolazak
@@ -144,7 +144,7 @@
             this.mtbPolazak.Mask = "00:00";
             this.mtbPolazak.Name = "mtbPolazak";
             this.mtbPolazak.Size = new System.Drawing.Size(52, 20);
-            this.mtbPolazak.TabIndex = 12;
+            this.mtbPolazak.TabIndex = 1;
             this.mtbPolazak.ValidatingType = typeof(System.DateTime);
             // 
             // label5
@@ -163,7 +163,7 @@
             this.cbStavka.Location = new System.Drawing.Point(92, 199);
             this.cbStavka.Name = "cbStavka";
             this.cbStavka.Size = new System.Drawing.Size(121, 21);
-            this.cbStavka.TabIndex = 14;
+            this.cbStavka.TabIndex = 5;
             // 
             // label6
             // 
@@ -180,7 +180,7 @@
             this.mtbStavka.Mask = "00:00";
             this.mtbStavka.Name = "mtbStavka";
             this.mtbStavka.Size = new System.Drawing.Size(41, 20);
-            this.mtbStavka.TabIndex = 16;
+            this.mtbStavka.TabIndex = 6;
             this.mtbStavka.ValidatingType = typeof(System.DateTime);
             // 
             // btnAddStavka
@@ -188,13 +188,17 @@
             this.btnAddStavka.Location = new System.Drawing.Point(356, 199);
             this.btnAddStavka.Name = "btnAddStavka";
             this.btnAddStavka.Size = new System.Drawing.Size(36, 23);
-            this.btnAddStavka.TabIndex = 17;
+            this.btnAddStavka.TabIndex = 7;
             this.btnAddStavka.Text = "+";
             this.btnAddStavka.UseVisualStyleBackColor = true;
             this.btnAddStavka.Click += new System.EventHandler(this.btnAddStavka_Click);
             // 
             // dgvStavka
             // 
+            this.dgvStavka.AllowUserToAddRows = false;
+            this.dgvStavka.AllowUserToDeleteRows = false;
+            this.dgvStavka.AllowUserToResizeColumns = false;
+            this.dgvStavka.AllowUserToResizeRows = false;
             this.dgvStavka.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStavka.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Poslovnica,
@@ -221,7 +225,7 @@
             this.button1.Location = new System.Drawing.Point(317, 416);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 19;
+            this.button1.TabIndex = 8;
             this.button1.Text = "Završi unos";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -250,7 +254,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Name = "DodavanjeLinija";
-            this.Text = "Pošte Srpske-Dodavanje linije";
+            this.Text = "Pošte Srpske-Unos nove linije";
             this.Load += new System.EventHandler(this.DodavanjeLinija_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStavka)).EndInit();

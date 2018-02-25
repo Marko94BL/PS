@@ -57,6 +57,11 @@ namespace PS
                 cbKrajnjaPosta.Items.Add(poslovnica);
                 cbStavka.Items.Add(poslovnica);
             }
+
+            button1.Enabled = false;
+            cbStavka.Enabled = false;
+            mtbStavka.Enabled = false;
+            btnAddStavka.Enabled = false;
         }
 
         private void btnAddStavka_Click(object sender, EventArgs e)
@@ -80,11 +85,14 @@ namespace PS
             String username = GlavnaForma.Prijavljeni.KorisnickoIme;
             PoslovnicaDTO pocetnaPosta = (cbPocetnaPosta.SelectedItem as PoslovnicaDTO);
             PoslovnicaDTO krajnjaPosta = (cbKrajnjaPosta.SelectedItem as PoslovnicaDTO);
-            TimeSpan vrijemeP = TimeSpan.Parse(mtbPolazak.Text);
-            TimeSpan vrijemeD = TimeSpan.Parse(mtbDolazak.Text);
+            System.Console.WriteLine("Dolazak:" + mtbDolazak.Text.Trim());
 
-            if (!(pocetnaPosta.Equals(null) || krajnjaPosta.Equals(null) || vrijemeP == null || vrijemeD == null))
+            if (!(pocetnaPosta==null|| krajnjaPosta==null || ":".Equals(mtbPolazak.Text.Trim()) || ":".Equals(mtbDolazak.Text.Trim())))
             {
+                //mtbDolazak.mas
+                TimeSpan vrijemeP = TimeSpan.Parse(mtbPolazak.Text);
+                TimeSpan vrijemeD = TimeSpan.Parse(mtbDolazak.Text);
+
                 LinijaDAO lDAO = DAOFactory.getDAOFactory().getLinijaDAO();
                 
                 LinijaDTO linija1 = new LinijaDTO(id, pocetnaPosta, krajnjaPosta,vrijemeP, vrijemeD );
@@ -94,6 +102,10 @@ namespace PS
                     MessageBox.Show("Uspješno dodavanje nove linije", "Uspješno dodavanje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //this.Close();
 
+                    button1.Enabled = true;
+                    cbStavka.Enabled = true;
+                    mtbStavka.Enabled = true;
+                    btnAddStavka.Enabled = true;
                 }
 
             }
