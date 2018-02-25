@@ -64,7 +64,7 @@ namespace PS.dao.mysql
                 cmd.CommandText = "INSERT INTO poslovnica VALUES(@IdPoslovnica, @Naziv, @IdMjesto, " +
                     "@Adresa, @IdPoslovnicaPC)";
 
-                cmd.Parameters.AddWithValue("@IdPoslovnica", 0);
+                cmd.Parameters.AddWithValue("@IdPoslovnica", poslovnica.PoslovnicaId);
                 cmd.Parameters.AddWithValue("@Naziv", poslovnica.Naziv);
                 cmd.Parameters.AddWithValue("@IdMjesto", poslovnica.Mjesto.MjestoId);
                 cmd.Parameters.AddWithValue("@Adresa", poslovnica.Adresa);

@@ -50,8 +50,8 @@ namespace PS
             {
                 KartaZakljuckaDAO kzdao = DAOFactory.getDAOFactory().getKartaZakljuckaDAO();
                 int id = 0;
-                //try
-              //  {
+                try
+                {
                     id = int.Parse(tbIdentifikatorKarte.Text.Trim());
                     kartaZakljucka = kzdao.vratiKartaZakljucka(id);
                     System.Console.WriteLine("sta god hoces "+kartaZakljucka.KartaID);
@@ -102,14 +102,14 @@ namespace PS
                         btnOvjeraKarteZakljucka.Enabled = false;
                         MessageBox.Show("Ne postoji karta zaključka sa unešenim identifikatorom!", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-               // }
-               /* catch (Exception es)
+                }
+                catch (Exception es)
                 {
                     System.Console.WriteLine(es.StackTrace);
                     btnOvjeraSpiska.Enabled = false;
                     btnOvjeraKarteZakljucka.Enabled = false;
                     MessageBox.Show("Ne postoji karta zaključka sa unešenim identifikatorom!", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }*/
+                }
 
             }
             else {

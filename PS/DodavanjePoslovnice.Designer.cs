@@ -39,6 +39,8 @@
             this.tb_Adresa = new System.Windows.Forms.TextBox();
             this.check_PostanskiCentar = new System.Windows.Forms.CheckBox();
             this.btn_Potvrda = new System.Windows.Forms.Button();
+            this.lblBrojPoste = new System.Windows.Forms.Label();
+            this.mtbBrojPoste = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,7 +58,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(116, 70);
+            this.label2.Location = new System.Drawing.Point(123, 71);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(45, 15);
             this.label2.TabIndex = 1;
@@ -66,7 +68,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(116, 103);
+            this.label3.Location = new System.Drawing.Point(123, 135);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 15);
             this.label3.TabIndex = 2;
@@ -75,7 +77,7 @@
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(116, 135);
+            this.label4.Location = new System.Drawing.Point(123, 167);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(65, 35);
             this.label4.TabIndex = 3;
@@ -94,7 +96,7 @@
             // cb_Mjesto
             // 
             this.cb_Mjesto.FormattingEnabled = true;
-            this.cb_Mjesto.Location = new System.Drawing.Point(197, 103);
+            this.cb_Mjesto.Location = new System.Drawing.Point(197, 134);
             this.cb_Mjesto.Name = "cb_Mjesto";
             this.cb_Mjesto.Size = new System.Drawing.Size(182, 21);
             this.cb_Mjesto.TabIndex = 2;
@@ -102,7 +104,7 @@
             // combo_PostanskiCentar
             // 
             this.combo_PostanskiCentar.FormattingEnabled = true;
-            this.combo_PostanskiCentar.Location = new System.Drawing.Point(197, 143);
+            this.combo_PostanskiCentar.Location = new System.Drawing.Point(197, 173);
             this.combo_PostanskiCentar.Name = "combo_PostanskiCentar";
             this.combo_PostanskiCentar.Size = new System.Drawing.Size(182, 21);
             this.combo_PostanskiCentar.TabIndex = 4;
@@ -124,7 +126,7 @@
             // check_PostanskiCentar
             // 
             this.check_PostanskiCentar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.check_PostanskiCentar.Location = new System.Drawing.Point(12, 124);
+            this.check_PostanskiCentar.Location = new System.Drawing.Point(12, 135);
             this.check_PostanskiCentar.Name = "check_PostanskiCentar";
             this.check_PostanskiCentar.Size = new System.Drawing.Size(84, 57);
             this.check_PostanskiCentar.TabIndex = 3;
@@ -135,7 +137,7 @@
             // btn_Potvrda
             // 
             this.btn_Potvrda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Potvrda.Location = new System.Drawing.Point(292, 179);
+            this.btn_Potvrda.Location = new System.Drawing.Point(292, 223);
             this.btn_Potvrda.Name = "btn_Potvrda";
             this.btn_Potvrda.Size = new System.Drawing.Size(87, 34);
             this.btn_Potvrda.TabIndex = 5;
@@ -143,12 +145,31 @@
             this.btn_Potvrda.UseVisualStyleBackColor = true;
             this.btn_Potvrda.Click += new System.EventHandler(this.btn_Potvrda_Click);
             // 
+            // lblBrojPoste
+            // 
+            this.lblBrojPoste.AutoSize = true;
+            this.lblBrojPoste.Location = new System.Drawing.Point(123, 104);
+            this.lblBrojPoste.Name = "lblBrojPoste";
+            this.lblBrojPoste.Size = new System.Drawing.Size(55, 13);
+            this.lblBrojPoste.TabIndex = 6;
+            this.lblBrojPoste.Text = "Broj Poste";
+            // 
+            // mtbBrojPoste
+            // 
+            this.mtbBrojPoste.Location = new System.Drawing.Point(197, 101);
+            this.mtbBrojPoste.Mask = "00000";
+            this.mtbBrojPoste.Name = "mtbBrojPoste";
+            this.mtbBrojPoste.Size = new System.Drawing.Size(39, 20);
+            this.mtbBrojPoste.TabIndex = 7;
+            // 
             // DodavanjePoslovnice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(396, 230);
+            this.ClientSize = new System.Drawing.Size(396, 268);
+            this.Controls.Add(this.mtbBrojPoste);
+            this.Controls.Add(this.lblBrojPoste);
             this.Controls.Add(this.btn_Potvrda);
             this.Controls.Add(this.check_PostanskiCentar);
             this.Controls.Add(this.tb_Adresa);
@@ -160,7 +181,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.MaximumSize = new System.Drawing.Size(412, 268);
+            this.MaximumSize = new System.Drawing.Size(412, 330);
             this.MinimumSize = new System.Drawing.Size(412, 268);
             this.Name = "DodavanjePoslovnice";
             this.Text = "Pošte Srpske - Dodavanje Poslovnice";
@@ -184,5 +205,7 @@
         private System.Windows.Forms.TextBox tb_Adresa;
         private System.Windows.Forms.CheckBox check_PostanskiCentar;
         private System.Windows.Forms.Button btn_Potvrda;
+        private System.Windows.Forms.Label lblBrojPoste;
+        private System.Windows.Forms.MaskedTextBox mtbBrojPoste;
     }
 }

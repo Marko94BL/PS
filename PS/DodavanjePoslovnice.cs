@@ -46,10 +46,11 @@ namespace PS
 
         private void btn_Potvrda_Click(object sender, EventArgs e)
         {
-            if (!("").Equals(tb_Naziv.Text.Trim()) && !("").Equals(tb_Adresa.Text.Trim()) && (cb_Mjesto.SelectedIndex != -1) && (check_PostanskiCentar.Checked || (!check_PostanskiCentar.Checked && combo_PostanskiCentar.SelectedIndex != -1)))
+            if (!("").Equals(tb_Naziv.Text.Trim()) && !("").Equals(tb_Adresa.Text.Trim()) && !("").Equals(mtbBrojPoste.Text.Trim()) && (cb_Mjesto.SelectedIndex != -1) && (check_PostanskiCentar.Checked || (!check_PostanskiCentar.Checked && combo_PostanskiCentar.SelectedIndex != -1)))
             {
                 PoslovnicaDAO poslovnicaDAO = DAOFactory.getDAOFactory().getPoslovnicaDAO();
-                bool flag = poslovnicaDAO.insert(new PoslovnicaDTO(0, tb_Naziv.Text.Trim(), cb_Mjesto.SelectedItem as MjestoDTO, tb_Adresa.Text.Trim(), check_PostanskiCentar.Checked?null:combo_PostanskiCentar.SelectedItem as PoslovnicaDTO));
+                int brojPoste = int.Parse(mtbBrojPoste.Text.Trim());
+                bool flag = poslovnicaDAO.insert(new PoslovnicaDTO(brojPoste, tb_Naziv.Text.Trim(), cb_Mjesto.SelectedItem as MjestoDTO, tb_Adresa.Text.Trim(), check_PostanskiCentar.Checked?null:combo_PostanskiCentar.SelectedItem as PoslovnicaDTO));
                 if (flag == true)
                 {
                     MessageBox.Show("Uspješno ste dodali novu poslovnicu ", "Uspješno dodavanje", MessageBoxButtons.OK, MessageBoxIcon.Information);

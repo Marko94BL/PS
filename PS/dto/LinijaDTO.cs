@@ -33,7 +33,7 @@ namespace PS.dto
 
         public override string ToString()
         {
-            return PoslovnicaSalje.Mjesto.PostanskiBroj + " " + PoslovnicaSalje.Mjesto.Naziv + "-" + PoslovnicaPrima.Mjesto.PostanskiBroj + " " + PoslovnicaPrima.Mjesto.Naziv;
+            return PoslovnicaSalje.PoslovnicaId + " " + PoslovnicaSalje.Mjesto.Naziv + "-" + PoslovnicaPrima.PoslovnicaId + " " + PoslovnicaPrima.Mjesto.Naziv;
         }
     }
 }
