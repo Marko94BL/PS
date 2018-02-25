@@ -75,9 +75,9 @@
             // cbPocetnaPosta
             // 
             this.cbPocetnaPosta.FormattingEnabled = true;
-            this.cbPocetnaPosta.Location = new System.Drawing.Point(113, 86);
+            this.cbPocetnaPosta.Location = new System.Drawing.Point(103, 85);
             this.cbPocetnaPosta.Name = "cbPocetnaPosta";
-            this.cbPocetnaPosta.Size = new System.Drawing.Size(100, 21);
+            this.cbPocetnaPosta.Size = new System.Drawing.Size(110, 21);
             this.cbPocetnaPosta.TabIndex = 0;
             this.cbPocetnaPosta.SelectedIndexChanged += new System.EventHandler(this.cbPocetnaPosta_SelectedIndexChanged);
             // 
@@ -85,7 +85,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(17, 131);
+            this.label2.Location = new System.Drawing.Point(12, 131);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(79, 15);
             this.label2.TabIndex = 3;
@@ -94,9 +94,9 @@
             // cbKrajnjaPosta
             // 
             this.cbKrajnjaPosta.FormattingEnabled = true;
-            this.cbKrajnjaPosta.Location = new System.Drawing.Point(113, 125);
+            this.cbKrajnjaPosta.Location = new System.Drawing.Point(102, 130);
             this.cbKrajnjaPosta.Name = "cbKrajnjaPosta";
-            this.cbKrajnjaPosta.Size = new System.Drawing.Size(100, 21);
+            this.cbKrajnjaPosta.Size = new System.Drawing.Size(111, 21);
             this.cbKrajnjaPosta.TabIndex = 2;
             this.cbKrajnjaPosta.SelectedIndexChanged += new System.EventHandler(this.cbPocetnaPosta_SelectedIndexChanged);
             // 
@@ -104,7 +104,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(228, 87);
+            this.label3.Location = new System.Drawing.Point(228, 86);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(95, 15);
             this.label3.TabIndex = 5;
@@ -114,7 +114,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(228, 125);
+            this.label4.Location = new System.Drawing.Point(228, 131);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(95, 15);
             this.label4.TabIndex = 6;
@@ -123,9 +123,9 @@
             // btnOk
             // 
             this.btnOk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOk.Location = new System.Drawing.Point(308, 157);
+            this.btnOk.Location = new System.Drawing.Point(308, 166);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(84, 26);
+            this.btnOk.Size = new System.Drawing.Size(84, 30);
             this.btnOk.TabIndex = 4;
             this.btnOk.Text = "Potvrdi unos";
             this.btnOk.UseVisualStyleBackColor = true;
@@ -133,7 +133,7 @@
             // 
             // mtbDolazak
             // 
-            this.mtbDolazak.Location = new System.Drawing.Point(340, 126);
+            this.mtbDolazak.Location = new System.Drawing.Point(340, 130);
             this.mtbDolazak.Mask = "00:00";
             this.mtbDolazak.Name = "mtbDolazak";
             this.mtbDolazak.Size = new System.Drawing.Size(52, 20);
@@ -153,7 +153,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(12, 199);
+            this.label5.Location = new System.Drawing.Point(17, 214);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(74, 15);
             this.label5.TabIndex = 13;
@@ -162,23 +162,24 @@
             // cbStavka
             // 
             this.cbStavka.FormattingEnabled = true;
-            this.cbStavka.Location = new System.Drawing.Point(92, 199);
+            this.cbStavka.Location = new System.Drawing.Point(102, 213);
             this.cbStavka.Name = "cbStavka";
-            this.cbStavka.Size = new System.Drawing.Size(121, 21);
+            this.cbStavka.Size = new System.Drawing.Size(111, 21);
             this.cbStavka.TabIndex = 5;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(244, 202);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(228, 216);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 13);
+            this.label6.Size = new System.Drawing.Size(49, 15);
             this.label6.TabIndex = 15;
             this.label6.Text = "Vrijeme";
             // 
             // mtbStavka
             // 
-            this.mtbStavka.Location = new System.Drawing.Point(292, 199);
+            this.mtbStavka.Location = new System.Drawing.Point(293, 215);
             this.mtbStavka.Mask = "00:00";
             this.mtbStavka.Name = "mtbStavka";
             this.mtbStavka.Size = new System.Drawing.Size(41, 20);
@@ -187,7 +188,7 @@
             // 
             // btnAddStavka
             // 
-            this.btnAddStavka.Location = new System.Drawing.Point(356, 199);
+            this.btnAddStavka.Location = new System.Drawing.Point(356, 213);
             this.btnAddStavka.Name = "btnAddStavka";
             this.btnAddStavka.Size = new System.Drawing.Size(36, 23);
             this.btnAddStavka.TabIndex = 7;
@@ -225,9 +226,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(317, 416);
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(308, 415);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(84, 30);
             this.button1.TabIndex = 8;
             this.button1.Text = "Završi unos";
             this.button1.UseVisualStyleBackColor = true;
@@ -238,7 +240,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(407, 453);
+            this.ClientSize = new System.Drawing.Size(407, 458);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dgvStavka);
             this.Controls.Add(this.btnAddStavka);

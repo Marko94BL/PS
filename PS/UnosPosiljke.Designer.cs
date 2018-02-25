@@ -46,7 +46,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(129, 9);
+            this.label1.Location = new System.Drawing.Point(129, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(90, 15);
             this.label1.TabIndex = 0;
@@ -56,7 +56,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(129, 36);
+            this.label2.Location = new System.Drawing.Point(129, 46);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 15);
             this.label2.TabIndex = 1;
@@ -74,7 +74,7 @@
             // 
             // tbDatum
             // 
-            this.tbDatum.Location = new System.Drawing.Point(247, 35);
+            this.tbDatum.Location = new System.Drawing.Point(247, 45);
             this.tbDatum.Name = "tbDatum";
             this.tbDatum.Size = new System.Drawing.Size(156, 20);
             this.tbDatum.TabIndex = 2;
@@ -122,7 +122,7 @@
             // cbPrijemnaPosta
             // 
             this.cbPrijemnaPosta.FormattingEnabled = true;
-            this.cbPrijemnaPosta.Location = new System.Drawing.Point(247, 8);
+            this.cbPrijemnaPosta.Location = new System.Drawing.Point(247, 13);
             this.cbPrijemnaPosta.Name = "cbPrijemnaPosta";
             this.cbPrijemnaPosta.Size = new System.Drawing.Size(156, 21);
             this.cbPrijemnaPosta.TabIndex = 4;
@@ -151,7 +151,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(416, 216);
+            this.ClientSize = new System.Drawing.Size(416, 217);
             this.Controls.Add(this.tbIdentifikator);
             this.Controls.Add(this.cbVanVrece);
             this.Controls.Add(this.cbPrijemnaPosta);

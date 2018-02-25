@@ -72,6 +72,19 @@ namespace PS
             tbKorisnickoIme.Clear();
             tbLozinka.Clear();
         }
+
+        private void tbLozinka_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbLozinka_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnPrijava_Click(this, new EventArgs());
+            }
+        }
     }
 
 }

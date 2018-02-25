@@ -99,7 +99,7 @@
             // 
             this.cbIsAdmin.AutoSize = true;
             this.cbIsAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbIsAdmin.Location = new System.Drawing.Point(118, 123);
+            this.cbIsAdmin.Location = new System.Drawing.Point(118, 132);
             this.cbIsAdmin.Name = "cbIsAdmin";
             this.cbIsAdmin.Size = new System.Drawing.Size(61, 19);
             this.cbIsAdmin.TabIndex = 3;
@@ -109,11 +109,12 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(115, 91);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(115, 92);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(111, 13);
+            this.label3.Size = new System.Drawing.Size(133, 15);
             this.label3.TabIndex = 7;
-            this.label3.Text = "Ponovite unos lozinke";
+            this.label3.Text = "Ponovo unesite lozinku";
             // 
             // tbLozinka2
             // 
@@ -128,7 +129,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(441, 169);
+            this.ClientSize = new System.Drawing.Size(441, 170);
             this.Controls.Add(this.tbLozinka2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cbIsAdmin);

@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.gdwKorisnickiNalozi = new System.Windows.Forms.DataGridView();
+            this.colKorisnickoIme = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.dgwBlokirani = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.colKorisnickoIme = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colKI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gdwKorisnickiNalozi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwBlokirani)).BeginInit();
             this.SuspendLayout();
@@ -51,6 +51,15 @@
             this.gdwKorisnickiNalozi.Size = new System.Drawing.Size(287, 183);
             this.gdwKorisnickiNalozi.TabIndex = 0;
             this.gdwKorisnickiNalozi.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdwKorisnickiNalozi_CellClick);
+            // 
+            // colKorisnickoIme
+            // 
+            this.colKorisnickoIme.HeaderText = "Korisničko ime";
+            this.colKorisnickoIme.Name = "colKorisnickoIme";
+            this.colKorisnickoIme.ReadOnly = true;
+            this.colKorisnickoIme.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colKorisnickoIme.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colKorisnickoIme.Width = 145;
             // 
             // label1
             // 
@@ -76,6 +85,13 @@
             this.dgwBlokirani.TabIndex = 2;
             this.dgwBlokirani.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwBlokirani_CellClick);
             // 
+            // colKI
+            // 
+            this.colKI.HeaderText = "Korisničko ime";
+            this.colKI.Name = "colKI";
+            this.colKI.ReadOnly = true;
+            this.colKI.Width = 145;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -86,27 +102,12 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Blokirani korisnički nalozi";
             // 
-            // colKorisnickoIme
-            // 
-            this.colKorisnickoIme.HeaderText = "Korisničko ime";
-            this.colKorisnickoIme.Name = "colKorisnickoIme";
-            this.colKorisnickoIme.ReadOnly = true;
-            this.colKorisnickoIme.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colKorisnickoIme.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.colKorisnickoIme.Width = 145;
-            // 
-            // colKI
-            // 
-            this.colKI.HeaderText = "Korisničko ime";
-            this.colKI.Name = "colKI";
-            this.colKI.ReadOnly = true;
-            this.colKI.Width = 145;
-            // 
             // PrikazKorisnickihNaloga
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(629, 229);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(629, 230);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dgwBlokirani);
             this.Controls.Add(this.label1);
@@ -114,7 +115,7 @@
             this.MaximumSize = new System.Drawing.Size(645, 268);
             this.MinimumSize = new System.Drawing.Size(645, 268);
             this.Name = "PrikazKorisnickihNaloga";
-            this.Text = "PrikazKorisnickihNaloga";
+            this.Text = "Pošte Srpske - Prikaz korisničkih naloga";
             this.Load += new System.EventHandler(this.PrikazKorisnickihNaloga_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gdwKorisnickiNalozi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwBlokirani)).EndInit();

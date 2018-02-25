@@ -51,7 +51,7 @@
             // 
             // tbOtprema
             // 
-            this.tbOtprema.Location = new System.Drawing.Point(166, 8);
+            this.tbOtprema.Location = new System.Drawing.Point(166, 11);
             this.tbOtprema.Name = "tbOtprema";
             this.tbOtprema.Size = new System.Drawing.Size(47, 20);
             this.tbOtprema.TabIndex = 19;
@@ -70,7 +70,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(102, 9);
+            this.label1.Location = new System.Drawing.Point(102, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 15);
             this.label1.TabIndex = 17;
@@ -213,7 +213,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(384, 500);
+            this.ClientSize = new System.Drawing.Size(384, 501);
             this.Controls.Add(this.tbOd);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.tbZa);
