@@ -130,7 +130,7 @@ namespace PS.dao.mysql
             MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
             conn.Open();
 
-            List<KartaZakljuckaDTO> kz = null;
+            List<KartaZakljuckaDTO> kz = new List<KartaZakljuckaDTO>();
 
             MySqlCommand cmd = conn.CreateCommand();
             cmd.CommandText = "SELECT * FROM kartazakljucka WHERE (IdPoslovnicaSalje=@salje AND IdPoslovnicaPrima=@prima AND VrijemeStigla IS NULL)";

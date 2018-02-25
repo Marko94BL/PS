@@ -42,7 +42,7 @@ namespace PS
                 int ukupanBrojVreca = 0;
                 Printer p = new Printer();
                 List<KartaZakljuckaDTO> karte = new List<KartaZakljuckaDTO>();
-                List<LinijaStavkaDTO> lista = new List<LinijaStavkaDTO>();// = ldao.stavke(linija.LinijaId);
+                List<LinijaStavkaDTO> lista = ldao.stavke(linija.LinijaId);
                 DateTime trenutniDatetime = DateTime.Now;
                 if (lista != null)
                 {
