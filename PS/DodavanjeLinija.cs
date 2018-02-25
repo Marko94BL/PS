@@ -167,6 +167,7 @@ namespace PS
             cbStavka.Enabled = true;
             mtbStavka.Enabled = true;
             btnAddStavka.Enabled = true;
+            dgvStavka.Enabled = true;
 
             if (!(pocetnaPosta==null|| krajnjaPosta==null || ":".Equals(mtbPolazak.Text.Trim()) || ":".Equals(mtbDolazak.Text.Trim())))
             {
