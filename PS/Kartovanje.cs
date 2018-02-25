@@ -86,7 +86,8 @@ namespace PS
                 string podvlacenje = "==============================================================================\r\n";
                 p.Text = "                                Karta zaključka                                \r\n";
                 p.Text += podvlacenje;
-                p.Text += Printer.napusiStringDoBroja("Karta zaključka od: " + prijemnaPosta + ", Za: " + odredisnaPosta + "\r\n",78);
+                p.Text += "Karta zaključka od: " + prijemnaPosta + ", Za: " + odredisnaPosta + "\r\n";
+                p.Text += "Identifikator karte zaključka: " + kartaZakljucka.KartaID + "\r\n";
                 p.Text += "Otprema: " + tbOtprema.Text.Trim() + "\r\n";
                 p.Text += "Datum kreiranja: " + datum + "\r\n";
                 p.Text += "Broj posiljaka: " + brojPosiljaka + "\r\n";
