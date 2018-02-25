@@ -59,7 +59,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(160, 18);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Aktivni korisnicki nalozi";
+            this.label1.Text = "Aktivni korisnički nalozi";
             // 
             // dgwBlokirani
             // 
@@ -83,7 +83,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(175, 18);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Blokirani korisnicki nalozi";
+            this.label2.Text = "Blokirani korisnički nalozi";
             // 
             // colKorisnickoIme
             // 
