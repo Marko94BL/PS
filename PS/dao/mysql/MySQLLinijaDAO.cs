@@ -11,34 +11,87 @@ namespace PS.dao.mysql
 {
     class MySQLLinijaDAO : LinijaDAO
     {
-        public bool insert(LinijaDTO linija)
+        public long insert(LinijaDTO linija, int pocetna, int krajnja)
         {
-
+            long rez = 0;
             MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
             try
             {
                 conn.Open();
+                LinijaDTO l = pretragaLinijaOdDO(pocetna, krajnja);
+                if (l != null)
+                {
+                    Console.Write("vrsi se update");
+                    linija.LinijaId = l.LinijaId;
+                    update(linija);
+                }
+                else
+                {
 
-                MySqlCommand cmd = conn.CreateCommand();
-                cmd.CommandText = "INSERT INTO linija VALUES(@IdLinija, @IdPoslovnicaSalje, @IdPoslovnicaPrima, @VrijemePolaska, @VrijemeDolaska)";
+                    Console.Write("vrsi se insert");
 
-                cmd.Parameters.AddWithValue("@IdLinija", linija.LinijaId);
-                cmd.Parameters.AddWithValue("@IdPoslovnicaSalje", linija.PoslovnicaSalje.PoslovnicaId);
-                cmd.Parameters.AddWithValue("@IdPoslovnicaPrima", linija.PoslovnicaPrima.PoslovnicaId);
-                cmd.Parameters.AddWithValue("@VrijemePolaska", linija.VrijemePolaska);
-                cmd.Parameters.AddWithValue("@VrijemeDolaska", linija.VrijemeDolaska);
-                int brojRedova = cmd.ExecuteNonQuery();
+
+                    MySqlCommand cmd = conn.CreateCommand();
+                    cmd.CommandText = "INSERT INTO linija VALUES(@IdLinija, @IdPoslovnicaSalje, @IdPoslovnicaPrima, @VrijemePolaska, @VrijemeDolaska)";
+
+                    cmd.Parameters.AddWithValue("@IdLinija", linija.LinijaId);
+                    cmd.Parameters.AddWithValue("@IdPoslovnicaSalje", linija.PoslovnicaSalje.PoslovnicaId);
+                    cmd.Parameters.AddWithValue("@IdPoslovnicaPrima", linija.PoslovnicaPrima.PoslovnicaId);
+                    cmd.Parameters.AddWithValue("@VrijemePolaska", linija.VrijemePolaska);
+                    cmd.Parameters.AddWithValue("@VrijemeDolaska", linija.VrijemeDolaska);
+                    int brojRedova = cmd.ExecuteNonQuery();
+                    rez = cmd.LastInsertedId;
+                }
             }
             catch (MySqlException e)
             {
                 e.ErrorCode.ToString();
-                return false;
+                return 0;
             }
             finally
             {
                 conn.Close();
             }
-            return true;
+            return rez;
+        }
+
+        public void update(LinijaDTO linija)
+        {
+            MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
+            try
+            {
+                conn.Open();
+                
+                    MySqlCommand cmd = conn.CreateCommand();
+                    cmd.CommandText = "UPDATE linija SET IdPoslovnicaSalje = @IdPoslovnicaSalje,IdPoslovnicaPrima= @IdPoslovnicaPrima," +
+                    " VrijemePolaska=@VrijemePolaska,VrijemeDolaska= @VrijemeDolaska WHERE IdLinija=@idLinije";
+
+                Console.Write("======" + linija.LinijaId + " " + linija.PoslovnicaSalje.PoslovnicaId + " " + linija.PoslovnicaPrima.PoslovnicaId + " " +
+                    linija.VrijemePolaska + " " + linija.VrijemeDolaska + "======");
+
+                cmd.Parameters.AddWithValue("@idLinije", linija.LinijaId); 
+                cmd.Parameters.AddWithValue("@IdPoslovnicaSalje", linija.PoslovnicaSalje.PoslovnicaId); 
+                cmd.Parameters.AddWithValue("@IdPoslovnicaPrima", linija.PoslovnicaPrima.PoslovnicaId); 
+                cmd.Parameters.AddWithValue("@VrijemePolaska", linija.VrijemePolaska); 
+                cmd.Parameters.AddWithValue("@VrijemeDolaska", linija.VrijemeDolaska);
+                int brojRedova = cmd.ExecuteNonQuery();
+             
+
+            }
+            catch (MySqlException e)
+            {
+                System.Windows.Forms.MessageBox.Show("Greska pri update", "Greska", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                System.Console.WriteLine(e.StackTrace);
+               
+                e.ErrorCode.ToString();
+                
+               
+            }
+            finally
+            {
+                conn.Close();
+            }
+            //return true;
         }
 
         public List<LinijaDTO> linije()
@@ -82,18 +135,18 @@ namespace PS.dao.mysql
             MySqlDataReader reader = cmd.ExecuteReader();
             PoslovnicaDAO pdao = DAOFactory.getDAOFactory().getPoslovnicaDAO();
             PoslovnicaDTO prima = null, salje = null;
-            //LinijaDTO linija= 
+            LinijaDTO linija = null;
             while (reader.Read())
             {
                 salje = pdao.vratiPoslovnicu(reader.GetInt32(1));
                 prima = pdao.vratiPoslovnicu(reader.GetInt32(2));
-                lista.Add(new LinijaDTO(reader.GetInt32(0), salje, prima, reader.GetTimeSpan(3), reader.GetTimeSpan(4)));
+                linija=new LinijaDTO(reader.GetInt32(0), salje, prima, reader.GetTimeSpan(3), reader.GetTimeSpan(4));
             }
             reader.Close();
             conn.Close();
-            return null;
+            return linija;
         }
 
-
+        
     }
 }

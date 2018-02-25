@@ -9,8 +9,9 @@ namespace PS.dao
 {
     interface LinijaDAO
     {
-        bool insert(LinijaDTO linija);
+        long insert(LinijaDTO linija, int pocetna, int krajnja);
         List<LinijaDTO> linije();
         LinijaDTO pretragaLinijaOdDO(int idsalje, int idprima);
+        void update(LinijaDTO linija);
     }
 }

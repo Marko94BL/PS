@@ -70,12 +70,14 @@
     <Compile Include="dao\KartaZakljuckaDAO.cs" />
     <Compile Include="dao\KorisnickiNalogDAO.cs" />
     <Compile Include="dao\LinijaDAO.cs" />
+    <Compile Include="dao\LinijaStavkaDAO.cs" />
     <Compile Include="dao\ListPredajeDAO.cs" />
     <Compile Include="dao\MjestoDAO.cs" />
     <Compile Include="dao\mysql\MySQLDAOFactory.cs" />
     <Compile Include="dao\mysql\MySQLKartaZakljuckaDAO.cs" />
     <Compile Include="dao\mysql\MySQLKorisnickiNalogDAO.cs" />
     <Compile Include="dao\mysql\MySQLLinijaDAO.cs" />
+    <Compile Include="dao\mysql\MySQLLinijaStavkaDAO.cs" />
     <Compile Include="dao\mysql\MySQLMjestoDAO.cs" />
     <Compile Include="dao\mysql\MySQLOdjavaONeispravnostiDAO.cs" />
     <Compile Include="dao\mysql\MySQLPosiljkaDAO.cs" />

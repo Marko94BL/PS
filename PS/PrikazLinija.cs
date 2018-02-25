@@ -52,8 +52,8 @@ namespace PS
                 // MessageBox.Show(dgvLinije.Rows[e.RowIndex].Cells[0].Value.ToString());
                 string od = dgvLinije.Rows[e.RowIndex].Cells[0].Value.ToString();
                 string doo = dgvLinije.Rows[e.RowIndex].Cells[1].Value.ToString();
-                string vrijemeD= dgvLinije.Rows[e.RowIndex].Cells[2].Value.ToString();
-                string vrijemeP = dgvLinije.Rows[e.RowIndex].Cells[3].Value.ToString();
+                string vrijemeP= dgvLinije.Rows[e.RowIndex].Cells[2].Value.ToString();
+                string vrijemeD = dgvLinije.Rows[e.RowIndex].Cells[3].Value.ToString();
 
                 LinijaDTO linija = null;
                 PoslovnicaDAO pdao = DAOFactory.getDAOFactory().getPoslovnicaDAO();
@@ -63,7 +63,10 @@ namespace PS
                 TimeSpan vP = TimeSpan.Parse(vrijemeP);
 
                 LinijaDAO ldao = DAOFactory.getDAOFactory().getLinijaDAO();
-                //linija=ldao.
+                linija = ldao.pretragaLinijaOdDO(salje.PoslovnicaId, prima.PoslovnicaId);
+                linija.VrijemePolaska = vP;
+                linija.VrijemeDolaska = vD;
+                new DodavanjeLinija(linija).ShowDialog();
 
 
             }

@@ -13,6 +13,10 @@ namespace PS.dao.mysql
             return new MySQLKartaZakljuckaDAO();
         }
 
+        public override LinijaStavkaDAO GetLinijaStavkaDAO()
+        {
+            return new MySQLLinijaStavkaDAO();
+        }
         public override OdjavaONeispravnostiDAO getOdjavaONeispravnostiDAO()
         {
             return new MySQLOdjavaONeispravnostiDAO();
