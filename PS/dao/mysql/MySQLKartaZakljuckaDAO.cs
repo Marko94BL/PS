@@ -125,7 +125,7 @@ namespace PS.dao.mysql
 
 
         }
-        List<KartaZakljuckaDTO> kartaZakljuckaZaMjesta(int IdPoslovnicaSalje, int IdPoslovnicaPrima)
+        public List<KartaZakljuckaDTO> kartaZakljuckaZaMjesta(int IdPoslovnicaSalje, int IdPoslovnicaPrima)
         {
             MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
             conn.Open();

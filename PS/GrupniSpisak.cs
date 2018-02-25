@@ -44,23 +44,33 @@ namespace PS
                 List<KartaZakljuckaDTO> karte = new List<KartaZakljuckaDTO>();
                 List<LinijaStavkaDTO> lista = new List<LinijaStavkaDTO>();// = ldao.stavke(linija.LinijaId);
                 DateTime trenutniDatetime = DateTime.Now;
-                foreach(LinijaStavkaDTO stavka in lista)
+                if (lista != null)
                 {
-                    karte = kdao.kartaZakljuckaZaMjesta(linija.PoslovnicaSalje.PoslovnicaId,stavka.Poslovnica.PoslovnicaId);
-                    foreach(KartaZakljuckaDTO karta in karte)
+                    foreach (LinijaStavkaDTO stavka in lista)
+                    {
+                        karte = kdao.kartaZakljuckaZaMjesta(linija.PoslovnicaSalje.PoslovnicaId, stavka.Poslovnica.PoslovnicaId);
+                        if (karte != null)
+                        {
+                            foreach (KartaZakljuckaDTO karta in karte)
+                            {
+                                ukupanBrojVreca += vdao.brojVreca(karta.KartaID);
+                            }
+                            p.Text += "Ukupan broj vreca za relaciju(od:" + linija.PoslovnicaSalje.Naziv + ", do:" + stavka.Poslovnica.Naziv + ") je:" + ukupanBrojVreca + "\n";
+                            ukupanBrojVreca = 0;
+                        }
+                    }
+                }
+                karte = kdao.kartaZakljuckaZaMjesta(linija.PoslovnicaSalje.PoslovnicaId, linija.PoslovnicaPrima.PoslovnicaId);
+                if (karte != null)
+                {
+                    foreach (KartaZakljuckaDTO karta in karte)
                     {
                         ukupanBrojVreca += vdao.brojVreca(karta.KartaID);
                     }
-                    p.Text += "Ukupan broj vreca za relaciju(od:"+ linija.PoslovnicaSalje.Naziv+", do:" + stavka.Poslovnica.Naziv+") je:"+ukupanBrojVreca+"\n";
-                    ukupanBrojVreca = 0;
+                    //Dodati na listu za printanje
+                    p.Text += "Ukupan broj vreca za relaciju(od:" + linija.PoslovnicaSalje.Naziv + ", do:" + linija.PoslovnicaPrima.Naziv + ") je:" + ukupanBrojVreca + "\n";
                 }
-                karte = kdao.kartaZakljuckaZaMjesta(linija.PoslovnicaSalje.PoslovnicaId, linija.PoslovnicaPrima.PoslovnicaId);
-                foreach (KartaZakljuckaDTO karta in karte)
-                {
-                    ukupanBrojVreca += vdao.brojVreca(karta.KartaID);
-                }
-                //Dodati na listu za printanje
-                p.Text += "Ukupan broj vreca za relaciju(od:" + linija.PoslovnicaSalje.Naziv + ", do:" + linija.PoslovnicaPrima.Naziv + ") je:" + ukupanBrojVreca + "\n";
+                p.Text += "Gotov grupni spisak razmjene!";
                 p.PrintToPDF();
             }
         }
