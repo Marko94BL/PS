@@ -13,6 +13,27 @@ namespace PS.dao.mysql
 {
     class MySQLPosiljkaDAO : PosiljkaDAO
     {
+        public int brojPosiljaka(int IdKarteZakljucka)
+        {
+            MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
+            conn.Open();
+
+            int retVal = 0;
+
+            MySqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "SELECT COUNT(*) FROM posiljkastatus WHERE IdKartaZakljucka = @kartaId";
+            cmd.Parameters.AddWithValue("@kartaId", IdKarteZakljucka);
+
+            MySqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                retVal = reader.GetInt32(0);
+            }
+            reader.Close();
+            conn.Close();
+            return retVal;
+        }
+
         public bool delete(string id)
         {
             throw new NotImplementedException();
