@@ -40,14 +40,35 @@ namespace PS
                 KartaZakljuckaDAO kdao = DAOFactory.getDAOFactory().getKartaZakljuckaDAO();
                 VrecaDAO vdao = DAOFactory.getDAOFactory().getVrecaDAO();
                 int ukupanBrojVreca = 0;
-                Printer p = new Printer();
+                Printer p = new Printer(1); // 1 za koristenje Courier fonta
                 List<KartaZakljuckaDTO> karte = new List<KartaZakljuckaDTO>();
                 List<LinijaStavkaDTO> lista = ldao.stavke(linija.LinijaId);
                 DateTime trenutniDatetime = DateTime.Now;
+
+                string stringOd = "|Od";
+                string stringDo = "|Do";
+                string brojac = "|Broj vreća";
+                string potpis = "|Potpis       |\r\n";
+                string podvlacenje = "==============================================================================\r\n";
+
+                p.Text += "                            Grupni spisak razmjene                          \r\n";
+                p.Text += podvlacenje;
+
+                string linijaInfo = "Linija: " + linija.PoslovnicaSalje + " --> " + linija.PoslovnicaPrima + " \r\n";
+                p.Text += linijaInfo;//napusiStringDoBroja(linijaInfo, 78);
+
+                linijaInfo = "Datum i vrijeme stampanja:" + DateTime.Now + " \r\n";
+                p.Text += linijaInfo;//napusiStringDoBroja(linijaInfo, 78);
+
+                p.Text += podvlacenje;
+                stringOd = napusiStringDoBroja(stringOd,25);
+                stringDo = napusiStringDoBroja(stringDo,25);
+                brojac = napusiStringDoBroja(brojac, 13);
+                p.Text += stringOd + stringDo + brojac + potpis;
+
+                potpis = "|_____________|\r\n";
                 if (lista != null)
                 {
-                    p.Text = "                                                                             Grupni spisak razmjene                                         \r\n"+
-                        "Od             Za             Broj\r\n----------------------\r\n";
                     foreach (LinijaStavkaDTO stavka in lista)
                     {
                         karte = kdao.kartaZakljuckaZaMjesta(linija.PoslovnicaSalje.PoslovnicaId, stavka.Poslovnica.PoslovnicaId);
@@ -58,7 +79,18 @@ namespace PS
                                 ukupanBrojVreca += vdao.brojVreca(karta.KartaID);
                             }
 
-                            p.Text += linija.PoslovnicaSalje.Naziv + "  " + stavka.Poslovnica.Naziv + "  " + ukupanBrojVreca + "\r\n";
+                            { // blok za printanje
+                                stringOd = "|"+ linija.PoslovnicaSalje;
+                                stringDo = "|"+ stavka.Poslovnica;
+                                brojac = "|"+ ukupanBrojVreca;
+
+                                stringOd = napusiStringDoBroja(stringOd,25);
+                                stringDo = napusiStringDoBroja(stringDo,25);
+                                brojac = napusiStringDoBroja(brojac, 13);
+
+                                p.Text += stringOd + stringDo + brojac + potpis;
+                            }
+
                             ukupanBrojVreca = 0;
                         }
                     }
@@ -71,11 +103,35 @@ namespace PS
                         ukupanBrojVreca += vdao.brojVreca(karta.KartaID);
                     }
                     //Dodati na listu za printanje
-                    p.Text += "Ukupan broj vreca za relaciju(od:" + linija.PoslovnicaSalje.Naziv + ", do:" + linija.PoslovnicaPrima.Naziv + ") je:" + ukupanBrojVreca + "\n";
+
+                    { // blok za printanje
+                        stringOd = "|" + linija.PoslovnicaSalje;
+                        stringDo = "|" + linija.PoslovnicaPrima;
+                        brojac = "|" + ukupanBrojVreca;
+
+                        stringOd = napusiStringDoBroja(stringOd,25);
+                        stringDo = napusiStringDoBroja(stringDo,25);
+                        brojac = napusiStringDoBroja(brojac, 13);
+
+                        p.Text += stringOd + stringDo + brojac + potpis;
+                    }
+
                 }
-               // p.Text += "Gotov grupni spisak razmjene!";
+                p.Text += podvlacenje;
                 p.PrintToPDF();
             }
+        }
+        private string napusiStringDoBroja(string pocetni , int broj)
+        {
+            System.Console.WriteLine("Pocetni string:"+pocetni+" Len:"+pocetni.Length);
+            if (pocetni.Length > broj)
+                return pocetni.Substring(0, broj);
+            while (pocetni.Length < broj)
+            {
+                pocetni += " ";
+            }
+            System.Console.WriteLine("Finalni tring:" + pocetni + " Len:" + pocetni.Length);
+            return pocetni;
         }
     }
 }

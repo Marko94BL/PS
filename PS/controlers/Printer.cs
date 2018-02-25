@@ -27,7 +27,13 @@ namespace PS.controlers
         public Printer()
         {
             document.PrintPage += new PrintPageEventHandler(printDoc_PrintPage);
+
         }
+        public Printer(int dummy)
+        {
+            document.PrintPage += new PrintPageEventHandler(printDoc_PrintPageCourier);
+        }
+
 
         public void PrintToPDF()
         {
@@ -39,6 +45,12 @@ namespace PS.controlers
             String textToPrint = Text;
             Font printFont = new Font("Times New Roman", 12);
             e.Graphics.DrawString(textToPrint, printFont, Brushes.Black, 10, 10);
+        }
+        private void printDoc_PrintPageCourier(Object sender, PrintPageEventArgs e)
+        {
+            String textToPrint = Text;
+            Font printFont = new Font("Consolas", 12);
+            e.Graphics.DrawString(textToPrint, printFont, Brushes.Black, 20, 20);
         }
 
         public string Text { get => text; set => text = value; }
