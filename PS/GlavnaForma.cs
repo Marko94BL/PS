@@ -63,7 +63,7 @@ namespace PS
                     }
                     else
                     {
-                        MessageBox.Show("Ne postoji korisnički nalog", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Ne postoji korisnički nalog!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         tbKorisnickoIme.Text = "";
                         tbLozinka.Text = "";
                     }

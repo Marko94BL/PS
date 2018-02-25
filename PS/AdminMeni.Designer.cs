@@ -39,6 +39,8 @@
             this.btnDodavanjePoslovnice = new System.Windows.Forms.Button();
             this.btnDodavanjeLinije = new System.Windows.Forms.Button();
             this.lblLinijePregled = new System.Windows.Forms.Label();
+            this.btnPregledNaloga = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -145,12 +147,35 @@
             this.lblLinijePregled.TabIndex = 9;
             this.lblLinijePregled.Text = "Pregled svih linija";
             // 
+            // btnPregledNaloga
+            // 
+            this.btnPregledNaloga.BackgroundImage = global::PS.Properties.Resources.korisnik;
+            this.btnPregledNaloga.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnPregledNaloga.Location = new System.Drawing.Point(357, 157);
+            this.btnPregledNaloga.Name = "btnPregledNaloga";
+            this.btnPregledNaloga.Size = new System.Drawing.Size(108, 88);
+            this.btnPregledNaloga.TabIndex = 10;
+            this.btnPregledNaloga.UseVisualStyleBackColor = true;
+            this.btnPregledNaloga.Click += new System.EventHandler(this.btnPregledNaloga_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(340, 248);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(143, 15);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Prikaz korisničkih naloga";
+            // 
             // AdminMeni
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(495, 282);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.btnPregledNaloga);
             this.Controls.Add(this.lblLinijePregled);
             this.Controls.Add(this.btnLinijeLista);
             this.Controls.Add(this.label4);
@@ -181,5 +206,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnLinijeLista;
         private System.Windows.Forms.Label lblLinijePregled;
+        private System.Windows.Forms.Button btnPregledNaloga;
+        private System.Windows.Forms.Label label5;
     }
 }

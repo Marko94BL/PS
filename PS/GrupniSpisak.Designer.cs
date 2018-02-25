@@ -42,7 +42,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(121, 55);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Odaberite liniju za koju se stampa grupni spsisak";
+            this.label1.Text = "Odaberite liniju za koju se štampa grupni spsisak";
             // 
             // button1
             // 

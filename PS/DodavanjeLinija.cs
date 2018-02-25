@@ -16,7 +16,7 @@ namespace PS
     {
         int pocetna, krajnja;
         long rez=0;
-        int idLinije=0;
+        //int idLinije=0;
 
         internal DodavanjeLinija(LinijaDTO linija)
         {
@@ -37,6 +37,7 @@ namespace PS
             mtbPolazak.Text = linija.VrijemePolaska.ToString();
             pocetna = linija.PoslovnicaSalje.PoslovnicaId;
             krajnja = linija.PoslovnicaPrima.PoslovnicaId;
+            btnZavrsi.Text = "Završi izmjenu";
 
             DataGridViewButtonColumn obrisiColumn = new DataGridViewButtonColumn();
             obrisiColumn.Name = "Obriši";
@@ -63,7 +64,7 @@ namespace PS
         public DodavanjeLinija()
         {
             InitializeComponent();
-            idLinije = 0;
+            //idLinije = 0;
             rez = 0;
             Console.WriteLine("rez u kontruktoru nova: " + rez);
             cbPocetnaPosta.Text = "Odaberite";
@@ -161,7 +162,6 @@ namespace PS
             String username = GlavnaForma.Prijavljeni.KorisnickoIme;
             PoslovnicaDTO pocetnaPosta = (cbPocetnaPosta.SelectedItem as PoslovnicaDTO);
             PoslovnicaDTO krajnjaPosta = (cbKrajnjaPosta.SelectedItem as PoslovnicaDTO);
-            //System.Console.WriteLine("Dolazak:" + mtbDolazak.Text.Trim());
 
             if (!(pocetnaPosta==null|| krajnjaPosta==null || ":".Equals(mtbPolazak.Text.Trim()) || ":".Equals(mtbDolazak.Text.Trim())))
             {
@@ -176,7 +176,7 @@ namespace PS
                     return;
                 }
 
-                button1.Enabled = true;
+                btnZavrsi.Enabled = true;
                 cbStavka.Enabled = true;
                 mtbStavka.Enabled = true;
                 btnAddStavka.Enabled = true;
@@ -185,12 +185,19 @@ namespace PS
                 Console.WriteLine("rez kad dodajem liniju: " + rez);
                 LinijaDTO linija1 = new LinijaDTO(int.Parse(rez.ToString()), pocetnaPosta, krajnjaPosta,vrijemeP, vrijemeD );//umjesto rez=id
                  rez = lDAO.insert(linija1, pocetna, krajnja);
+                Console.WriteLine("rez kad dodajem liniju nakon inserta: " + rez);
+
                 if (rez!=0)
                 {
                     MessageBox.Show("Uspješno dodavanje nove linije", "Uspješno dodavanje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //this.Close();
-                    
                 }
+
+                cbPocetnaPosta.Enabled = false;
+                cbKrajnjaPosta.Enabled = false;
+                mtbPolazak.Enabled = false;
+                mtbDolazak.Enabled = false;
+                btnOk.Enabled = false;
 
             }
         }

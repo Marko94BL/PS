@@ -21,16 +21,16 @@ namespace PS.dao.mysql
                 LinijaDTO l = pretragaLinijaOdDO(pocetna, krajnja);
                 if (l != null)
                 {
+                    rez = l.LinijaId;
                     Console.Write("vrsi se update");
                     linija.LinijaId = l.LinijaId;
                     update(linija);
+                    Console.WriteLine("rez u indert nakon upadate: "+rez);
                 }
                 else
                 {
 
                     Console.Write("vrsi se insert");
-
-
                     MySqlCommand cmd = conn.CreateCommand();
                     cmd.CommandText = "INSERT INTO linija VALUES(@IdLinija, @IdPoslovnicaSalje, @IdPoslovnicaPrima, @VrijemePolaska, @VrijemeDolaska)";
 
@@ -66,7 +66,7 @@ namespace PS.dao.mysql
                     cmd.CommandText = "UPDATE linija SET IdPoslovnicaSalje = @IdPoslovnicaSalje,IdPoslovnicaPrima= @IdPoslovnicaPrima," +
                     " VrijemePolaska=@VrijemePolaska,VrijemeDolaska= @VrijemeDolaska WHERE IdLinija=@idLinije";
 
-                Console.Write("======" + linija.LinijaId + " " + linija.PoslovnicaSalje.PoslovnicaId + " " + linija.PoslovnicaPrima.PoslovnicaId + " " +
+                Console.WriteLine("======" + linija.LinijaId + " " + linija.PoslovnicaSalje.PoslovnicaId + " " + linija.PoslovnicaPrima.PoslovnicaId + " " +
                     linija.VrijemePolaska + " " + linija.VrijemeDolaska + "======");
 
                 cmd.Parameters.AddWithValue("@idLinije", linija.LinijaId); 
@@ -75,7 +75,7 @@ namespace PS.dao.mysql
                 cmd.Parameters.AddWithValue("@VrijemePolaska", linija.VrijemePolaska); 
                 cmd.Parameters.AddWithValue("@VrijemeDolaska", linija.VrijemeDolaska);
                 int brojRedova = cmd.ExecuteNonQuery();
-             
+                Console.WriteLine("update vratio: " + brojRedova);
 
             }
             catch (MySqlException e)

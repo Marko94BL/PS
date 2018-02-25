@@ -234,7 +234,7 @@
             this.MaximumSize = new System.Drawing.Size(400, 539);
             this.MinimumSize = new System.Drawing.Size(400, 539);
             this.Name = "PojedinacniSpisak";
-            this.Text = "Pošte Srpske";
+            this.Text = "Pošte Srpske - Spisak razmjene";
             this.Load += new System.EventHandler(this.PojedinacniSpisak_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVrece)).EndInit();
