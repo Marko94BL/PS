@@ -39,12 +39,12 @@ namespace PS
                 LinijaStavkaDAO ldao = DAOFactory.getDAOFactory().GetLinijaStavkaDAO();
                 KartaZakljuckaDAO kdao = DAOFactory.getDAOFactory().getKartaZakljuckaDAO();
                 VrecaDAO vdao = DAOFactory.getDAOFactory().getVrecaDAO();
-                int ukupanBrojVreca = 0;
-                Printer p = new Printer(1); // 1 za koristenje Courier fonta
                 List<KartaZakljuckaDTO> karte = new List<KartaZakljuckaDTO>();
                 List<LinijaStavkaDTO> lista = ldao.stavke(linija.LinijaId);
                 DateTime trenutniDatetime = DateTime.Now;
 
+                int ukupanBrojVreca = 0;
+                Printer p = new Printer(1); // 1 za koristenje Courier fonta
                 string stringOd = "|Od";
                 string stringDo = "|Do";
                 string brojac = "|Broj vreća";
@@ -61,9 +61,9 @@ namespace PS
                 p.Text += linijaInfo;//napusiStringDoBroja(linijaInfo, 78);
 
                 p.Text += podvlacenje;
-                stringOd = napusiStringDoBroja(stringOd,25);
-                stringDo = napusiStringDoBroja(stringDo,25);
-                brojac = napusiStringDoBroja(brojac, 13);
+                stringOd = Printer.napusiStringDoBroja(stringOd,25);
+                stringDo = Printer.napusiStringDoBroja(stringDo,25);
+                brojac = Printer.napusiStringDoBroja(brojac, 13);
                 p.Text += stringOd + stringDo + brojac + potpis;
 
                 potpis = "|_____________|\r\n";
@@ -84,9 +84,9 @@ namespace PS
                                 stringDo = "|"+ stavka.Poslovnica;
                                 brojac = "|"+ ukupanBrojVreca;
 
-                                stringOd = napusiStringDoBroja(stringOd,25);
-                                stringDo = napusiStringDoBroja(stringDo,25);
-                                brojac = napusiStringDoBroja(brojac, 13);
+                                stringOd = Printer.napusiStringDoBroja(stringOd,25);
+                                stringDo = Printer.napusiStringDoBroja(stringDo,25);
+                                brojac = Printer.napusiStringDoBroja(brojac, 13);
 
                                 p.Text += stringOd + stringDo + brojac + potpis;
                             }
@@ -109,9 +109,9 @@ namespace PS
                         stringDo = "|" + linija.PoslovnicaPrima;
                         brojac = "|" + ukupanBrojVreca;
 
-                        stringOd = napusiStringDoBroja(stringOd,25);
-                        stringDo = napusiStringDoBroja(stringDo,25);
-                        brojac = napusiStringDoBroja(brojac, 13);
+                        stringOd = Printer.napusiStringDoBroja(stringOd,25);
+                        stringDo = Printer.napusiStringDoBroja(stringDo,25);
+                        brojac = Printer.napusiStringDoBroja(brojac, 13);
 
                         p.Text += stringOd + stringDo + brojac + potpis;
                     }
@@ -120,18 +120,6 @@ namespace PS
                 p.Text += podvlacenje;
                 p.PrintToPDF();
             }
-        }
-        private string napusiStringDoBroja(string pocetni , int broj)
-        {
-            System.Console.WriteLine("Pocetni string:"+pocetni+" Len:"+pocetni.Length);
-            if (pocetni.Length > broj)
-                return pocetni.Substring(0, broj);
-            while (pocetni.Length < broj)
-            {
-                pocetni += " ";
-            }
-            System.Console.WriteLine("Finalni tring:" + pocetni + " Len:" + pocetni.Length);
-            return pocetni;
         }
     }
 }

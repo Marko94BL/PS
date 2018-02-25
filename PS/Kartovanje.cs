@@ -78,17 +78,25 @@ namespace PS
                     psdao.insert(new PosiljkaStatusDTO(new StatusDTO(1, "Poslana", "Pošiljka je poslana"), posiljka, kartaZakljucka, 0));
                 }
 
-                //kreiranje stringa za upis u fajl
-                string text = "Datum: " + datum + "\r\n" +"                                                                             Karta zaključka                                         Otprema: " +
-                               tbOtprema.Text.Trim() + "\r\n\r\n" +"Od: " + prijemnaPosta + "\r\nZa: " + odredisnaPosta + "\r\n" + 
-                               "\r\nPrijemni broj\r\n--------------------\r\n ";
-                foreach (PosiljkaDTO posiljka in posiljkeIdLista)
-                {
-                    text += posiljka.Barkod + "\r\n";
-                }
+                PosiljkaDAO pdao = DAOFactory.getDAOFactory().getPosiljkaDAO();
+                int brojPosiljaka = pdao.brojPosiljaka(kartaZakljucka.KartaID);
 
-                Printer p = new Printer();
-                p.Text+= text;
+                //kreiranje stringa za upis u fajl
+                Printer p = new Printer(1);
+                string podvlacenje = "==============================================================================\r\n";
+                p.Text = "                                Karta zaključka                                \r\n";
+                p.Text += podvlacenje;
+                p.Text += Printer.napusiStringDoBroja("Karta zaključka od: " + prijemnaPosta + ", Za: " + odredisnaPosta + "\r\n",78);
+                p.Text += "Otprema: " + tbOtprema.Text.Trim() + "\r\n";
+                p.Text += "Datum kreiranja: " + datum + "\r\n";
+                p.Text += "Broj posiljaka: " + brojPosiljaka + "\r\n";
+                p.Text += podvlacenje;
+                p.Text += "Prijemni brojevi pošiljaka: \r\n";
+                for(int i = 0; i < posiljkeIdLista.Count; i++)
+                {
+                    p.Text += " "+(i+1)+". " + posiljkeIdLista[i].Barkod + "\r\n";
+                }
+                p.Text += podvlacenje;
                 p.PrintToPDF();
                 lbStatus.Text = "Kreirana karta zakljucka!";
                 btnKreirajKartu.Enabled = false;

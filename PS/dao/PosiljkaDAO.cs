@@ -14,6 +14,7 @@ namespace PS.dao
         PosiljkaDTO vratiPosiljku(string barkod);
         PosiljkaDTO vratiPosiljku(int posiljkaId);
         bool insert(PosiljkaDTO posiljka);
+        int brojPosiljaka(int IdKarteZakljucka);
         // bool update(PosiljkaDTO posiljka);
         //  bool delete(String id);
 
