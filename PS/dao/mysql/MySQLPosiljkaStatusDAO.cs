@@ -247,12 +247,14 @@ namespace PS.dao.mysql
                     status.Naziv = reader.GetString(3);
                     PosiljkaDTO posiljka = new PosiljkaDTO();
                     posiljka.PosiljkaID = reader.GetInt32(0);
+                   // System.Console.WriteLine("pracenje argumenti "+posiljka.Barkod+" prima "+prima.Naziv+" salje "+salje.Naziv+" status "+status.Naziv+" karta "+karta.KartaID);
                     lista.Add(new PracenjePosiljkeDTO(posiljka, salje, prima, status, karta));
                 }
+              
                 reader.Close();
             }
 
-
+            //System.Console.WriteLine("Velicina liste "+lista.Count);
             conn.Close();
             return lista;
         }

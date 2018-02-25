@@ -15,5 +15,7 @@ namespace PS.dao
         KorisnikDTO pretragaPoId(int id);
         List<KorisnikDTO> vratiKorisnike();
         void update(KorisnikDTO kDTO);
+        List<KorisnikDTO> vratiKorisnikeBlokirane();
+        KorisnikDTO pronadjiBanovanogKorisnika(string v);
     }
 }
