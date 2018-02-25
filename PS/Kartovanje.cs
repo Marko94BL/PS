@@ -1,4 +1,5 @@
-﻿using PS.dao;
+﻿using PS.controlers;
+using PS.dao;
 using PS.dto;
 using System;
 using System.Collections.Generic;
@@ -40,7 +41,7 @@ namespace PS
         private void btnDodajNaPopis_Click(object sender, EventArgs e)
         {
             PosiljkaDAO pdao = DAOFactory.getDAOFactory().getPosiljkaDAO();
-            PosiljkaDTO posiljka = pdao.vratiPosiljku(tbIdentifikator.Text.Trim());//sadrzaj text field-a
+            PosiljkaDTO posiljka = pdao.vratiPosiljku(tbIdentifikator.Text.Trim());
             if(posiljka!=null)
             {
                 posiljkeIdLista.Add(posiljka);
@@ -78,15 +79,17 @@ namespace PS
                 }
 
                 //kreiranje stringa za upis u fajl
-                string text = "                                                                Datum: " + datum + "\r\n" +
-                              "                                        " + "Karta zaključka         Otprema: " + tbOtprema.Text.Trim() + "\r\n\r\n" +
-                    "            Od: " + prijemnaPosta + "                                Za: " + odredisnaPosta + "\r\n" + "Prijemni broj\r\n_______________\r\n ";
+                string text = "Datum: " + datum + "\r\n" +"                                                                             Karta zaključka                                         Otprema: " +
+                               tbOtprema.Text.Trim() + "\r\n\r\n" +"Od: " + prijemnaPosta + "\r\nZa: " + odredisnaPosta + "\r\n" + 
+                               "\r\nPrijemni broj\r\n--------------------\r\n ";
                 foreach (PosiljkaDTO posiljka in posiljkeIdLista)
                 {
                     text += posiljka.Barkod + "\r\n";
                 }
-                System.IO.File.WriteAllText(@".\karteZakljucaka\kz" + kartaZakljucka.KartaID + ".txt", text);
 
+                Printer p = new Printer();
+                p.Text+= text;
+                p.PrintToPDF();
                 lbStatus.Text = "Kreirana karta zakljucka!";
                 btnKreirajKartu.Enabled = false;
                 btnKreirajSpisakRazmjene.Enabled = true;
@@ -96,6 +99,7 @@ namespace PS
         private void btnKreirajSpisakRazmjene_Click(object sender, EventArgs e)
         {
             new PojedinacniSpisak(tbOtprema.Text.Trim(), prijemnaPosta, odredisnaPosta, datum, kartaZakljucka.KartaID).ShowDialog();
+            btnKreirajSpisakRazmjene.Enabled = false;
         }
 
         private void cbPrijemnaPosta_SelectedIndexChanged(object sender, EventArgs e)

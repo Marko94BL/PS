@@ -88,7 +88,15 @@ namespace PS
         private void btnAddStavka_Click(object sender, EventArgs e)
         {
             PoslovnicaDTO stavka = cbStavka.SelectedItem as PoslovnicaDTO;
-            TimeSpan vrijeme =TimeSpan.Parse( mtbStavka.Text);
+            TimeSpan vrijeme ;
+            try {
+                 vrijeme = TimeSpan.Parse(mtbStavka.Text);
+            }
+            catch (Exception ec)
+            {
+                return;
+            }
+            
             LinijaStavkaDAO lsdao = DAOFactory.getDAOFactory().GetLinijaStavkaDAO();
             LinijaStavkaDTO lstavka = new LinijaStavkaDTO(idLinije, stavka, vrijeme);
           

@@ -36,6 +36,7 @@
             this.tbOtprema = new System.Windows.Forms.TextBox();
             this.cbOdredisnaPosta = new System.Windows.Forms.ComboBox();
             this.dgvKartaZakljucka = new System.Windows.Forms.DataGridView();
+            this.colIdentifikator = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtpDatum = new System.Windows.Forms.DateTimePicker();
             this.btnKreirajKartu = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
@@ -47,7 +48,6 @@
             this.tbIdentifikator = new System.Windows.Forms.MaskedTextBox();
             this.lbStatus = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.colIdentifikator = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKartaZakljucka)).BeginInit();
             this.SuspendLayout();
@@ -129,8 +129,15 @@
             this.colIdentifikator});
             this.dgvKartaZakljucka.Location = new System.Drawing.Point(12, 188);
             this.dgvKartaZakljucka.Name = "dgvKartaZakljucka";
-            this.dgvKartaZakljucka.Size = new System.Drawing.Size(375, 237);
+            this.dgvKartaZakljucka.Size = new System.Drawing.Size(375, 221);
             this.dgvKartaZakljucka.TabIndex = 19;
+            // 
+            // colIdentifikator
+            // 
+            this.colIdentifikator.HeaderText = "Identifikator";
+            this.colIdentifikator.Name = "colIdentifikator";
+            this.colIdentifikator.ReadOnly = true;
+            this.colIdentifikator.Width = 330;
             // 
             // dtpDatum
             // 
@@ -144,7 +151,7 @@
             // btnKreirajKartu
             // 
             this.btnKreirajKartu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnKreirajKartu.Location = new System.Drawing.Point(12, 444);
+            this.btnKreirajKartu.Location = new System.Drawing.Point(15, 444);
             this.btnKreirajKartu.Name = "btnKreirajKartu";
             this.btnKreirajKartu.Size = new System.Drawing.Size(116, 39);
             this.btnKreirajKartu.TabIndex = 5;
@@ -183,10 +190,10 @@
             // 
             // tbNapomena
             // 
-            this.tbNapomena.Location = new System.Drawing.Point(403, 188);
+            this.tbNapomena.Location = new System.Drawing.Point(395, 191);
             this.tbNapomena.Multiline = true;
             this.tbNapomena.Name = "tbNapomena";
-            this.tbNapomena.Size = new System.Drawing.Size(129, 237);
+            this.tbNapomena.Size = new System.Drawing.Size(129, 218);
             this.tbNapomena.TabIndex = 4;
             // 
             // btnDodajNaPopis
@@ -203,7 +210,7 @@
             // btnKreirajSpisakRazmjene
             // 
             this.btnKreirajSpisakRazmjene.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnKreirajSpisakRazmjene.Location = new System.Drawing.Point(260, 444);
+            this.btnKreirajSpisakRazmjene.Location = new System.Drawing.Point(250, 444);
             this.btnKreirajSpisakRazmjene.Name = "btnKreirajSpisakRazmjene";
             this.btnKreirajSpisakRazmjene.Size = new System.Drawing.Size(274, 39);
             this.btnKreirajSpisakRazmjene.TabIndex = 6;
@@ -223,10 +230,12 @@
             // lbStatus
             // 
             this.lbStatus.AutoSize = true;
-            this.lbStatus.Location = new System.Drawing.Point(18, 468);
+            this.lbStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbStatus.Location = new System.Drawing.Point(12, 415);
             this.lbStatus.Name = "lbStatus";
-            this.lbStatus.Size = new System.Drawing.Size(0, 13);
+            this.lbStatus.Size = new System.Drawing.Size(43, 16);
             this.lbStatus.TabIndex = 32;
+            this.lbStatus.Text = "status";
             // 
             // label6
             // 
@@ -237,13 +246,6 @@
             this.label6.Size = new System.Drawing.Size(116, 20);
             this.label6.TabIndex = 33;
             this.label6.Text = "Karta zaključka";
-            // 
-            // colIdentifikator
-            // 
-            this.colIdentifikator.HeaderText = "Identifikator";
-            this.colIdentifikator.Name = "colIdentifikator";
-            this.colIdentifikator.ReadOnly = true;
-            this.colIdentifikator.Width = 330;
             // 
             // Kartovanje
             // 

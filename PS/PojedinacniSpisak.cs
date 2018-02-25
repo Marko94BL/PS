@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PS.dto;
 using PS.dao;
+using PS.controlers;
 
 namespace PS
 {
@@ -29,14 +30,28 @@ namespace PS
             tbDatum.Text = datum;
             tbDatum.Enabled = false;
             this.kartaZakljuckaId = kartaZakljucka;
-        } 
+        }
 
         private void btnDodaj_Click(object sender, EventArgs e)
         {
+            string v = tbIdentifikator.Text.Trim();
+            bool b = true;
+            foreach (string vr in vreceOIdLista)
+            {
+                if (vr.Equals(v)) b = false;
+            }
+            if (b)
+            { 
             vreceOIdLista.Add(tbIdentifikator.Text.Trim());
             dgvVrece.Rows.Add(tbIdentifikator.Text.Trim());
             tbIdentifikator.Text = "";
             btnKreirajSpisak.Enabled = true;
+            }
+            else
+            {
+                MessageBox.Show("Vreća sa unijetim identifikatorom je već unijeta. Molimo unesite ispravan identifikator!");
+                tbIdentifikator.Text = "";
+            }
 
         }
 
@@ -51,16 +66,17 @@ namespace PS
             }
 
             //kreiranje stringa za upis u fajl
-            string text = "                                                                Datum: " + tbDatum.Text + "\r\n" +
-                          "                                        " + "Spisak razmjene         Otprema: " + tbOtprema.Text.Trim() + "\r\n\r\n" +
-                "            Od: " + tbOd.Text + "                                              Za: " + tbZa.Text + "\r\n" + "Identifikator\r\n_______________\r\n ";
+            string text = "Datum: " + tbDatum.Text + "\r\n" +
+                          "                                                             Spisak razmjene                                                  Otprema: " + tbOtprema.Text.Trim() + 
+                          "\r\n\r\n" + "Od: " + tbOd.Text + "\r\nZa: " + tbZa.Text + "\r\n" + "\r\nIdentifikator\r\n---------------------\r\n";
             foreach (string vreca in vreceOIdLista)
             {
                 text += vreca + "\r\n";
             }
-            System.IO.File.WriteAllText(@".\spiskoviRazmjene\sr" + kartaZakljuckaId + ".txt", text);
-
-            MessageBox.Show("Pojedinacni spisak kreiran!");
+            Printer p = new Printer();
+            p.Text = text;
+            p.PrintToPDF();
+            MessageBox.Show("Spisak razmjene kreiran!");
             this.Close();
         }
 

@@ -46,6 +46,8 @@ namespace PS
                 DateTime trenutniDatetime = DateTime.Now;
                 if (lista != null)
                 {
+                    p.Text = "                                                                             Grupni spisak razmjene                                         \r\n"+
+                        "Od             Za             Broj\r\n----------------------\r\n";
                     foreach (LinijaStavkaDTO stavka in lista)
                     {
                         karte = kdao.kartaZakljuckaZaMjesta(linija.PoslovnicaSalje.PoslovnicaId, stavka.Poslovnica.PoslovnicaId);
@@ -55,7 +57,8 @@ namespace PS
                             {
                                 ukupanBrojVreca += vdao.brojVreca(karta.KartaID);
                             }
-                            p.Text += "Ukupan broj vreca za relaciju(od:" + linija.PoslovnicaSalje.Naziv + ", do:" + stavka.Poslovnica.Naziv + ") je:" + ukupanBrojVreca + "\n";
+
+                            p.Text += linija.PoslovnicaSalje.Naziv + "  " + stavka.Poslovnica.Naziv + "  " + ukupanBrojVreca + "\r\n";
                             ukupanBrojVreca = 0;
                         }
                     }
@@ -70,7 +73,7 @@ namespace PS
                     //Dodati na listu za printanje
                     p.Text += "Ukupan broj vreca za relaciju(od:" + linija.PoslovnicaSalje.Naziv + ", do:" + linija.PoslovnicaPrima.Naziv + ") je:" + ukupanBrojVreca + "\n";
                 }
-                p.Text += "Gotov grupni spisak razmjene!";
+               // p.Text += "Gotov grupni spisak razmjene!";
                 p.PrintToPDF();
             }
         }
