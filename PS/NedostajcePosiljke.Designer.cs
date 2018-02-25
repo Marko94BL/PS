@@ -47,6 +47,7 @@
             this.dgvNedostajuce.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvNedostajuce.Location = new System.Drawing.Point(0, 0);
             this.dgvNedostajuce.Name = "dgvNedostajuce";
+            this.dgvNedostajuce.ReadOnly = true;
             this.dgvNedostajuce.Size = new System.Drawing.Size(443, 159);
             this.dgvNedostajuce.TabIndex = 0;
             // 

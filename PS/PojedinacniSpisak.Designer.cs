@@ -146,6 +146,7 @@
             this.colIdentifikator});
             this.dgvVrece.Location = new System.Drawing.Point(15, 216);
             this.dgvVrece.Name = "dgvVrece";
+            this.dgvVrece.ReadOnly = true;
             this.dgvVrece.Size = new System.Drawing.Size(357, 234);
             this.dgvVrece.TabIndex = 28;
             // 

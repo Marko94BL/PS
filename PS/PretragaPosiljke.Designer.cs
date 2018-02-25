@@ -64,6 +64,7 @@
             this.Column2});
             this.dgvPosiljke.Location = new System.Drawing.Point(12, 55);
             this.dgvPosiljke.Name = "dgvPosiljke";
+            this.dgvPosiljke.ReadOnly = true;
             this.dgvPosiljke.Size = new System.Drawing.Size(569, 231);
             this.dgvPosiljke.TabIndex = 2;
             // 
@@ -79,17 +80,20 @@
             // 
             this.colOznaka.HeaderText = "Poslovnica prima";
             this.colOznaka.Name = "colOznaka";
+            this.colOznaka.ReadOnly = true;
             this.colOznaka.Width = 170;
             // 
             // Column1
             // 
             this.Column1.HeaderText = "Status";
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // Column2
             // 
             this.Column2.HeaderText = "Vrijeme";
             this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             this.Column2.Width = 110;
             // 
             // btnArhiva

@@ -125,6 +125,7 @@
             // 
             this.dgvVrece.AllowUserToAddRows = false;
             this.dgvVrece.AllowUserToDeleteRows = false;
+            this.dgvVrece.AllowUserToResizeColumns = false;
             this.dgvVrece.AllowUserToResizeRows = false;
             this.dgvVrece.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVrece.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -132,6 +133,7 @@
             this.colPrimljenaV});
             this.dgvVrece.Location = new System.Drawing.Point(12, 171);
             this.dgvVrece.Name = "dgvVrece";
+            this.dgvVrece.ReadOnly = true;
             this.dgvVrece.Size = new System.Drawing.Size(287, 204);
             this.dgvVrece.TabIndex = 19;
             // 
@@ -139,6 +141,7 @@
             // 
             this.colIdentifikatorV.HeaderText = "Identifikator vreće";
             this.colIdentifikatorV.Name = "colIdentifikatorV";
+            this.colIdentifikatorV.ReadOnly = true;
             this.colIdentifikatorV.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.colIdentifikatorV.Width = 170;
             // 
@@ -162,6 +165,7 @@
             this.colPrimljenaP});
             this.dgvPosiljke.Location = new System.Drawing.Point(319, 171);
             this.dgvPosiljke.Name = "dgvPosiljke";
+            this.dgvPosiljke.ReadOnly = true;
             this.dgvPosiljke.Size = new System.Drawing.Size(287, 204);
             this.dgvPosiljke.TabIndex = 20;
             // 
