@@ -68,7 +68,7 @@ namespace PS.dao.mysql
 
         }
 
-        int brojVreca(int IdKartaZakljucka)
+        public int brojVreca(int IdKartaZakljucka)
         {
             MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
             conn.Open();
