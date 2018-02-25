@@ -38,6 +38,10 @@
             // 
             // dgvLinije
             // 
+            this.dgvLinije.AllowUserToAddRows = false;
+            this.dgvLinije.AllowUserToDeleteRows = false;
+            this.dgvLinije.AllowUserToResizeColumns = false;
+            this.dgvLinije.AllowUserToResizeRows = false;
             this.dgvLinije.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLinije.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Od,
