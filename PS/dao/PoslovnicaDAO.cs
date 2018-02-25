@@ -16,5 +16,6 @@ namespace PS.dao
         bool insert(PoslovnicaDTO poslovnica);
         bool delete(String nazivFakulteta);
         PoslovnicaDTO pretragaPoNazivu(string naziv);
+        PoslovnicaDTO vratiSaImenom(string naziv);
     }
 }

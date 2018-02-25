@@ -79,6 +79,7 @@
             this.cbPocetnaPosta.Name = "cbPocetnaPosta";
             this.cbPocetnaPosta.Size = new System.Drawing.Size(100, 21);
             this.cbPocetnaPosta.TabIndex = 0;
+            this.cbPocetnaPosta.SelectedIndexChanged += new System.EventHandler(this.cbPocetnaPosta_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -97,6 +98,7 @@
             this.cbKrajnjaPosta.Name = "cbKrajnjaPosta";
             this.cbKrajnjaPosta.Size = new System.Drawing.Size(100, 21);
             this.cbKrajnjaPosta.TabIndex = 2;
+            this.cbKrajnjaPosta.SelectedIndexChanged += new System.EventHandler(this.cbPocetnaPosta_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -207,6 +209,7 @@
             this.dgvStavka.Name = "dgvStavka";
             this.dgvStavka.Size = new System.Drawing.Size(377, 153);
             this.dgvStavka.TabIndex = 18;
+            this.dgvStavka.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStavka_CellClick);
             // 
             // Poslovnica
             // 
@@ -281,8 +284,8 @@
         private System.Windows.Forms.MaskedTextBox mtbStavka;
         private System.Windows.Forms.Button btnAddStavka;
         private System.Windows.Forms.DataGridView dgvStavka;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Poslovnica;
         private System.Windows.Forms.DataGridViewTextBoxColumn Vrijeme;
-        private System.Windows.Forms.Button button1;
     }
 }

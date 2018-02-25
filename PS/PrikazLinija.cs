@@ -67,8 +67,7 @@ namespace PS
                 linija.VrijemePolaska = vP;
                 linija.VrijemeDolaska = vD;
                 new DodavanjeLinija(linija).ShowDialog();
-
-
+                
             }
 
 

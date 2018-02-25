@@ -12,6 +12,8 @@ namespace PS.dto
         private PoslovnicaDTO poslovnica;
         private TimeSpan vrijeme;
 
+        public LinijaStavkaDTO() { }
+
         public LinijaStavkaDTO(int linija, PoslovnicaDTO poslovnica, TimeSpan vrijeme)
         {
             this.linijaId = linija;

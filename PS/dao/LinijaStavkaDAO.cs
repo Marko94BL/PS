@@ -10,5 +10,7 @@ namespace PS.dao
     interface LinijaStavkaDAO
     {
         int insert(LinijaStavkaDTO linija);
+        List<LinijaStavkaDTO> stavke(int idLinija);
+        void delete(LinijaStavkaDTO stavka);
     }
 }

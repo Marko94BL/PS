@@ -16,10 +16,11 @@ namespace PS
     {
         int pocetna, krajnja;
         long rez;
+        int idLinije;
 
         internal DodavanjeLinija(LinijaDTO linija)
         {
-
+            idLinije = linija.LinijaId;
             InitializeComponent();
             PoslovnicaDAO pDAO = DAOFactory.getDAOFactory().getPoslovnicaDAO();
             List<PoslovnicaDTO> lista = pDAO.poslovnice();
@@ -35,6 +36,27 @@ namespace PS
             mtbPolazak.Text = linija.VrijemePolaska.ToString();
             pocetna = linija.PoslovnicaSalje.PoslovnicaId;
             krajnja = linija.PoslovnicaPrima.PoslovnicaId;
+
+            DataGridViewButtonColumn obrisiColumn = new DataGridViewButtonColumn();
+            obrisiColumn.Name = "Obriši";
+            obrisiColumn.Text = "Obriši";
+            int columnIndex = 2;
+            if (dgvStavka.Columns["Obriši"] == null)
+            {
+                dgvStavka.Columns.Insert(columnIndex, obrisiColumn);
+            }
+            dgvStavka.Columns[0].Width = 140;
+            dgvStavka.Columns[1].Width = 140;
+            dgvStavka.Columns[2].Width = 56;
+
+
+            LinijaStavkaDAO lsDAO = DAOFactory.getDAOFactory().GetLinijaStavkaDAO();
+            List<LinijaStavkaDTO> listastavke = lsDAO.stavke(linija.LinijaId);
+
+            foreach (LinijaStavkaDTO stavka in listastavke)
+            {
+                dgvStavka.Rows.Add(stavka.Poslovnica.Naziv, stavka.Vrijeme.ToString());
+            }
         }
 
         public DodavanjeLinija()
@@ -46,8 +68,6 @@ namespace PS
 
         private void DodavanjeLinija_Load(object sender, EventArgs e)
         {
-        
-
             PoslovnicaDAO pDAO = DAOFactory.getDAOFactory().getPoslovnicaDAO();
             List<PoslovnicaDTO> lista = pDAO.poslovnice();
 
@@ -58,10 +78,11 @@ namespace PS
                 cbStavka.Items.Add(poslovnica);
             }
 
-            button1.Enabled = false;
-            cbStavka.Enabled = false;
-            mtbStavka.Enabled = false;
-            btnAddStavka.Enabled = false;
+            //dgvStavka.Enabled = false;
+            //cbStavka.Enabled = false;
+            //mtbStavka.Enabled = false;
+            //btnAddStavka.Enabled = false;
+
         }
 
         private void btnAddStavka_Click(object sender, EventArgs e)
@@ -69,7 +90,8 @@ namespace PS
             PoslovnicaDTO stavka = cbStavka.SelectedItem as PoslovnicaDTO;
             TimeSpan vrijeme =TimeSpan.Parse( mtbStavka.Text);
             LinijaStavkaDAO lsdao = DAOFactory.getDAOFactory().GetLinijaStavkaDAO();
-            LinijaStavkaDTO lstavka = new LinijaStavkaDTO(int.Parse(rez.ToString()), stavka, vrijeme);
+            LinijaStavkaDTO lstavka = new LinijaStavkaDTO(idLinije, stavka, vrijeme);
+          
             int p = lsdao.insert(lstavka);
             dgvStavka.Rows.Add(lstavka.Poslovnica.Naziv, lstavka.Vrijeme.ToString());
         }
@@ -77,6 +99,45 @@ namespace PS
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void cbPocetnaPosta_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //dgvStavka.Enabled = false;
+            //cbStavka.Enabled = false;
+            //mtbStavka.Enabled = false;
+            //btnAddStavka.Enabled = false;
+        }
+
+        private void dgvStavka_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var senderGrid = (DataGridView)sender;
+
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
+                e.RowIndex != -1)
+            {
+                LinijaStavkaDAO lsDAO = DAOFactory.getDAOFactory().GetLinijaStavkaDAO();
+                PoslovnicaDAO posl = DAOFactory.getDAOFactory().getPoslovnicaDAO();
+                PoslovnicaDTO poslovnica = posl.vratiSaImenom(dgvStavka.Rows[e.RowIndex].Cells[0].Value.ToString());
+
+                LinijaStavkaDTO lsDTO = new LinijaStavkaDTO();
+                lsDTO.LinijaId = idLinije;
+                lsDTO.Poslovnica = poslovnica;
+                lsDAO.delete(lsDTO);
+                ucitajTabelu();
+            }
+        }
+        private void ucitajTabelu()
+        {
+
+            dgvStavka.Rows.Clear();
+            LinijaStavkaDAO lsDAO = DAOFactory.getDAOFactory().GetLinijaStavkaDAO();
+            List<LinijaStavkaDTO> listastavke = lsDAO.stavke(idLinije);
+
+            foreach (LinijaStavkaDTO stavka in listastavke)
+            {
+                dgvStavka.Rows.Add(stavka.Poslovnica.Naziv, stavka.Vrijeme.ToString());
+            }
         }
 
         private void btnOk_Click(object sender, EventArgs e)
@@ -93,6 +154,11 @@ namespace PS
                 TimeSpan vrijemeP = TimeSpan.Parse(mtbPolazak.Text);
                 TimeSpan vrijemeD = TimeSpan.Parse(mtbDolazak.Text);
 
+                button1.Enabled = true;
+                cbStavka.Enabled = true;
+                mtbStavka.Enabled = true;
+                btnAddStavka.Enabled = true;
+
                 LinijaDAO lDAO = DAOFactory.getDAOFactory().getLinijaDAO();
                 
                 LinijaDTO linija1 = new LinijaDTO(id, pocetnaPosta, krajnjaPosta,vrijemeP, vrijemeD );
@@ -101,11 +167,7 @@ namespace PS
                 {
                     MessageBox.Show("Uspješno dodavanje nove linije", "Uspješno dodavanje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //this.Close();
-
-                    button1.Enabled = true;
-                    cbStavka.Enabled = true;
-                    mtbStavka.Enabled = true;
-                    btnAddStavka.Enabled = true;
+                    
                 }
 
             }

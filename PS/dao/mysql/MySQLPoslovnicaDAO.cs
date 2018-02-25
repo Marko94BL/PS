@@ -166,6 +166,33 @@ namespace PS.dao.mysql
             return lista;
         }
 
+        public PoslovnicaDTO vratiSaImenom(string naziv)
+        {
+
+            MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
+            conn.Open();
+
+            PoslovnicaDTO poslovnica = null;
+
+            MySqlCommand cmd = conn.CreateCommand();
+            
+            cmd.CommandText = "SELECT * FROM poslovnica WHERE Naziv = @naziv";
+
+            cmd.Parameters.AddWithValue("@naziv", naziv);
+
+            MySqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                MjestoDAO mdao = new MySQLMjestoDAO();
+                MjestoDTO m = mdao.vratiMjesto(reader.GetInt32(2));
+                poslovnica = new PoslovnicaDTO(reader.GetInt32(0), reader.GetString(1), m, reader.GetString(3), null);
+            }
+            reader.Close();
+            conn.Close();
+            return poslovnica;
+
+        }
+
         public PoslovnicaDTO vratiPostanskiCentar(int poslovnicaId)
         {
             
