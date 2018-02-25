@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.gdwKorisnickiNalozi = new System.Windows.Forms.DataGridView();
+            this.colKorisnickoIme = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.dgwBlokirani = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.colKorisnickoIme = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colKI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gdwKorisnickiNalozi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwBlokirani)).BeginInit();
             this.SuspendLayout();
@@ -42,6 +42,8 @@
             // 
             this.gdwKorisnickiNalozi.AllowUserToAddRows = false;
             this.gdwKorisnickiNalozi.AllowUserToDeleteRows = false;
+            this.gdwKorisnickiNalozi.AllowUserToResizeColumns = false;
+            this.gdwKorisnickiNalozi.AllowUserToResizeRows = false;
             this.gdwKorisnickiNalozi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gdwKorisnickiNalozi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colKorisnickoIme});
@@ -51,6 +53,15 @@
             this.gdwKorisnickiNalozi.Size = new System.Drawing.Size(287, 183);
             this.gdwKorisnickiNalozi.TabIndex = 0;
             this.gdwKorisnickiNalozi.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdwKorisnickiNalozi_CellClick);
+            // 
+            // colKorisnickoIme
+            // 
+            this.colKorisnickoIme.HeaderText = "Korisničko ime";
+            this.colKorisnickoIme.Name = "colKorisnickoIme";
+            this.colKorisnickoIme.ReadOnly = true;
+            this.colKorisnickoIme.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colKorisnickoIme.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colKorisnickoIme.Width = 145;
             // 
             // label1
             // 
@@ -66,6 +77,8 @@
             // 
             this.dgwBlokirani.AllowUserToAddRows = false;
             this.dgwBlokirani.AllowUserToDeleteRows = false;
+            this.dgwBlokirani.AllowUserToResizeColumns = false;
+            this.dgwBlokirani.AllowUserToResizeRows = false;
             this.dgwBlokirani.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgwBlokirani.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colKI});
@@ -76,6 +89,13 @@
             this.dgwBlokirani.TabIndex = 2;
             this.dgwBlokirani.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwBlokirani_CellClick);
             // 
+            // colKI
+            // 
+            this.colKI.HeaderText = "Korisničko ime";
+            this.colKI.Name = "colKI";
+            this.colKI.ReadOnly = true;
+            this.colKI.Width = 145;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -85,22 +105,6 @@
             this.label2.Size = new System.Drawing.Size(175, 18);
             this.label2.TabIndex = 3;
             this.label2.Text = "Blokirani korisnički nalozi";
-            // 
-            // colKorisnickoIme
-            // 
-            this.colKorisnickoIme.HeaderText = "Korisničko ime";
-            this.colKorisnickoIme.Name = "colKorisnickoIme";
-            this.colKorisnickoIme.ReadOnly = true;
-            this.colKorisnickoIme.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colKorisnickoIme.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.colKorisnickoIme.Width = 145;
-            // 
-            // colKI
-            // 
-            this.colKI.HeaderText = "Korisničko ime";
-            this.colKI.Name = "colKI";
-            this.colKI.ReadOnly = true;
-            this.colKI.Width = 145;
             // 
             // PrikazKorisnickihNaloga
             // 
