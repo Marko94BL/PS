@@ -66,16 +66,23 @@ namespace PS
             }
 
             //kreiranje stringa za upis u fajl
-            string text = "Datum: " + tbDatum.Text + "\r\n" +
-                          "                                                             Spisak razmjene                                                  Otprema: " + tbOtprema.Text.Trim() + 
-                          "\r\n\r\n" + "Od: " + tbOd.Text + "\r\nZa: " + tbZa.Text + "\r\n" + "\r\nIdentifikator\r\n---------------------\r\n";
-            foreach (string vreca in vreceOIdLista)
+
+            Printer p = new Printer(1);
+            string podvlacenje = "==============================================================================\r\n";
+            p.Text = "                                Spisak razmjene                                \r\n";
+            p.Text += podvlacenje;
+            p.Text += "Spisak razmjene od: " + tbOd.Text + ", Za: " + tbZa.Text + "\r\n";
+            p.Text += "Datum kreiranja: " + tbDatum.Text + "\r\n";
+            p.Text += "Broj vreća: " + vreceOIdLista.Count + "\r\n";
+            p.Text += podvlacenje;
+            p.Text += "Identifikatori vreća: \r\n";
+            for (int i = 0; i < vreceOIdLista.Count; i++)
             {
-                text += vreca + "\r\n";
+                p.Text += " " + (i + 1) + ". " + vreceOIdLista[i] + "\r\n";
             }
-            Printer p = new Printer();
-            p.Text = text;
+            p.Text += podvlacenje;
             p.PrintToPDF();
+
             MessageBox.Show("Spisak razmjene kreiran!");
             this.Close();
         }
