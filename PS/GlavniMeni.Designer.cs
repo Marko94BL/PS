@@ -96,11 +96,11 @@
             // lblGrupniSpisak
             // 
             this.lblGrupniSpisak.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGrupniSpisak.Location = new System.Drawing.Point(188, 249);
+            this.lblGrupniSpisak.Location = new System.Drawing.Point(205, 249);
             this.lblGrupniSpisak.Name = "lblGrupniSpisak";
-            this.lblGrupniSpisak.Size = new System.Drawing.Size(106, 41);
+            this.lblGrupniSpisak.Size = new System.Drawing.Size(59, 25);
             this.lblGrupniSpisak.TabIndex = 17;
-            this.lblGrupniSpisak.Text = "Grupni spisak razmjene";
+            this.lblGrupniSpisak.Text = "Otprema";
             // 
             // btnGrupniSpisak
             // 
@@ -109,7 +109,7 @@
             this.btnGrupniSpisak.Location = new System.Drawing.Point(181, 158);
             this.btnGrupniSpisak.Name = "btnGrupniSpisak";
             this.btnGrupniSpisak.Size = new System.Drawing.Size(103, 88);
-            this.btnGrupniSpisak.TabIndex = 16;
+            this.btnGrupniSpisak.TabIndex = 4;
             this.btnGrupniSpisak.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGrupniSpisak.UseVisualStyleBackColor = true;
             this.btnGrupniSpisak.Click += new System.EventHandler(this.btnGrupniSpisak_Click);
@@ -121,7 +121,7 @@
             this.btnOdjava.Location = new System.Drawing.Point(336, 158);
             this.btnOdjava.Name = "btnOdjava";
             this.btnOdjava.Size = new System.Drawing.Size(108, 88);
-            this.btnOdjava.TabIndex = 7;
+            this.btnOdjava.TabIndex = 5;
             this.btnOdjava.UseVisualStyleBackColor = true;
             this.btnOdjava.Click += new System.EventHandler(this.btnOdjava_Click);
             // 
@@ -132,7 +132,7 @@
             this.btnKartovanje.Location = new System.Drawing.Point(15, 158);
             this.btnKartovanje.Name = "btnKartovanje";
             this.btnKartovanje.Size = new System.Drawing.Size(108, 88);
-            this.btnKartovanje.TabIndex = 5;
+            this.btnKartovanje.TabIndex = 3;
             this.btnKartovanje.UseVisualStyleBackColor = true;
             this.btnKartovanje.Click += new System.EventHandler(this.btnKartovanje_Click);
             // 
@@ -144,7 +144,7 @@
             this.btnPrijem.Location = new System.Drawing.Point(336, 13);
             this.btnPrijem.Name = "btnPrijem";
             this.btnPrijem.Size = new System.Drawing.Size(108, 88);
-            this.btnPrijem.TabIndex = 4;
+            this.btnPrijem.TabIndex = 2;
             this.btnPrijem.UseVisualStyleBackColor = true;
             this.btnPrijem.Click += new System.EventHandler(this.btnPrijem_Click);
             // 

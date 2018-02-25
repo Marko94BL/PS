@@ -48,7 +48,7 @@ namespace PS
             gdwKorisnickiNalozi.Rows.Clear();
             KorisnickiNalogDAO knDAO = DAOFactory.getDAOFactory().getKorisnickiNalogDAO();
             List<KorisnikDTO> lista = knDAO.vratiKorisnike();
-            System.Console.WriteLine("Broj aktivnih "+lista.Count);
+            //System.Console.WriteLine("Broj aktivnih "+lista.Count);
             foreach (KorisnikDTO korisnik in lista)
             {
                 if (!korisnik.KorisnickoIme.Equals(GlavnaForma.Prijavljeni.KorisnickoIme))
@@ -64,7 +64,7 @@ namespace PS
             dgwBlokirani.Rows.Clear();
             KorisnickiNalogDAO knDAO1 = DAOFactory.getDAOFactory().getKorisnickiNalogDAO();
             List<KorisnikDTO> lista1 = knDAO1.vratiKorisnikeBlokirane();
-            System.Console.WriteLine("Broj blokiranih " + lista1.Count);
+            //System.Console.WriteLine("Broj blokiranih " + lista1.Count);
             foreach (KorisnikDTO korisnik in lista1)
             {
                 

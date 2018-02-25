@@ -30,7 +30,7 @@ namespace PS
             
             foreach (PoslovnicaDTO poslovnica in lista)
             {
-                System.Console.Write(poslovnica);
+                //System.Console.Write(poslovnica);
                 cbPrijemnaPosta.Items.Add(poslovnica);
                 cbOdredisnaPosta.Items.Add(poslovnica);
             }
@@ -58,14 +58,14 @@ namespace PS
             bool punoPolje = !(tbIdentifikator.MaskFull);
            // PosiljkaTipDTO vrstaPosiljke = (cbVrstaPosiljke.SelectedItem as PosiljkaTipDTO);
             byte vanVrece = Convert.ToByte(cbVanVrece.Checked);
-            PoslovnicaDTO odredisnaPosta = (cbPrijemnaPosta.SelectedItem as PoslovnicaDTO);
+            PoslovnicaDTO odredisnaPosta = (cbOdredisnaPosta.SelectedItem as PoslovnicaDTO);
 
             if (!(prijemnaPosta == null || punoPolje || odredisnaPosta == null))
             {
                 PosiljkaDAO pDAO = DAOFactory.getDAOFactory().getPosiljkaDAO();
                 KorisnickiNalogDAO kdao = DAOFactory.getDAOFactory().getKorisnickiNalogDAO();
                 KorisnikDTO korisnik = kdao.pretragaPoId(GlavnaForma.Prijavljeni.NalogId);
-                System.Console.WriteLine("prijemnaPosta: " + prijemnaPosta + " odredisnaPosta: " + odredisnaPosta + " korisnik: " + korisnik.NalogId + " vrijeme: " + vrijeme + " vanVrece: " + vanVrece + " ident: " + identifikator);
+                //System.Console.WriteLine("prijemnaPosta: " + prijemnaPosta + " odredisnaPosta: " + odredisnaPosta + " korisnik: " + korisnik.NalogId + " vrijeme: " + vrijeme + " vanVrece: " + vanVrece + " ident: " + identifikator);
                 PosiljkaDTO posiljka = new PosiljkaDTO(0, prijemnaPosta, odredisnaPosta, korisnik, vrijeme, vanVrece, identifikator);
                 bool rez = pDAO.insert(posiljka);
                 if (rez)

@@ -54,7 +54,7 @@ namespace PS
                 {
                     id = int.Parse(tbIdentifikatorKarte.Text.Trim());
                     kartaZakljucka = kzdao.vratiKartaZakljucka(id);
-                    System.Console.WriteLine("sta god hoces "+kartaZakljucka.KartaID);
+                    //System.Console.WriteLine("sta god hoces "+kartaZakljucka.KartaID);
                     if (kartaZakljucka != null)
                     {
 
@@ -105,7 +105,7 @@ namespace PS
                 }
                 catch (Exception es)
                 {
-                    System.Console.WriteLine(es.StackTrace);
+                    //System.Console.WriteLine(es.StackTrace);
                     btnOvjeraSpiska.Enabled = false;
                     btnOvjeraKarteZakljucka.Enabled = false;
                     MessageBox.Show("Ne postoji karta zaključka sa unešenim identifikatorom!", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -206,7 +206,7 @@ namespace PS
 
                 //azuriranje statusa posiljke u visak
                 PosiljkaStatusDAO posiljkaStatusDAO = DAOFactory.getDAOFactory().getPosiljkaStatusDAO();
-                System.Console.Write("id posiljka " + posiljka.PosiljkaID + " id karta " + kartaZakljucka.KartaID);
+                //System.Console.Write("id posiljka " + posiljka.PosiljkaID + " id karta " + kartaZakljucka.KartaID);
                 PosiljkaStatusDTO psDTO = posiljkaStatusDAO.posiljkaStatusKarta(posiljka.PosiljkaID);
                 if (psDTO != null)
                 {

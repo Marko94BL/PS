@@ -108,7 +108,7 @@ namespace PS
             PoslovnicaDTO posl = cbPrijemnaPosta.SelectedItem as PoslovnicaDTO;
             bool isPC;
             if (posl.PostanskiCentar == null) isPC = true; else isPC = false;
-            Console.Write(isPC);
+            //Console.Write(isPC);
             PoslovnicaDAO pdao = DAOFactory.getDAOFactory().getPoslovnicaDAO();
             if (isPC)
             {

@@ -21,7 +21,7 @@ namespace PS
         internal DodavanjeLinija(LinijaDTO linija)
         {
             rez = linija.LinijaId;
-            Console.WriteLine("rez u kontruktoru update: "+rez);
+            //Console.WriteLine("rez u kontruktoru update: "+rez);
             InitializeComponent();
             PoslovnicaDAO pDAO = DAOFactory.getDAOFactory().getPoslovnicaDAO();
             List<PoslovnicaDTO> lista = pDAO.poslovnice();
@@ -38,7 +38,7 @@ namespace PS
             pocetna = linija.PoslovnicaSalje.PoslovnicaId;
             krajnja = linija.PoslovnicaPrima.PoslovnicaId;
             btnZavrsi.Text = "Završi izmjenu";
-
+            this.Text = "Pošte Srpske - Izmjena linije";
             DataGridViewButtonColumn obrisiColumn = new DataGridViewButtonColumn();
             obrisiColumn.Name = "Obriši";
             obrisiColumn.Text = "Obriši";
@@ -66,7 +66,7 @@ namespace PS
             InitializeComponent();
             //idLinije = 0;
             rez = 0;
-            Console.WriteLine("rez u kontruktoru nova: " + rez);
+            //Console.WriteLine("rez u kontruktoru nova: " + rez);
             cbPocetnaPosta.Text = "Odaberite";
              cbKrajnjaPosta.Text = "Odaberite";
         }
@@ -103,7 +103,7 @@ namespace PS
             }
             
             LinijaStavkaDAO lsdao = DAOFactory.getDAOFactory().GetLinijaStavkaDAO();
-            Console.WriteLine("rez prilikom dodavaanja stavke: " + rez);
+            //Console.WriteLine("rez prilikom dodavaanja stavke: " + rez);
             LinijaStavkaDTO lstavka = new LinijaStavkaDTO(int.Parse(rez.ToString()), stavka, vrijeme);
           
             int p = lsdao.insert(lstavka);
@@ -135,7 +135,7 @@ namespace PS
                 PoslovnicaDTO poslovnica = posl.vratiSaImenom(dgvStavka.Rows[e.RowIndex].Cells[0].Value.ToString());
 
                 LinijaStavkaDTO lsDTO = new LinijaStavkaDTO();
-                Console.WriteLine("rez kad kliknem na delete: " + rez);
+                //Console.WriteLine("rez kad kliknem na delete: " + rez);
                 lsDTO.LinijaId = int.Parse(rez.ToString());//idLinije
                 lsDTO.Poslovnica = poslovnica;
                 lsDAO.delete(lsDTO);
@@ -147,7 +147,7 @@ namespace PS
 
             dgvStavka.Rows.Clear();
             LinijaStavkaDAO lsDAO = DAOFactory.getDAOFactory().GetLinijaStavkaDAO();
-            Console.WriteLine("rez azuriram tabelu: " + rez);
+            //Console.WriteLine("rez azuriram tabelu: " + rez);
             List<LinijaStavkaDTO> listastavke = lsDAO.stavke(int.Parse(rez.ToString()));//idLinije
 
             foreach (LinijaStavkaDTO stavka in listastavke)
@@ -163,11 +163,7 @@ namespace PS
             PoslovnicaDTO pocetnaPosta = (cbPocetnaPosta.SelectedItem as PoslovnicaDTO);
             PoslovnicaDTO krajnjaPosta = (cbKrajnjaPosta.SelectedItem as PoslovnicaDTO);
 
-            btnZavrsi.Enabled = true;
-            cbStavka.Enabled = true;
-            mtbStavka.Enabled = true;
-            btnAddStavka.Enabled = true;
-            dgvStavka.Enabled = true;
+           
 
             if (!(pocetnaPosta==null|| krajnjaPosta==null || ":".Equals(mtbPolazak.Text.Trim()) || ":".Equals(mtbDolazak.Text.Trim())))
             {
@@ -185,25 +181,33 @@ namespace PS
 
 
                 LinijaDAO lDAO = DAOFactory.getDAOFactory().getLinijaDAO();
-                Console.WriteLine("rez kad dodajem liniju: " + rez);
+                //Console.WriteLine("rez kad dodajem liniju: " + rez);
                 LinijaDTO linija1 = new LinijaDTO(int.Parse(rez.ToString()), pocetnaPosta, krajnjaPosta,vrijemeP, vrijemeD );//umjesto rez=id
                  rez = lDAO.insert(linija1, pocetna, krajnja);
-                Console.WriteLine("rez kad dodajem liniju nakon inserta: " + rez);
+                //Console.WriteLine("rez kad dodajem liniju nakon inserta: " + rez);
 
                 if (rez!=0)
                 {
                     MessageBox.Show("Uspješno dodavanje nove linije", "Uspješno dodavanje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //this.Close();
+
+                    btnZavrsi.Enabled = true;
+                    cbStavka.Enabled = true;
+                    mtbStavka.Enabled = true;
+                    btnAddStavka.Enabled = true;
+                    dgvStavka.Enabled = true;
+
+                    cbPocetnaPosta.Enabled = false;
+                    cbKrajnjaPosta.Enabled = false;
+                    mtbPolazak.Enabled = false;
+                    mtbDolazak.Enabled = false;
+                    btnOk.Enabled = false;
                 }
 
   
 
             }
-            cbPocetnaPosta.Enabled = false;
-            cbKrajnjaPosta.Enabled = false;
-            mtbPolazak.Enabled = false;
-            mtbDolazak.Enabled = false;
-            btnOk.Enabled = false;
+            
         }
     }
 }

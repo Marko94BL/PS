@@ -123,14 +123,14 @@ namespace PS
         }
         private string napusiStringDoBroja(string pocetni , int broj)
         {
-            System.Console.WriteLine("Pocetni string:"+pocetni+" Len:"+pocetni.Length);
+            //System.Console.WriteLine("Pocetni string:"+pocetni+" Len:"+pocetni.Length);
             if (pocetni.Length > broj)
                 return pocetni.Substring(0, broj);
             while (pocetni.Length < broj)
             {
                 pocetni += " ";
             }
-            System.Console.WriteLine("Finalni tring:" + pocetni + " Len:" + pocetni.Length);
+            //System.Console.WriteLine("Finalni tring:" + pocetni + " Len:" + pocetni.Length);
             return pocetni;
         }
     }
