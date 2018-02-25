@@ -16,7 +16,7 @@ namespace PS.controlers
          *
             {
                Printer p = new Printer();
-               p.Text = "String za ispis"
+               p.Text = "String za ispis";
                p.PrintToPDF();
             }
          * 

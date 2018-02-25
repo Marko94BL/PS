@@ -67,5 +67,27 @@ namespace PS.dao.mysql
             return vrece;
 
         }
+
+        int brojVreca(int IdKartaZakljucka)
+        {
+            MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
+            conn.Open();
+
+            int retVal = 0;
+
+            MySqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "SELECT COUNT(*) FROM vreca WHERE IdKartaZakljucka=@karta";
+
+            cmd.Parameters.AddWithValue("@karta", IdKartaZakljucka);
+
+            MySqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                retVal = reader.GetInt32(0);
+            }
+            reader.Close();
+            conn.Close();
+            return retVal;
+        }
     }
 }

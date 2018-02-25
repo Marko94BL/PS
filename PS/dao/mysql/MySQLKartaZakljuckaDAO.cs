@@ -125,5 +125,34 @@ namespace PS.dao.mysql
 
 
         }
+        List<KartaZakljuckaDTO> kartaZakljuckaZaMjesta(int IdPoslovnicaSalje, int IdPoslovnicaPrima)
+        {
+            MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["BP_PosteSrpske"].ConnectionString);
+            conn.Open();
+
+            List<KartaZakljuckaDTO> kz = null;
+
+            MySqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "SELECT * FROM kartazakljucka WHERE (IdPoslovnicaSalje=@salje AND IdPoslovnicaPrima=@prima AND VrijemeStigla IS NULL)";
+
+            cmd.Parameters.AddWithValue("@salje", IdPoslovnicaSalje);
+            cmd.Parameters.AddWithValue("@prima", IdPoslovnicaPrima);
+
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                PoslovnicaDAO pdao = DAOFactory.getDAOFactory().getPoslovnicaDAO();
+                PoslovnicaDTO poslovnicaSalje = pdao.vratiPoslovnicu(reader.GetInt32(1));
+                PoslovnicaDTO poslovnicaPrima = pdao.vratiPoslovnicu(reader.GetInt32(2));
+
+                KorisnickiNalogDAO kndao = DAOFactory.getDAOFactory().getKorisnickiNalogDAO();
+                KorisnikDTO nalog = kndao.pretragaPoId(reader.GetInt32(8));
+
+                kz.Add(new KartaZakljuckaDTO(reader.GetInt32(0), reader.GetString(5), reader.GetDateTime(3), reader.GetInt32(6), reader.GetString(7), nalog, poslovnicaSalje, poslovnicaPrima));
+            }
+            reader.Close();
+            conn.Close();
+            return kz;
+        }
     }
 }
