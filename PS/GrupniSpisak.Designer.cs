@@ -37,29 +37,30 @@
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(137, 12);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(114, 31);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(234, 13);
+            this.label1.Size = new System.Drawing.Size(121, 55);
             this.label1.TabIndex = 0;
             this.label1.Text = "Odaberite liniju za koju se stampa grupni spsisak";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(245, 77);
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(284, 85);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(126, 41);
+            this.button1.Size = new System.Drawing.Size(106, 42);
             this.button1.TabIndex = 1;
-            this.button1.Text = "Stampaj grupni spisak razmjene";
+            this.button1.Text = "Štampaj ";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // cbLinije
             // 
             this.cbLinije.FormattingEnabled = true;
-            this.cbLinije.Location = new System.Drawing.Point(140, 38);
+            this.cbLinije.Location = new System.Drawing.Point(229, 48);
             this.cbLinije.Name = "cbLinije";
-            this.cbLinije.Size = new System.Drawing.Size(231, 21);
+            this.cbLinije.Size = new System.Drawing.Size(161, 21);
             this.cbLinije.TabIndex = 2;
             // 
             // pictureBox1
@@ -76,17 +77,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(397, 139);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(403, 139);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.cbLinije);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Name = "GrupniSpisak";
-            this.Text = "Pošte Srpske - Kreiranje Grupnog Spiska Razmjene";
+            this.Text = "Pošte Srpske - Kreiranje grupnog spiska razmjene";
             this.Load += new System.EventHandler(this.GrupniSpisak_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

@@ -110,7 +110,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(629, 229);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(629, 230);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dgwBlokirani);
             this.Controls.Add(this.label1);
@@ -118,7 +119,7 @@
             this.MaximumSize = new System.Drawing.Size(645, 268);
             this.MinimumSize = new System.Drawing.Size(645, 268);
             this.Name = "PrikazKorisnickihNaloga";
-            this.Text = "PrikazKorisnickihNaloga";
+            this.Text = "Pošte Srpske - Prikaz korisničkih naloga";
             this.Load += new System.EventHandler(this.PrikazKorisnickihNaloga_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gdwKorisnickiNalozi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwBlokirani)).EndInit();

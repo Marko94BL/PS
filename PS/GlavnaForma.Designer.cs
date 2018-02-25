@@ -72,6 +72,8 @@
             this.tbLozinka.PasswordChar = '*';
             this.tbLozinka.Size = new System.Drawing.Size(175, 20);
             this.tbLozinka.TabIndex = 3;
+            this.tbLozinka.TextChanged += new System.EventHandler(this.tbLozinka_TextChanged);
+            this.tbLozinka.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbLozinka_KeyDown);
             // 
             // lbLozinka
             // 
@@ -98,7 +100,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(381, 182);
+            this.ClientSize = new System.Drawing.Size(381, 183);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lbLozinka);
             this.Controls.Add(this.tbLozinka);
@@ -109,6 +111,7 @@
             this.MinimumSize = new System.Drawing.Size(397, 221);
             this.Name = "GlavnaForma";
             this.Text = "Prijava na sistem";
+            this.Enter += new System.EventHandler(this.btnPrijava_Click);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
