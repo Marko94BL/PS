@@ -11,5 +11,6 @@ namespace PS.dao
     {
         List<VrecaDTO> vrece(KartaZakljuckaDTO karta);
         bool insert(VrecaDTO vreca);
+        int brojVreca(int IdKartaZakljucka);
     }
 }

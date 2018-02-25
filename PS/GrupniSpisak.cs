@@ -33,22 +33,46 @@ namespace PS
 
         private void button1_Click(object sender, EventArgs e)
         {
-            /*string text = "                                                                Datum: " + datum + "\r\n" +
-                          "                                        " + "Karta zaključka         Otprema: " + tbOtprema.Text.Trim() + "\r\n\r\n" +
-                "            Od: " + prijemnaPosta + "                                Za: " + odredisnaPosta + "\r\n" + "Prijemni broj\r\n_______________\r\n ";
-            foreach (PosiljkaDTO posiljka in posiljkeIdLista)
+            if(cbLinije.SelectedIndex != -1)
             {
-                text += posiljka.Barkod + "\r\n";
+                LinijaDTO linija = cbLinije.SelectedItem as LinijaDTO;
+                LinijaStavkaDAO ldao = DAOFactory.getDAOFactory().GetLinijaStavkaDAO();
+                KartaZakljuckaDAO kdao = DAOFactory.getDAOFactory().getKartaZakljuckaDAO();
+                VrecaDAO vdao = DAOFactory.getDAOFactory().getVrecaDAO();
+                int ukupanBrojVreca = 0;
+                Printer p = new Printer();
+                List<KartaZakljuckaDTO> karte = new List<KartaZakljuckaDTO>();
+                List<LinijaStavkaDTO> lista = ldao.stavke(linija.LinijaId);
+                DateTime trenutniDatetime = DateTime.Now;
+                if (lista != null)
+                {
+                    foreach (LinijaStavkaDTO stavka in lista)
+                    {
+                        karte = kdao.kartaZakljuckaZaMjesta(linija.PoslovnicaSalje.PoslovnicaId, stavka.Poslovnica.PoslovnicaId);
+                        if (karte != null)
+                        {
+                            foreach (KartaZakljuckaDTO karta in karte)
+                            {
+                                ukupanBrojVreca += vdao.brojVreca(karta.KartaID);
+                            }
+                            p.Text += "Ukupan broj vreca za relaciju(od:" + linija.PoslovnicaSalje.Naziv + ", do:" + stavka.Poslovnica.Naziv + ") je:" + ukupanBrojVreca + "\n";
+                            ukupanBrojVreca = 0;
+                        }
+                    }
+                }
+                karte = kdao.kartaZakljuckaZaMjesta(linija.PoslovnicaSalje.PoslovnicaId, linija.PoslovnicaPrima.PoslovnicaId);
+                if (karte != null)
+                {
+                    foreach (KartaZakljuckaDTO karta in karte)
+                    {
+                        ukupanBrojVreca += vdao.brojVreca(karta.KartaID);
+                    }
+                    //Dodati na listu za printanje
+                    p.Text += "Ukupan broj vreca za relaciju(od:" + linija.PoslovnicaSalje.Naziv + ", do:" + linija.PoslovnicaPrima.Naziv + ") je:" + ukupanBrojVreca + "\n";
+                }
+                p.Text += "Gotov grupni spisak razmjene!";
+                p.PrintToPDF();
             }
-            System.IO.File.WriteAllText(@".\karteZakljucaka\kz" + kartaZakljucka.KartaID + ".txt", text);*/
-            //PrintDocument document = new PrintDocument();
-            //document.TextToPrint = "C:/Windows/Users/Marko/Desktop/Friski todo IP.txt";
-            //PrintDialog pd = new PrintDialog();
-            //pd.Document = new System.Drawing.Printing.PrintDocument();
-            //pd.ShowDialog();
-            Printer p = new Printer();
-            p.Text = "Testiranje 3!asdddddddddddddddddddddddddddssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeewwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\nTest new Line\ntest123";
-            p.PrintToPDF();
         }
     }
 }

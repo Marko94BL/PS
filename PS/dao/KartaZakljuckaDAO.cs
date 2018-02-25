@@ -15,6 +15,7 @@ namespace PS.dao
         KartaZakljuckaDTO vratiKartaZakljucka(int kartaId);
         bool azurirajDatum(KartaZakljuckaDTO kartaZakljucka);
         int insert(KartaZakljuckaDTO kartaZakljucka);
+        List<KartaZakljuckaDTO> kartaZakljuckaZaMjesta(int IdPoslovnicaSalje, int IdPoslovnicaPrima);
         // bool update(KartaZakljuckaDTO kartaZakljucka);
         // bool delete(int id);
 
