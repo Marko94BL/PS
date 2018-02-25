@@ -46,6 +46,7 @@
             this.dgvStavka = new System.Windows.Forms.DataGridView();
             this.Poslovnica = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Vrijeme = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStavka)).BeginInit();
             this.SuspendLayout();
@@ -200,7 +201,7 @@
             this.Vrijeme});
             this.dgvStavka.Location = new System.Drawing.Point(15, 253);
             this.dgvStavka.Name = "dgvStavka";
-            this.dgvStavka.Size = new System.Drawing.Size(377, 154);
+            this.dgvStavka.Size = new System.Drawing.Size(377, 153);
             this.dgvStavka.TabIndex = 18;
             // 
             // Poslovnica
@@ -215,12 +216,23 @@
             this.Vrijeme.Name = "Vrijeme";
             this.Vrijeme.Width = 168;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(317, 416);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 19;
+            this.button1.Text = "Završi unos";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // DodavanjeLinija
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(407, 423);
+            this.ClientSize = new System.Drawing.Size(407, 453);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.dgvStavka);
             this.Controls.Add(this.btnAddStavka);
             this.Controls.Add(this.mtbStavka);
@@ -267,5 +279,6 @@
         private System.Windows.Forms.DataGridView dgvStavka;
         private System.Windows.Forms.DataGridViewTextBoxColumn Poslovnica;
         private System.Windows.Forms.DataGridViewTextBoxColumn Vrijeme;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -69,6 +69,11 @@ namespace PS
             dgvStavka.Rows.Add(lstavka.Poslovnica.Naziv, lstavka.Vrijeme.ToString());
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void btnOk_Click(object sender, EventArgs e)
         {
             int id = 0;
